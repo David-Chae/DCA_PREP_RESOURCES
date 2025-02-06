@@ -55,5 +55,5 @@ Relevant Documentation
 For detailed instructions and more information, you can refer to the following official documentation:
 
 Mirantis Documentation: Integrate with an LDAP Directory1
-Docker Documentation: LDAP Integration2
+Docker Documentation: [LDAP Integration2](https://docs.mirantis.com/containers/v2.1/dockeree-products/ucp/admin/configure/integrate-with-LDAP-directory.html)
 These resources provide comprehensive guidance on integrating UCP with LDAP/AD.
