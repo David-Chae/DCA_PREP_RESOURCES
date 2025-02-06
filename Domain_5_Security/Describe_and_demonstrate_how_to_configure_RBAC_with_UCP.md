@@ -47,9 +47,7 @@ docker grant create --role developer --collection dev-collection --subject user1
 ```
 
 Relevant Mirantis Documentation
-For detailed, step-by-step instructions and more information, you can refer to the following official Mirantis documentation:
+For detailed information, you can refer to the following official Mirantis documentation:
 
-[Mirantis Documentation: UCP Architecture1](https://docs.mirantis.com/containers/v2.1/dockeree-products/ucp/ucp-architecture.html)
-[Mirantis Documentation: Authorize Role-Based Access2](https://docs.mirantis.com/containers/v2.1/dockeree-products/ucp/authorization.html)
 [Mirantis Documentation: Access Control Model3](https://docs.mirantis.com/containers/v2.1/dockeree-products/ucp/authorization/access-control-model.html)
 These resources provide comprehensive guidance on setting up and managing RBAC in UCP.
