@@ -12,7 +12,7 @@
 
 ## Domain 1: Orchestration (25% of exam)
 Content may include the following:
-- [Complete the setup of a swarm mode cluster with managers and worker nodes](DCA_PREP_RESOURCES/Domain_1_Orchestration/Complete_the_setup_of_a_swarm_mode_cluster_with_managers_and_worker_nodes.md)
+- [Complete the setup of a swarm mode cluster with managers and worker nodes](Domain_1_Orchestration/Complete_the_setup_of_a_swarm_mode_cluster_with_managers_and_worker_nodes.md)
 - State the differences between running a container vs running a service
 - Demonstrate steps to lock a swarm cluster
 - Extend the instructions to run individual containers into running services under swarm
