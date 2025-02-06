@@ -13,19 +13,19 @@ Setting up a Docker Swarm mode cluster involves initializing the swarm, adding m
 ### Initialize the Swarm
 
 On the machine you want to use as the manager, run:
-- docker swarm init --advertise-addr <MANAGER-IP>
+- docker swarm init --advertise-addr <MANAGER-IP>  
 This command initializes the swarm and makes the current machine the manager. The --advertise-addr flag specifies the manager's IP address.
 
 ### Add Worker Nodes
 
 On each worker node, run the command provided by the docker swarm init output on the manager node. It looks something like this:
-- docker swarm join --token <SWARM-TOKEN> <MANAGER-IP>:2377
+- docker swarm join --token <SWARM-TOKEN> <MANAGER-IP>:2377  
 This command joins the worker node to the swarm.
 
 ### Verify the Nodes
 
 On the manager node, run:
-- docker node ls
+- docker node ls  
 This command lists all the nodes in the swarm, showing their status and roles.
 
 
