@@ -25,5 +25,5 @@
   - [Kubernetes Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
 - **Third Party Resources**
   - [What is the difference between Docker Service and Docker Container?](https://stackoverflow.com/questions/43408493/what-is-the-difference-between-docker-service-and-docker-container/43408904#43408904)
-- **Asciinema Examples*
+- **Asciinema Examples**
   - [State the differences between running a container vs running a service](https://github.com/DevOps-Academy-Org/dca-prep-guide/blob/master/Domain_1_Orchestration/State_the_differences_between_running_a_container_vs_running_a_service.md)
