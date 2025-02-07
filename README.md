@@ -106,6 +106,4 @@ Content may include the following:
 - Describe how volumes are used with Docker for persistent storage
 - Identify the steps you would take to clean up unused images on a filesystem also on DTR
 - Demonstrate how storage can be used across cluster nodes
-```
 
-Replace `link-to-subpage` with the actual URLs of your subpages. This structure will make your README page organized and easy to navigate. If you need further assistance, feel free to ask!
