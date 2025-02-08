@@ -86,26 +86,29 @@ Content may include the following:
 
 ## Domain 5: Security (15% of exam)
 Content may include the following:
-- Describe the process of signing an image
-- Demonstrate that an image passes a security scan
-- Enable Docker Content Trust
-- Configure RBAC in UCP
-- Integrate UCP with LDAP AD
-- Demonstrate creation of UCP client bundles
-- Describe default engine security
-- Describe swarm default security
-- Describe MTLS
-- Identify roles
-- Describe the difference between UCP workers and managers
-- Describe process to use external certificates with UCP and DTR
+- Describe security administration and tasks.
+- Describe the process of signing an image.
+- Describe default engine security.
+- Describe swarm default security.
+- Describe MTLS.
+- Describe identity roles.
+- Compare and contrast UCP workers and managers.
+- Describe the process to use external certificates with UCP and DTR.
+- Describe and demonstrate that an image passes a security scan.
+- Describe and demonstrate how to enable Docker Content Trust.
+- Describe and demonstrate how to configure RBAC with UCP.
+- Describe and demonstrate how to integrate UCP with LDAP/AD.
+- Describe and demonstrate how to create UCP client bundles.
 
 ## Domain 6: Storage and Volumes (10% of exam)
 Content may include the following:
-- State which graph driver should be used on which OS
-- Demonstrate how to configure devicemapper
-- Compare object storage to block storage and explain which one is preferable when available
-- Summarize how an application is composed of layers and where those layers reside on the filesystem
-- Describe how volumes are used with Docker for persistent storage
-- Identify the steps you would take to clean up unused images on a filesystem also on DTR
-- Demonstrate how storage can be used across cluster nodes
+- Identify the correct graph drivers to uses with various operating systems.
+- Describe and demonstrate how to configure devicemapper.
+- Compare and contrast object and block storage and when they should be used.
+- Describe how an application is composed of layers and where these layers reside on the filesystem.
+- Describe the use of volumes are used with Docker for persistent storage.
+- Identify the steps to take to clean up unused images on a filesystem and DTR.
+- Describe and demonstrate how storage can be used across cluster nodes.
+- Describe how to provision persistent storage to a Kubernetes pod using persistentVolumes.
+- Describe the relationship between container storage interface drivers, storageClass, persistentVolumeClaim and volume objects in Kubernetes.
 
