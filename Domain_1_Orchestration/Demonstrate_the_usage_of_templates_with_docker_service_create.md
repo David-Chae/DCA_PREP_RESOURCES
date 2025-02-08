@@ -1,26 +1,22 @@
-# Understanding the Importance of Quorum in a Swarm Cluster
+# Using Templates with Docker Service Create
 
-## Importance of Quorum in a Swarm Cluster
+## Overview
 
-In a Swarm cluster, quorum is crucial to maintaining the integrity and reliability of the system. Quorum represents the minimum number of manager nodes required to make decisions and ensure the cluster remains operational. If the number of available managers falls below the quorum, the cluster might fail to make decisions, leading to potential disruptions in the services running on the cluster.
+Docker service templates allow you to dynamically configure service attributes at runtime, providing greater flexibility and control over how your services are deployed. Templates can be used to set environment variables, labels, and other configurations based on the state of the service or the Docker node.
 
-Achieving and maintaining quorum ensures that there is a majority of manager nodes available to validate and agree on changes, such as updates to services or nodes joining and leaving the cluster. This majority agreement is essential to avoid split-brain scenarios, where different parts of the cluster may have conflicting information, potentially causing data inconsistency and service disruptions.
+## Example Usage
 
-## Suggested Documentation
+Below is an example of how to use templates with the `docker service create` command. In this example, we'll create a Docker service that uses a template to set an environment variable based on the service name.
 
-For more information on quorum in a Swarm cluster and related topics, refer to the following documentation:
-
-- [Docker Swarm Mode Overview](https://docs.docker.com/engine/swarm/)
-- [Manage Swarm Cluster State](https://docs.docker.com/engine/swarm/admin_guide/)
-- [Swarm Manager Nodes](https://docs.docker.com/engine/swarm/how-swarm-mode-works/nodes/)
-- [Understanding Quorum in Swarm Mode](https://docs.docker.com/engine/swarm/how-swarm-mode-works/nodes/#maintain-quorum)
-
-These resources provide comprehensive insights into managing and maintaining a healthy Swarm cluster, with detailed explanations on the importance of quorum and best practices for cluster administration.
+```bash
+docker service create \
+  --name my_service \
+  --env MY_ENV_VAR="{{.Service.Name}}" \
+  nginx:latest
+```
 
 In this example:
-
 - --name my_service: Sets the name of the service to my_service.
-
 - --env MY_ENV_VAR="{{.Service.Name}}": Sets the environment variable MY_ENV_VAR to the name of the service (my_service). The template {{.Service.Name}} is evaluated at runtime to get the service name.
 
 ## Templates in Docker Compose
