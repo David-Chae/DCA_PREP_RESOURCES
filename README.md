@@ -55,17 +55,17 @@ Content may include the following:
 
 ## Domain 3: Installation and Configuration (15% of exam)
 Content may include the following:
-- Describe sizing requirements for installation.
-- Describe and demonstrate the setup of repo, selection of a storage driver, and installation of the Docker engine on multiple platforms.
-- Describe and demonstrate configuration of logging drivers (splunk, journald, etc.).
-- Describe and demonstrate how to set up swarm, configure managers, add nodes, and setup the backup schedule.
-- Describe and demonstrate how to create and manage user and teams.
-- Describe and demonstrate how to configure the Docker daemon to start on boot.
-- Describe and demonstrate how to use certificate-based client-server authentication to ensure a Docker daemon has the rights to access images on a registry.
-- Describe the use of namespaces, cgroups, and certificate configuration.
-- Describe and interpret errors to troubleshoot installation issues without assistance.
-- Describe and demonstrate the steps to deploy the Docker engine, UCP, and DTR on AWS and on-premises in an HA configuration.
-- Describe and demonstrate how to configure backups for UCP and DTR.
+- [Describe sizing requirements for installation](Domain_3_Installation_and_Configuration/Describe_sizing_requirements_for_installation.md)
+- [Describe and demonstrate the setup of repo, selection of a storage driver, and installation of the Docker engine on multiple platforms.](Domain_3_Installation_and_Configuration/Describe_and_demonstrate_the_setup_of_repo_selection_of_a_storage_driver_and_installation_of_the_Docker_engine_on_multiple_platforms.md)
+- [Describe and demonstrate configuration of logging drivers (splunk, journald, etc.).](Domain_3_Installation_and_Configuration/Describe_and_demonstrate_configuration_of_logging_drivers.md)
+- [Describe and demonstrate how to set up swarm, configure managers, add nodes, and setup the backup schedule.](Domain_3_Installation_and_Configuration/Describe_and_demonstrate_how_to_set_up_swarm_configure_managers_add_nodes_and_setup_the_backup_schedule.md)
+- [Describe and demonstrate how to create and manage user and teams.](Domain_3_Installation_and_Configuration/Describe_and_demonstrate_how_to_create_and_manage_user_and_teams.md)
+- [Describe and demonstrate how to configure the Docker daemon to start on boot.](Domain_3_Installation_and_Configuration/Describe_and_demonstrate_how_to_configure_the_Docker_daemon_to_start_on_boot.md)
+- [Describe and demonstrate how to use certificate-based client-server authentication to ensure a Docker daemon has the rights to access images on a registry.](Domain_3_Installation_and_Configuration/Describe_and_demonstrate_how_to_use_certificate-based_client-server_authentication.md)
+- [Describe the use of namespaces, cgroups, and certificate configuration.](Domain_3_Installation_and_Configuration/Describe_the_use_of_namespaces_cgroups_and_certificate_configuration.md)
+- [Describe and interpret errors to troubleshoot installation issues without assistance.](Domain_3_Installation_and_Configuration/Describe_and_interpret_errors_to_troubleshoot_installation_issues_without_assistance.md)
+- [Describe and demonstrate the steps to deploy the Docker engine, UCP, and DTR on AWS and on-premises in an HA configuration.](Domain_3_Installation_and_Configuration/Describe_and_demonstrate_the_steps_to_deploy_the_Docker_engine_UCP_and_DTR.md)
+- [Describe and demonstrate how to configure backups for UCP and DTR.](Domain_3_Installation_and_Configuration/Describe_and_demonstrate_how_to_configure_backups_for_UCP_and_DTR.md)
 
 ## Domain 4: Networking (15% of exam)
 Content may include the following:
