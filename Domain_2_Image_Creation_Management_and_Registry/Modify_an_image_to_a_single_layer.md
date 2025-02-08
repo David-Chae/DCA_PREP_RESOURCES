@@ -57,4 +57,5 @@ For more detailed information on managing Docker images, refer to the following 
 - [Docker CLI Reference - import](https://docs.docker.com/engine/reference/commandline/import/)
 - [Managing Docker Images](https://docs.docker.com/engine/reference/commandline/image/)
 
+## Third Party Resources
 - [Flatten a Docker container or image](https://tuhrig.de/flatten-a-docker-container-or-image/)
