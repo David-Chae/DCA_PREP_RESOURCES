@@ -1,0 +1,129 @@
+
+# Configuring Docker to Use External DNS
+
+## Introduction
+
+By default, Docker uses a built-in DNS server for container name resolution. However, there are scenarios where you may want to configure Docker to use an external DNS server instead. This can be helpful for resolving domain names that are not available through Docker's internal DNS, or when using a specific DNS server for security or performance reasons.
+
+This guide explains how to configure Docker to use an external DNS server for container name resolution.
+
+## Configuring External DNS for Docker
+
+Docker allows you to configure external DNS servers in two primary ways:
+
+1. **Global DNS Configuration**: Set DNS servers for all containers.
+2. **Container-Specific DNS Configuration**: Set DNS servers for individual containers.
+
+### 1. **Global DNS Configuration**
+
+To configure Docker to use external DNS servers globally (for all containers), you need to edit Docker's daemon configuration file (`/etc/docker/daemon.json`).
+
+#### Steps to configure global DNS:
+
+1. Open or create the Docker daemon configuration file:
+
+   ```bash
+   sudo nano /etc/docker/daemon.json
+   ```
+
+2. Add or modify the `"dns"` option to include the DNS servers you wish to use. For example:
+
+   ```json
+   {
+     "dns": ["8.8.8.8", "8.8.4.4"]
+   }
+   ```
+
+   In this example, Google's public DNS servers (`8.8.8.8` and `8.8.4.4`) are configured.
+
+3. Save and close the file.
+
+4. Restart Docker for the changes to take effect:
+
+   ```bash
+   sudo systemctl restart docker
+   ```
+
+Once this is done, all new containers will use the specified external DNS servers for name resolution.
+
+### 2. **Container-Specific DNS Configuration**
+
+If you want to specify DNS servers for a specific container rather than globally, you can use the `--dns` option when running the container.
+
+#### Example:
+
+```bash
+docker run --dns 8.8.8.8 --dns 8.8.4.4 -d my_container
+```
+
+This will run the container `my_container` using Google's DNS servers for name resolution, regardless of the global DNS configuration.
+
+### 3. **DNS Search Domains (Optional)**
+
+In addition to specifying DNS servers, you can also specify search domains. Search domains are used when Docker attempts to resolve a hostname that does not include a domain name.
+
+To configure search domains globally, modify the `daemon.json` file as follows:
+
+```json
+{
+  "dns": ["8.8.8.8", "8.8.4.4"],
+  "dnsSearch": ["mydomain.local"]
+}
+```
+
+This will append the domain `mydomain.local` to any unqualified domain names that the containers try to resolve.
+
+To configure search domains for a specific container, use the `--dns-search` flag:
+
+```bash
+docker run --dns-search mydomain.local -d my_container
+```
+
+### 4. **DNS Configuration for Docker Compose**
+
+If you're using Docker Compose, you can specify DNS settings in the `docker-compose.yml` file.
+
+#### Example:
+
+```yaml
+version: '3.7'
+services:
+  web:
+    image: my_image
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
+    dns_search:
+      - mydomain.local
+```
+
+This will ensure that the DNS settings apply to all containers defined in the Compose file.
+
+### 5. **Verifying DNS Configuration**
+
+Once you've configured Docker to use external DNS, you can verify the settings by inspecting the network settings of a running container.
+
+#### Example:
+
+```bash
+docker exec -it <container_name_or_id> cat /etc/resolv.conf
+```
+
+This will show you the DNS servers that the container is using. You should see the external DNS servers you configured.
+
+## Troubleshooting
+
+- **DNS resolution issues**: If containers cannot resolve domain names after configuring external DNS, ensure the DNS servers are reachable from the Docker host.
+- **Firewall settings**: Check that your firewall is not blocking DNS requests to the external servers.
+
+## Official Documentation
+
+For more information on Docker DNS configuration, refer to the official Docker documentation:
+
+- [Configure Docker's DNS settings](https://docs.docker.com/engine/reference/commandline/dockerd/#dns)
+- [Docker Networking Overview](https://docs.docker.com/network/)
+- [Docker Compose DNS settings](https://docs.docker.com/compose/compose-file/compose-versioning/#dns)
+
+## Conclusion
+
+Configuring Docker to use external DNS can be useful in a variety of scenarios. By modifying the global `daemon.json` file or specifying DNS settings for individual containers, you can ensure that your Docker containers resolve domain names using the DNS servers of your choice. Additionally, Docker Compose makes it easy to manage DNS settings for multi-container applications.
