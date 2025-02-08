@@ -1,0 +1,85 @@
+# Creating and Managing Users and Teams in Docker Universal Control Plane (UCP)
+
+## Overview
+Docker Universal Control Plane (UCP) is a container management platform that allows organizations to deploy and secure Docker containers at scale. UCP provides role-based access control (RBAC) for managing users and teams.
+
+## 1. Creating a User in UCP
+
+### Using the UCP Web UI:
+1. Log in to the UCP web interface as an administrator.
+2. Navigate to **Access Control** > **Users**.
+3. Click on **Create User**.
+4. Enter the **Username**, **Full Name**, **Password**, and optionally, an **Email**.
+5. Assign appropriate roles to the user.
+6. Click **Create**.
+
+### Using the UCP CLI:
+Run the following command to create a new user:
+```sh
+curl -k -X POST "https://<UCP-URL>/accounts" \
+    -H "Authorization: Bearer <API-TOKEN>" \
+    -H "Content-Type: application/json" \
+    -d '{ "name": "newuser", "password": "securepassword", "fullName": "New User" }'
+```
+
+## 2. Managing Users
+
+### List Users
+```sh
+curl -k -X GET "https://<UCP-URL>/accounts" \
+    -H "Authorization: Bearer <API-TOKEN>"
+```
+
+### Delete a User
+```sh
+curl -k -X DELETE "https://<UCP-URL>/accounts/newuser" \
+    -H "Authorization: Bearer <API-TOKEN>"
+```
+
+## 3. Creating and Managing Teams
+
+### Creating a Team
+1. Navigate to **Access Control** > **Teams**.
+2. Click on **Create Team**.
+3. Provide a **Team Name**.
+4. Assign users to the team.
+5. Click **Create**.
+
+### Using the CLI:
+```sh
+curl -k -X POST "https://<UCP-URL>/teams" \
+    -H "Authorization: Bearer <API-TOKEN>" \
+    -H "Content-Type: application/json" \
+    -d '{ "name": "DevTeam", "description": "Development Team" }'
+```
+
+### Adding a User to a Team
+```sh
+curl -k -X POST "https://<UCP-URL>/teams/DevTeam/members" \
+    -H "Authorization: Bearer <API-TOKEN>" \
+    -H "Content-Type: application/json" \
+    -d '{ "username": "newuser" }'
+```
+
+### Removing a User from a Team
+```sh
+curl -k -X DELETE "https://<UCP-URL>/teams/DevTeam/members/newuser" \
+    -H "Authorization: Bearer <API-TOKEN>"
+```
+
+## 4. Assigning Roles and Permissions
+UCP allows you to assign roles at different levels:
+- **Organization level** (e.g., Admin, Restricted Control)
+- **Team level** (e.g., Owner, Member)
+- **Resource level** (e.g., access to specific applications or services)
+
+To assign a role to a user, go to **Access Control** > **Users** and select the user to modify their role.
+
+## 5. Documentation Links
+- [Docker UCP Access Control](https://docs.docker.com/ee/ucp/user-access/)
+- [UCP API Reference](https://docs.docker.com/ee/ucp/api/)
+- [Managing Users and Teams in UCP](https://docs.docker.com/ee/ucp/authorization/)
+
+## Conclusion
+Managing users and teams in Docker UCP allows organizations to enforce security policies and ensure appropriate access control. By leveraging RBAC, administrators can efficiently manage permissions and user roles.
+
