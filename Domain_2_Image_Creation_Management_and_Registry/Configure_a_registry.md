@@ -30,7 +30,7 @@ Configuring a Docker registry involves setting up the registry, managing storage
 
 For detailed configuration instructions, refer to the following documentation:
 
-- [Distribution Registry Configuration](^https^://distribution.github.io/distribution/about/configuration/)
+- [Distribution Registry Configuration](https://distribution.github.io/distribution/about/configuration/)
 - [Docker Registry Documentation](https://docs.docker.com/registry/configuration/)
 - [How to Use Your Own Registry](https://www.docker.com/blog/how-to-use-your-own-registry-2/)
 
