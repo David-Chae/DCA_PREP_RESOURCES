@@ -92,6 +92,9 @@ docker load -i myimage.tar
 ## Suggested Documentation
 
 For more detailed information on managing Docker images with CLI commands, refer to the following documentation:
+- [docker image ls](https://docs.docker.com/reference/cli/docker/image/ls/)
+- [docker image rm](https://docs.docker.com/reference/cli/docker/image/rm/)
+- [docker image prune](https://docs.docker.com/reference/cli/docker/image/prune/)
 
 - [Docker CLI Reference](https://docs.docker.com/engine/reference/commandline/cli/)
 - [Managing Docker Images](https://docs.docker.com/engine/reference/commandline/image/)
