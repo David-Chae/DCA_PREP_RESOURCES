@@ -9,7 +9,11 @@ Achieving and maintaining quorum ensures that there is a majority of manager nod
 ## Suggested Documentation
 
 For more information on quorum in a Swarm cluster and related topics, refer to the following documentation:
+- [Maintain the quorum of managers](https://docs.docker.com/engine/swarm/admin_guide/#maintain-the-quorum-of-managers)
+- [Add manager nodes for fault tolerance](https://docs.docker.com/engine/swarm/admin_guide/#add-manager-nodes-for-fault-tolerance)
+- [Recover from losing the quorum](https://docs.docker.com/engine/swarm/admin_guide/#recover-from-losing-the-quorum)
 
+More references:  
 - [Docker Swarm Mode Overview](https://docs.docker.com/engine/swarm/)
 - [Manage Swarm Cluster State](https://docs.docker.com/engine/swarm/admin_guide/)
 - [Swarm Manager Nodes](https://docs.docker.com/engine/swarm/how-swarm-mode-works/nodes/)
