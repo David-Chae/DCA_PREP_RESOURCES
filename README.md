@@ -31,27 +31,27 @@ Content may include the following:
 
 ## Domain 2: Image Creation, Management, and Registry (20% of exam)
 Content may include the following:
-- Describe Dockerfile options
-- Show the main parts of a Dockerfile
-- Give examples on how to create an efficient image via a Dockerfile
-- Use CLI commands such as list delete prune rmi etc to manage images
-- Inspect images and report specific attributes using filter and format
-- Demonstrate tagging an image
-- Utilize a registry to store an image
-- Display layers of a Docker image
-- Apply a file to create a Docker image
-- Modify an image to a single layer
-- Describe how image layers work
-- Deploy a registry
-- Configure a registry
-- Log into a registry
-- Utilize search in a registry
-- Tag an image
-- Push an image to a registry
-- Sign an image in a registry
-- Pull an image from a registry
-- Describe how image deletion works
-- Delete an image from a registry
+- [Describe Dockerfile options](Domain_2_Image_Creation_Management_and_Registry/Describe_the_use_of_Dockerfile.md)
+- [Show the main parts of a Dockerfile](Domain_2_Image_Creation_Management_and_Registry/Show_the_main_parts_of_a_Dockerfile.md)
+- [Give examples on how to create an efficient image via a Dockerfile](Domain_2_Image_Creation_Management_and_Registry/Give_examples_on_how_to_create_an_efficient_image_via_a_Dockerfile.md)
+- [Use CLI commands such as list delete prune rmi etc to manage images](Domain_2_Image_Creation_Management_and_Registry/Use_CLI_commands_such_as_list_delete_prune_rmi_etc_to_manage_images.md)
+- [Inspect images and report specific attributes using filter and format](Domain_2_Image_Creation_Management_and_Registry/Inspect_images_and_report_specific_attributes_using_filter_and_format.md)
+- [Demonstrate tagging an image](Domain_2_Image_Creation_Management_and_Registry/Demonstrate_tagging_an_image.md)
+- [Utilize a registry to store an image](Domain_2_Image_Creation_Management_and_Registry/Utilize_a_registry_to_store_an_image.md)
+- [Display layers of a Docker image](Domain_2_Image_Creation_Management_and_Registry/Display_layers_of_a_Docker_image.md)
+- [Apply a file to create a Docker image](Domain_2_Image_Creation_Management_and_Registry/Apply_a_file_to_create_a_Docker_image.md)
+- [Modify an image to a single layer](Domain_2_Image_Creation_Management_and_Registry/Modify_an_image_to_a_single_layer.md)
+- [Describe how image layers work](Domain_2_Image_Creation_Management_and_Registry/Describe_how_image_layers_work.md)
+- [Deploy a registry](Domain_2_Image_Creation_Management_and_Registry/Deploy_a_registry.md)
+- [Configure a registry](Domain_2_Image_Creation_Management_and_Registry/Configure_a_registry.md)
+- [Log into a registry](Domain_2_Image_Creation_Management_and_Registry/Log_into_a_registry.md)
+- [Utilize search in a registry](Domain_2_Image_Creation_Management_and_Registry/Utilize_search_in_a_registry.md)
+- [Tag an image](Domain_2_Image_Creation_Management_and_Registry/Tag_an_image.md)
+- [Push an image to a registry](Domain_2_Image_Creation_Management_and_Registry/Push_an_image_to_a_registry.md)
+- [Sign an image in a registry](Domain_2_Image_Creation_Management_and_Registry/Sign_an_image_in_a_registry.md)
+- [Pull an image from a registry](Domain_2_Image_Creation_Management_and_Registry/Pull_an_image_from_a_registry.md)
+- [Describe how image deletion works](Domain_2_Image_Creation_Management_and_Registry/Describe_how_image_deletion_works.md)
+- [Delete an image from a registry](Domain_2_Image_Creation_Management_and_Registry/Delete_an_image_from_a_registry.md)
 
 ## Domain 3: Installation and Configuration (15% of exam)
 Content may include the following:
