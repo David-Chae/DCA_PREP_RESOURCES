@@ -13,21 +13,21 @@
 ## Domain 1: Orchestration (25% of exam)
 Content may include the following:
 - [Complete the setup of a swarm mode cluster with managers and worker nodes](Domain_1_Orchestration/Complete_the_setup_of_a_swarm_mode_cluster_with_managers_and_worker_nodes.md)
-- State the differences between running a container vs running a service
-- Demonstrate steps to lock a swarm cluster
-- Extend the instructions to run individual containers into running services under swarm
-- Interpret the output of docker inspect commands
-- Convert an application deployment into a stack file using a YAML compose file with docker stack deploy
-- Manipulate a running stack of services
-- Increase number of replicas
-- Add networks, publish ports
-- Mount volumes
-- Illustrate running a replicated vs global service
-- Identify the steps needed to troubleshoot a service not deploying
-- Apply node labels to demonstrate placement of tasks
-- Sketch how a Dockerized application communicates with legacy systems
-- Paraphrase the importance of quorum in a swarm cluster
-- Demonstrate the usage of templates with docker service create
+- [State the differences between running a container vs running a service](Domain_1_Orchestration/State_the_differences_between_running_a_container_vs_running_a_service.md)
+- [Demonstrate steps to lock a swarm cluster](Domain_1_Orchestration/Demonstrate_steps_to_lock_a_swarm_cluster.md)
+- [Extend the instructions to run individual containers into running services under swarm](Domain_1_Orchestration/Extend_the_instructions_to_run_individual_containers_into_running_services_under_swarm.md)
+- [Interpret the output of docker inspect commands](Domain_1_Orchestration/Interpret_the_output_of_docker_inspect_commands.md)
+- [Convert an application deployment into a stack file using a YAML compose file with docker stack deploy](Domain_1_Orchestration/Convert_an_application_deployment_into_a_stack_file_using_a_YAML_compose_file_with_docker_stack_deploy.md)
+- [Manipulate a running stack of services](Domain_1_Orchestration/Manipulate_a_running_stack_of_services.md)
+- [Increase number of replicas](Domain_1_Orchestration/Increase_number_of_replicas.md)
+- [Add networks, publish ports](Domain_1_Orchestration/Add_networks_publish_ports.md)
+- [Mount volumes](Domain_1_Orchestration/Mount_volumes.md)
+- [Illustrate running a replicated vs global service](Domain_1_Orchestration/Illustrate_running_a_replicated_vs_global_service.md)
+- [Identify the steps needed to troubleshoot a service not deploying](Domain_1_Orchestration/Identify_the_steps_needed_to_troubleshoot_a_service_not_deploying.md)
+- [Apply node labels to demonstrate placement of tasks](Domain_1_Orchestration/Apply_node_labels_to_demonstrate_placement_of_tasks.md)
+- [Sketch how a Dockerized application communicates with legacy systems](Domain_1_Orchestration/Sketch_how_a_Dockerized_application_communicates_with_legacy_systems.md)
+- [Paraphrase the importance of quorum in a swarm cluster](Domain_1_Orchestration/Paraphrase_the_importance_of_quorum_in_a_swarm_cluster.md)
+- [Demonstrate the usage of templates with docker service create](Domain_1_Orchestration/Demonstrate_the_usage_of_templates_with_docker_service_create.md)
 
 ## Domain 2: Image Creation, Management, and Registry (20% of exam)
 Content may include the following:
