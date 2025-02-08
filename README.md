@@ -69,20 +69,20 @@ Content may include the following:
 
 ## Domain 4: Networking (15% of exam)
 Content may include the following:
-- Describe the Container Network Model and how it interfaces with the Docker engine and network and IPAM drivers.
-- Describe the different types and use cases for the built-in network drivers.
-- Describe the types of traffic that flow between the Docker engine, registry and UCP controllers.
-- Describe and demonstrate how to create a Docker bridge network for developers to use for their containers.
-- Describe and demonstrate how to publish a port so that an application is accessible externally.
-- Identify which IP and port a container is externally accessible on.
-- Compare and contrast “host” and “ingress” publishing modes.
-- Describe and demonstrate how to configure Docker to use external DNS.
-- Describe and demonstrate how to use Docker to load balance HTTP/HTTPs traffic to an application (Configure L7 load balancing with Docker EE).
-- Understand and describe the types of traffic that flow between the Docker engine, registry, and UCP controllers
-- Describe and demonstrate how to deploy a service on a Docker overlay network.
-- Describe and demonstrate how to troubleshoot container and engine logs to resolve connectivity issues between containers.
-- Describe how to route traffic to Kubernetes pods using ClusterIP and NodePort services.
-- Describe the Kubertnetes’ container network model.
+- [Describe the Container Network Model and how it interfaces with the Docker engine and network and IPAM drivers.](Domain_4_Networking/Describe_the_Container_Network_Model_and_how_it_interfaces_with_the_Docker_engine_and_network_and_IPAM_drivers.md)
+- [Describe the different types and use cases for the built-in network drivers.](Domain_4_Networking/Describe_the_different_types_and_use_cases_for_the_built-in_network_drivers.md)
+- [Describe the types of traffic that flow between the Docker engine, registry and UCP controllers.](Domain_4_Networking/Describe_the_types_of_traffic_that_flow_between_the_Docker_engine_registry_and_UCP_controllers.md)
+- [Describe and demonstrate how to create a Docker bridge network for developers to use for their containers.](Domain_4_Networking/Describe_and_demonstrate_how_to_create_a_Docker_bridge_network_for_developers_to_use_for_their_containers.md)
+- [Describe and demonstrate how to publish a port so that an application is accessible externally.](Domain_4_Networking/Describe_and_demonstrate_how_to_publish_a_port_so_that_an_application_is_accessible_externally.md)
+- [Identify which IP and port a container is externally accessible on.](Domain_4_Networking/Identify_which_IP_and_port_a_container_is_externally_accessible_on.md)
+- [Compare and contrast “host” and “ingress” publishing modes.](Domain_4_Networking/Compare_and_contrast_host_and_ingress_publishing_modes.md)
+- [Describe and demonstrate how to configure Docker to use external DNS.](Domain_4_Networking/Describe_and_demonstrate_how_to_configure_Docker_to_use_external_DNS.md)
+- [Describe and demonstrate how to use Docker to load balance HTTP/HTTPs traffic to an application (Configure L7 load balancing with Docker EE).](Domain_4_Networking/Describe_and_demonstrate_how_to_use_Docker_to_load_balance_HTTP.md)
+- [Understand and describe the types of traffic that flow between the Docker engine, registry, and UCP controllers](Domain_4_Networking/Understand_and_describe_the_types_of_traffic_that_flow_between_the_Docker_engine_registry_and_UCP_controllers.md)
+- [Describe and demonstrate how to deploy a service on a Docker overlay network.](Domain_4_Networking/Describe_and_demonstrate_how_to_deploy_a_service_on_a_Docker_overlay_network.md)
+- [Describe and demonstrate how to troubleshoot container and engine logs to resolve connectivity issues between containers.](Domain_4_Networking/Describe_and_demonstrate_how_to_troubleshoot_container_and_engine_logs_to_resolve_connectivity_issues_between_containers.md)
+- [Describe how to route traffic to Kubernetes pods using ClusterIP and NodePort services.](Domain_4_Networking/Describe_how_to_route_traffic_to_Kubernetes_pods_using_ClusterIP_and_NodePort_services.md)
+- [Describe the Kubertnetes’ container network model.](Domain_4_Networking/Describe_the_Kubertnetes_container_network_model.md)
 
 ## Domain 5: Security (15% of exam)
 Content may include the following:
