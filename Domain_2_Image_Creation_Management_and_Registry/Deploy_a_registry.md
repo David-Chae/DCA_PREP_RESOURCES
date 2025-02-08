@@ -62,6 +62,7 @@ For production environments, consider securing the registry with TLS and authent
 
 For more detailed information on deploying and managing Docker registries, refer to the following documentation:
 
+- [Deploy a registry server](https://distribution.github.io/distribution/about/deploying/)
 - [How to Use Your Own Registry](https://www.docker.com/blog/how-to-use-your-own-registry-2/)
 - [Creating a Local Docker Registry: Complete Installation Guide](https://k21academy.com/docker-kubernetes/how-to-set-up-your-own-local-docker-registry-a-step-by-step-guide/)
 - [How To Set Up a Private Docker Registry on Ubuntu 20.04](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-private-docker-registry-on-ubuntu-20-04)
