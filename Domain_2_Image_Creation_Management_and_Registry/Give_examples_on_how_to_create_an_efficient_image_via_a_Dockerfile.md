@@ -1,6 +1,4 @@
-Here is a markdown file with examples on how to create an efficient image via a Dockerfile, along with suggested documentation:
 
-```markdown
 # Creating an Efficient Image with a Dockerfile
 
 ## Overview
