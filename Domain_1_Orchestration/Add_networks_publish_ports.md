@@ -29,6 +29,8 @@ For more details, refer to the
 
 ### Official Documentation
 - [Docker Ports Documentation](https://docs.docker.com/config/containers/container-networking/).
+- [Publish ports](https://docs.docker.com/engine/swarm/services/#publish-ports)
+- [Connect the service to an overlay network](https://docs.docker.com/engine/swarm/services/#connect-the-service-to-an-overlay-network)
 
 ### Asciinema Examples
 - [Add networks, publish ports](https://asciinema.org/a/224818)
