@@ -102,13 +102,12 @@ Content may include the following:
 
 ## Domain 6: Storage and Volumes (10% of exam)
 Content may include the following:
-- Identify the correct graph drivers to uses with various operating systems.
-- Describe and demonstrate how to configure devicemapper.
-- Compare and contrast object and block storage and when they should be used.
-- Describe how an application is composed of layers and where these layers reside on the filesystem.
-- Describe the use of volumes are used with Docker for persistent storage.
-- Identify the steps to take to clean up unused images on a filesystem and DTR.
-- Describe and demonstrate how storage can be used across cluster nodes.
-- Describe how to provision persistent storage to a Kubernetes pod using persistentVolumes.
-- Describe the relationship between container storage interface drivers, storageClass, persistentVolumeClaim and volume objects in Kubernetes.
-
+- [Identify the correct graph drivers to uses with various operating systems.](Domain_6_Storage_and_Volume/Identify_the_correct_graph_drivers_to_uses_with_various_operating_systems.md)
+- [Describe and demonstrate how to configure devicemapper.](Domain_6_Storage_and_Volume/Describe_and_demonstrate_how_to_configure_devicemapper.md)
+- [Compare and contrast object and block storage and when they should be used.](Domain_6_Storage_and_Volume/Compare_and_contrast_object_and_block_storage_and_when_they_should_be_used.md)
+- [Describe how an application is composed of layers and where these layers reside on the filesystem.](Domain_6_Storage_and_Volume/Describe_how_an_application_is_composed_of_layers_and_where_these_layers_reside_on_the_filesystem.md)
+- [Describe the use of volumes are used with Docker for persistent storage.](Domain_6_Storage_and_Volume/Describe_the_use_of_volumes_are_used_with_Docker_for_persistent_storage.md)
+- [Identify the steps to take to clean up unused images on a filesystem and DTR.](Domain_6_Storage_and_Volume/Identify_the_steps_to_take_to_clean_up_unused_images_on_a_filesystem_and_DTR.md)
+- [Describe and demonstrate how storage can be used across cluster nodes.](Domain_6_Storage_and_Volume/Describe_and_demonstrate_how_storage_can_be_used_across_cluster_nodes.md)
+- [Describe how to provision persistent storage to a Kubernetes pod using persistentVolumes.](Domain_6_Storage_and_Volume/Describe_how_to_provision_persistent_storage_to_a_Kubernetes_pod_using_persistentVolumes.md)
+- [Describe the relationship between container storage interface drivers, storageClass, persistentVolumeClaim and volume objects in Kubernetes.](Domain_6_Storage_and_Volume/Describe_the_relationship_between_container_storage_interface_drivers_storageClass_persistentVolumeClaim_and_volume_objects_in_Kubernetes.md)
