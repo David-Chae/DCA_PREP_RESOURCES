@@ -86,19 +86,19 @@ Content may include the following:
 
 ## Domain 5: Security (15% of exam)
 Content may include the following:
-- Describe security administration and tasks.
-- Describe the process of signing an image.
-- Describe default engine security.
-- Describe swarm default security.
-- Describe MTLS.
-- Describe identity roles.
-- Compare and contrast UCP workers and managers.
-- Describe the process to use external certificates with UCP and DTR.
-- Describe and demonstrate that an image passes a security scan.
-- Describe and demonstrate how to enable Docker Content Trust.
-- Describe and demonstrate how to configure RBAC with UCP.
-- Describe and demonstrate how to integrate UCP with LDAP/AD.
-- Describe and demonstrate how to create UCP client bundles.
+- [Describe security administration and tasks.](Domain_5_Security/Describe_security_administration_and_tasks.md)
+- [Describe the process of signing an image.](Domain_5_Security/Describe_the_process_of_signing_an_image.md)
+- [Describe default engine security.](Domain_5_Security/Describe_default_engine_security.md)
+- [Describe swarm default security.](Domain_5_Security/Describe_swarm_default_security.md)
+- [Describe MTLS.](Domain_5_Security/Describe_MTLS.md)
+- [Describe identity roles.](Domain_5_Security/Describe_identity_roles.md)
+- [Compare and contrast UCP workers and managers.](Domain_5_Security/Compare_and_contrast_UCP_workers_and_managers.md)
+- [Describe the process to use external certificates with UCP and DTR.](Domain_5_Security/Describe_the_process_to_use_external_certificates_with_UCP_and_DTR.md)
+- [Describe and demonstrate that an image passes a security scan.](Domain_5_Security/Describe_and_demonstrate_that_an_image_passes_a_security_scan.md)
+- [Describe and demonstrate how to enable Docker Content Trust.](Domain_5_Security/Describe_and_demonstrate_how_to_enable_Docker_Content_Trust.md)
+- [Describe and demonstrate how to configure RBAC with UCP.](Domain_5_Security/Describe_and_demonstrate_how_to_configure_RBAC_with_UCP.md)
+- [Describe and demonstrate how to integrate UCP with LDAP/AD.](Domain_5_Security/Describe_and_demonstrate_how_to_integrate_UCP_with_LDAP_AD.md)
+- [Describe and demonstrate how to create UCP client bundles.](Domain_5_Security/Describe_and_demonstrate_how_to_create_UCP_client_bundles.md)
 
 ## Domain 6: Storage and Volumes (10% of exam)
 Content may include the following:
