@@ -49,7 +49,8 @@ docker node ls
 ```
 
 ## 4. Official Documentation
-- [Docker UCP Client Bundles](https://docs.docker.com/ee/ucp/user-access/client-bundles/)
+- [Configure the client bundle](https://docs.mirantis.com/mke/3.8/ops/access-cluster/client-bundle/configure-client-bundle.html)
+- [Download the client bundle](https://docs.mirantis.com/mke/3.8/ops/access-cluster/client-bundle/download-client-bundle.html)
 
 ## Conclusion
 UCP Client Bundles enable **secure and authenticated** access to UCP-managed clusters from the command line. By following these steps, you can efficiently manage your UCP environment remotely and securely.
