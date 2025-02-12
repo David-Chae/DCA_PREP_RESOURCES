@@ -37,7 +37,7 @@ By default, Docker containers have a writable layer, but it is recommended to ru
 Docker containers run with a restricted set of Linux capabilities:
 - Limits what a containerized process can do.
 - Allows dropping capabilities that are not required.
-- [Official Documentation](https://docs.docker.com/engine/security/capabilities/)
+- [Official Documentation](https://docs.docker.com/engine/security/#linux-kernel-capabilities)
 
 ## 7. User Namespaces
 Docker can map container users to non-root users on the host:
