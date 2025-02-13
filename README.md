@@ -111,3 +111,8 @@ Content may include the following:
 - [Describe and demonstrate how storage can be used across cluster nodes.](Domain_6_Storage_and_Volume/Describe_and_demonstrate_how_storage_can_be_used_across_cluster_nodes.md)
 - [Describe how to provision persistent storage to a Kubernetes pod using persistentVolumes.](Domain_6_Storage_and_Volume/Describe_how_to_provision_persistent_storage_to_a_Kubernetes_pod_using_persistentVolumes.md)
 - [Describe the relationship between container storage interface drivers, storageClass, persistentVolumeClaim and volume objects in Kubernetes.](Domain_6_Storage_and_Volume/Describe_the_relationship_between_container_storage_interface_drivers_storageClass_persistentVolumeClaim_and_volume_objects_in_Kubernetes.md)
+
+## Exam Prep Guides, Sample Questions, 
+- [How some guy got DCA certified](https://www.youtube.com/watch?v=FAwV8Cs8ve8)
+- [Some other guy's nightmare experience with Examity DCA exam](https://sachinsudheer.medium.com/docker-certified-associate-dca-exam-my-failure-experience-4b6419f88e52)
+- [Old DCA questions not relevant anymore](https://medium.com/p/84f3b9e8f5ce)
