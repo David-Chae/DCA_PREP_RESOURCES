@@ -62,8 +62,8 @@ After applying the certificates:
   ```
 
 ## 4. Official Documentation
-- [UCP TLS Certificates](https://docs.docker.com/ee/ucp/admin/configure/use-your-own-tls-certificates/)
-- [DTR TLS Certificates](https://docs.docker.com/ee/dtr/admin/configure/use-your-own-tls-certificates/)
+- [Mirantis: Use your own TLS certificates](https://docs.mirantis.com/mke/3.4/ops/administer-cluster/use-your-own-tls-certificates.html)
+- [Manage MKE Certificate Authorities](https://docs.mirantis.com/mke/3.7/ops/administer-cluster/manage-certificate-authorities.html)
 
 ## Conclusion
 Using external certificates enhances security and ensures compliance with enterprise policies. By following these steps, you can seamlessly configure UCP and DTR to use trusted TLS certificates.
