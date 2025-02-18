@@ -92,17 +92,6 @@ Once you identify unused images in the DTR, you can remove them through the web 
 - Identify the tags or images that are no longer needed.
 - Select the images and click **Delete**.
 
-#### Using the DTR CLI:
-You can use the `docker` CLI to interact with DTR. To delete an image, use the following command:
-```bash
-docker repository delete <repository-name>:<tag>
-```
-
-Example:
-```bash
-docker repository delete my-repository:old-tag
-```
-
 ### Step 3: Automate Image Cleanup with Retention Policies
 DTR allows you to set retention policies for your images, automatically deleting older images or those that are no longer in use. This is especially helpful for large-scale environments.
 
@@ -121,7 +110,7 @@ After performing cleanup actions, check the repository to ensure that unused ima
    - [Docker System Prune](https://docs.docker.com/engine/reference/commandline/system_prune/)
 
 2. **Docker Trusted Registry (DTR) Cleanup**:
-   - [DTR Image Cleanup Documentation](https://docs.docker.com/ee/dtr/)
+   - [DTR Image Cleanup Documentation](https://docs.mirantis.com/containers/v2.1/dockeree-products/dtr/dtr-user/manage-images/delete-images.html)
    - [DTR Retention Policies](https://docs.docker.com/ee/dtr/)
 
 ---
