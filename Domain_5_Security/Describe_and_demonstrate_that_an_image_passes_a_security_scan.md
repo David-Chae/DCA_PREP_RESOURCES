@@ -56,7 +56,7 @@ If using **DTR security scanning**:
 
 ## 3. Official Documentation
 - [Docker Scout Documentation](https://docs.docker.com/scout/)
-- [DTR Security Scanning](https://docs.docker.com/ee/dtr/user/manage-images/view-image-vulnerabilities/)
+- [DTR Security Scanning](https://docs.mirantis.com/containers/v2.1/dockeree-products/dtr/dtr-user/manage-images/scan-images-for-vulnerabilities.html)
 
 ## Conclusion
 Regularly scanning Docker images helps maintain a secure software supply chain. Using **Docker Scout** or **DTR Security Scanning**, you can verify that an image passes security checks before deployment.
