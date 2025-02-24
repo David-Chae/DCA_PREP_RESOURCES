@@ -117,3 +117,4 @@ Content may include the following:
 - [Some other guy's nightmare experience with Examity DCA exam](https://sachinsudheer.medium.com/docker-certified-associate-dca-exam-my-failure-experience-4b6419f88e52)
 - [Old DCA questions not relevant anymore](https://medium.com/p/84f3b9e8f5ce)
 - [DCA-Practice-Questions - Github REPO](https://github.com/bbachi/DCA-Practice-Questions)
+- [DCA Practice Exam Questions from IT Exams](https://www.itexams.com/exam/DCA)
