@@ -293,3 +293,39 @@ B. No
 
 B. No
 A Dockerfile does not store persistent data between deployments of a container. Instead, it provides instructions for building a Docker image. Persistent data should be managed using volumes or external storage solutions.
+
+
+Question 26 ( Exam A )
+Will this command ensure that overlay traffic between service tasks is encrypted? docker network create -d overlay --secure <network-name>
+
+A. Yes
+B. No
+
+The command docker network create -d overlay --secure <network-name> will not ensure that overlay traffic between service tasks is encrypted. To enable encryption for overlay network traffic, you need to use the --opt encrypted option instead. The correct command would be:
+
+docker network create -d overlay --opt encrypted <network-name>
+So, the answer is B. No
+
+
+Question 27 ( Exam A )
+An application image runs in multiple environments, with each environment using different certificates and ports. Is this a way to provision configuration to containers at runtime?
+Create a Dockerfile for each environment, specifying ports and Docker secrets for certificates.
+
+A. Yes
+B. No
+
+Creating a separate Dockerfile for each environment to specify ports and Docker secrets for certificates is not the recommended way to provision configuration to containers at runtime. Instead, you should use environment variables, Docker Compose, or Kubernetes ConfigMaps and Secrets to manage these configurations dynamically.
+So, the answer is B. No.
+
+
+
+Question 30 ( Exam A )
+Does this describe the role of Control Groups (cgroups) when used with a Docker container? user authorization to the Docker API
+
+A. Yes
+B. No
+
+Control Groups (cgroups) in Docker are used to manage and limit the resources (such as CPU, memory, and I/O) available to containers12. They do not handle user authorization to the Docker API.
+
+So, the answer is B. No.
+
