@@ -47,7 +47,8 @@ docker trust signer add --key mykey.pub myuser myregistry.com/myimage
 
 ### c. Push a Signed Image
 ```sh
-DOCKER_CONTENT_TRUST=1 docker push myregistry.com/myimage:latest
+export DOCKER_CONTENT_TRUST=1  
+docker push myregistry.com/myimage:latest
 ```
 
 ### d. Verify the Image Signature
