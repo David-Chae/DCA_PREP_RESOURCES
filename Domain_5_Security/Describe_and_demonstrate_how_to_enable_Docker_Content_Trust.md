@@ -15,7 +15,8 @@ Docker Content Trust is disabled by default. To enable it:
 ### a. Enable DCT for a Single Command
 Set `DOCKER_CONTENT_TRUST=1` before running `docker pull`, `docker push`, or `docker run`.
 ```sh
-DOCKER_CONTENT_TRUST=1 docker pull myregistry.com/myimage:latest
+export DOCKER_CONTENT_TRUST=1  
+docker pull myregistry.com/myimage:latest
 ```
 
 ### b. Enable DCT System-Wide
