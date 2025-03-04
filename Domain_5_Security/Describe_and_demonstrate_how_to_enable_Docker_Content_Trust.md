@@ -59,7 +59,7 @@ docker trust inspect --pretty myregistry.com/myimage:latest
 ## 4. Verifying DCT Enforcement
 Once DCT is enabled, trying to pull an **unsigned image** will fail:
 ```sh
-DOCKER_CONTENT_TRUST=1  
+export DOCKER_CONTENT_TRUST=1  
 docker pull unsignedimage:latest  
 ```
 **Output:**
