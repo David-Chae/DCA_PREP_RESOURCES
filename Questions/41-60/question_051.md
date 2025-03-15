@@ -1,4 +1,4 @@
-## **What part of the Docker Container Networking Model (CNM) assigns IP addresses to networks using Docker containers? 
+## What part of the Docker Container Networking Model (CNM) assigns IP addresses to networks using Docker containers? 
 A. This is the responsibility of the IP Address Management (IPAM) Driver.  
 B. The Docker network causes it.  
 C. Responsible is the network driver.  
