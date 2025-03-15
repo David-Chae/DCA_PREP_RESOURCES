@@ -1,4 +1,4 @@
-##  Overlay networks cannot be created if the docker engine is not a manager node in the docker swarm. True False
+##  Overlay networks cannot be created if the docker engine is not a manager node in the docker swarm. True or False
 
 The correct answer is:  
 
