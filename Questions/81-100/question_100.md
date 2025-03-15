@@ -1,8 +1,8 @@
 ## 100. Which of the following commands can add an image tag?
-A. <registry_host<:registry_port>/>repository<:tag>
-B. egistry_host<:private-ip-address>/>repository<:tag>
-C. < registry_host<:public-ip-address>/>repository<:tag>
-D. <registry_port<:registry_host>/>repository<:tag>
+A. <registry_host<:registry_port>/>repository<:tag>  
+B. <registry_host<:private-ip-address>/>repository<:tag>  
+C. <registry_host<:public-ip-address>/>repository<:tag>  
+D. <registry_port<:registry_host>/>repository<:tag>  
 
 The correct answer is:
 
