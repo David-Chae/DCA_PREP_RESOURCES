@@ -25,3 +25,12 @@ However, there is **no `mem` namespace** in Docker. While **memory limits** can 
 ### Summary:
 - The **mem** namespace is not a valid namespace in Docker.
 
+### What does UTS stand for in UTS names pace?
+
+**UTS** stands for **Unix Timesharing System**.
+
+### Explanation:
+In the context of Docker and Linux namespaces, the **UTS namespace** isolates the hostname and domain name of a container. This means each container can have its own **hostname** and **domain name**, which is independent of the host system or other containers. This is particularly useful in multi-container environments where each container might need a unique identity.
+
+### Summary:
+**UTS** refers to the Unix Timesharing System, and the UTS namespace isolates the hostname and domain name within a containerized environment.
