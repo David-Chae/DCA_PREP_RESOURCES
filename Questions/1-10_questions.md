@@ -1,10 +1,10 @@
 ## 1. Which command is valid for running a global service in Docker Swarm?
 
 ```sh
-docker service create --mode global 
-docker swarm create --mode global 
-docker service create --global 
-docker swarm create --global
+1. docker service create --mode global 
+2. docker swarm create --mode global 
+3. docker service create --global 
+4. docker swarm create --global
 ```
 
 The correct command for running a global service in Docker Swarm is:
