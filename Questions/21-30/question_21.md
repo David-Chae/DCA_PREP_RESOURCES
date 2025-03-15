@@ -1,8 +1,8 @@
 ## In Kubernetes, which of the following is needed to expand a PersistentVolumeClaim? 
-A StorageClass with allowVolumeExpansion=true. 
-A StorageClass with expandable=true. 
-A PersistentVolume with allowVolumeExpansion=true. 
-A Storage driver that supports volume expansion. 
+1. A StorageClass with allowVolumeExpansion=true.
+2. A StorageClass with expandable=true.
+3. A PersistentVolume with allowVolumeExpansion=true.
+4. A Storage driver that supports volume expansion. 
 
 The correct answer is:
 
