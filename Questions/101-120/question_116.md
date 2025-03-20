@@ -1,8 +1,8 @@
 ## 116. Which of the following commands is used to delete the container?
-A. exit
-B. close
-C.wq
-D. rm
+A. exit  
+B. close  
+C. wq  
+D. rm  
 
 The correct answer is:
 
