@@ -1,5 +1,6 @@
 ## 167. A clusterIP service is described in the Kubernetes yaml below:
-yaml  
+
+```yaml  
 apiVersion: v1  
 kind: Service  
 metadata:  
@@ -13,6 +14,7 @@ spec:
       targetPort: 80  
       port: 4443  
       targetPort: 443  
+```
 
 Is the following an accurate description of how this service routes requests:  
 Requests to the service's IP address on port 8080 are forwarded to port 80 in a random pod labeled app:nginx.  
