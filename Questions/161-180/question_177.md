@@ -1,8 +1,8 @@
 ## 177. How to remove the label from the node?
-A. docker node update --label-rm foo worker 1
-B. docker node update --label-rm key=foo worker1
-C. docker node update --label-rm foo worker1 worker2
-D. docker node update -label-rm key=foo worker1 worker2
+A. docker node update --label-rm foo worker 1  
+B. docker node update --label-rm key=foo worker1  
+C. docker node update --label-rm foo worker1 worker2  
+D. docker node update -label-rm key=foo worker1 worker2  
 
 **B. docker node update --label-rm key=foo worker1**
 
