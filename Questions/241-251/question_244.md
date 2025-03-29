@@ -1,8 +1,8 @@
 ## 244. What is the difference between -v and --mount flags in creating volumes?
-A. The difference between the -v and --mount flags in creating volumes is that the -v or --volume flag was originally used for standalone containers, while the --mount flag was used for swarm services. However, as of Docker 1 7.06, solo containers can also use --mount. --mount is more explicit and verbose ingeneral.
-B. The-v and --mount flags are entirely interchangeable and can be used interchangeably for standalone containers and swarm services.
-C. The -v flag flag is used for creating named volumes while the --mount flag is used for binding host directories to container paths
-D. The -v flag is only used with swarm services, and the --mount flag is exclusively for standalone containers.
+A. The difference between the -v and --mount flags in creating volumes is that the -v or --volume flag was originally used for standalone containers, while the --mount flag was used for swarm services. However, as of Docker 1 7.06, solo containers can also use --mount. --mount is more explicit and verbose ingeneral.  
+B. The-v and --mount flags are entirely interchangeable and can be used interchangeably for standalone containers and swarm services.  
+C. The -v flag flag is used for creating named volumes while the --mount flag is used for binding host directories to container paths  
+D. The -v flag is only used with swarm services, and the --mount flag is exclusively for standalone containers.  
 
 The correct answer is:
 
