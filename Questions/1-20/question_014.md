@@ -1,50 +1,37 @@
-## How would we back up Docker Swarm? 
-1. On a Swarm manager, make a backup of the contents of /etc/docker. 
-2. On a Swarm manager, make a backup of the contents of /var/lib/docker/swarm. 
-3. Back up all of the containers in the swarm's tiered file systems. 
-4. On a Swarm manager, make a backup of the contents of /etc/docker/swarm.
+## Which of the following statements is correct? Choose two statements at random. 
+1. A container is a running instance of an image, whereas an image is a collection of immutable layers. 
+2. The image can exist without the container, but the container cannot exist without the image. 
+3. Only one container can be made from a given image at any moment. 
+4. When several containers are created from the same image, they all use the same memory copy of the image.
 
-The correct answer is:  
+## Correct Statements About Docker Containers and Images
 
-✅ **"On a Swarm manager, make a backup of the contents of `/var/lib/docker/swarm`."**  
+### The correct statements are:
 
----
-
-### Explanation:  
-Docker Swarm stores its **Raft database** and **cluster metadata** in the directory:  
-**`/var/lib/docker/swarm`** (on a Swarm **manager** node).  
-
-To safely back up the Swarm state, follow these steps:  
-
-1. **Stop the Docker daemon** on the Swarm **manager** node to ensure data consistency:  
-   ```sh
-   systemctl stop docker
-   ```
-2. **Create a backup of the Swarm metadata directory**:  
-   ```sh
-   tar -czf swarm-backup.tar.gz /var/lib/docker/swarm
-   ```
-3. **Restart Docker after the backup**:  
-   ```sh
-   systemctl start docker
-   ```
-
-This ensures a **consistent and uncorrupted** backup of the Swarm cluster's configuration.
+✅ **"A container is a running instance of an image, whereas an image is a collection of immutable layers."**  
+✅ **"The image can exist without the container, but the container cannot exist without the image."**  
 
 ---
 
-### Why the Other Options Are Incorrect:  
+### Explanation:
+- **A container is a running instance of an image**:  
+  A **container** is created by running an image, which is a template or blueprint for the container. The **image** itself consists of immutable layers, which are stacked together to create the final image.
 
-❌ **"On a Swarm manager, make a backup of the contents of `/etc/docker`."**  
-- **`/etc/docker`** contains **configuration files**, but it does **not** store Swarm metadata or Raft logs.  
-
-❌ **"Back up all of the containers in the swarm's tiered file systems."**  
-- Swarm metadata **does not** include container file systems. While backing up containers is important, it is **not sufficient** for a Swarm backup.  
-
-❌ **"On a Swarm manager, make a backup of the contents of `/etc/docker/swarm`."**  
-- **`/etc/docker/swarm` does not exist**; this is an incorrect directory path.  
+- **An image can exist without the container, but the container cannot exist without the image**:  
+  **Images** are stored as read-only files, and containers are created from images. A **container** cannot exist without being instantiated from an image, but an **image** can exist independently of any running container.
 
 ---
 
-### **Summary:**  
-To properly back up Docker Swarm, back up **`/var/lib/docker/swarm`** from a Swarm **manager node** while the Docker daemon is stopped.
+### Why the Other Statements Are Incorrect:
+
+❌ **"Only one container can be made from a given image at any moment."**  
+   - This is incorrect because multiple **containers** can be created from the same image simultaneously. Each container is a separate instance, but they all share the same image.
+
+❌ **"When several containers are created from the same image, they all use the same memory copy of the image."**  
+   - This is incorrect in terms of memory usage. While **containers** share the same image layers (which are read-only), each **container** has its own separate **runtime memory** for its writable layer. This means they do not share the same memory copy of the image in terms of their **running state**.
+
+---
+
+### Final Summary:
+- Containers are instances of images, and an image can exist without a container, but the container cannot exist without the image.  
+- Multiple containers can be created from the same image.
