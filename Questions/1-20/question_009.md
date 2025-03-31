@@ -1,36 +1,31 @@
-## Which of the following is not a namespace used by Docker? 
-1. net
-2. pid
-3. uts
-4. mem
+## 9. Which of the following options would enable SSH into a running Docker container named 'nginx'?
+A. docker exec -it nginx /bin/sh  
+B. docker inspect webserver  
+C. docker run -it nginx /bin/sh  
+D. docker ssh-it nginx /bin/sh
+
 
 The correct answer is:  
 
-✅ **mem**  
+**A. `docker exec -it nginx /bin/sh`**  
 
 ### Explanation:  
-Docker uses several namespaces to **isolate** different aspects of containerized applications. The valid namespaces used by Docker include:
+To "SSH" into a running Docker container (i.e., open an interactive shell inside it), you can use:  
+```sh
+docker exec -it nginx /bin/sh
+```  
+- **`docker exec`** runs a command inside an existing container.  
+- **`-it`** allows interactive mode with a TTY session.  
+- **`/bin/sh`** starts a shell session (use `/bin/bash` if the container has it).  
 
-- **`net`** (Network Namespace)  
-  - This isolates network resources, allowing containers to have their own network interfaces and IP addresses.
+### Why the other options are incorrect:  
+- **B. `docker inspect webserver`** → **False**  
+  - This only shows metadata about a container but does not provide shell access.  
 
-- **`pid`** (Process ID Namespace)  
-  - This isolates process IDs, so processes in one container cannot see or interfere with processes in another container.
+- **C. `docker run -it nginx /bin/sh`** → **False**  
+  - This creates and runs a **new** container instead of connecting to the existing `nginx` container.  
 
-- **`uts`** (UTS Namespace)  
-  - This isolates the hostname and domain name, allowing each container to have its own hostname.
+- **D. `docker ssh-it nginx /bin/sh`** → **False**  
+  - `docker ssh` is not a valid Docker command. SSH is not built into Docker, but you can install an SSH server inside the container if needed.  
 
-However, there is **no `mem` namespace** in Docker. While **memory limits** can be set for containers, **memory** is not isolated by a specific namespace. Memory isolation is typically handled by **cgroups**, not namespaces.
-
-### Summary:
-- The **mem** namespace is not a valid namespace in Docker.
-
-### What does UTS stand for in UTS names pace?
-
-**UTS** stands for **Unix Timesharing System**.
-
-### Explanation:
-In the context of Docker and Linux namespaces, the **UTS namespace** isolates the hostname and domain name of a container. This means each container can have its own **hostname** and **domain name**, which is independent of the host system or other containers. This is particularly useful in multi-container environments where each container might need a unique identity.
-
-### Summary:
-**UTS** refers to the Unix Timesharing System, and the UTS namespace isolates the hostname and domain name within a containerized environment.
+Thus, **A** is the correct option.
