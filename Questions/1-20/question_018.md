@@ -1,49 +1,32 @@
-## Which approach is the most secure for a Docker client to authenticate with a registry that employs a self-signed certificate? 
-1. We add the registry to the insecure-registries list in /etc/docker/daemon.json. 
-2. docker login --accept-cert 
-3. docker login --trust-ca 
-4. Under /etc/docker/certs.d/, we add the self-signed certificate as a trusted registry certificate.
+## 18. Which commands should be used to add a label to a Docker Swarm node?
+```sh
+A. docker node update --label-add < label> <node name>  
+B. docker node update --labels <label> <node name>  
+C docker label add <label> <node name>  
+D. docker node tag <label> <node name>  
+```
 
-The most secure approach is:
+The correct answer is:  
 
-✅ **"Under /etc/docker/certs.d/, we add the self-signed certificate as a trusted registry certificate."**
+**A. `docker node update --label-add <label> <node name>`**  
 
----
+### Explanation:  
+To add a label to a Docker Swarm node, you use the `docker node update` command with the `--label-add` option.
 
-### **Explanation:**  
-To securely authenticate with a Docker registry that uses a self-signed certificate, the most secure approach is to **explicitly add the self-signed certificate** to the list of trusted certificates. This ensures that Docker clients can securely communicate with the registry while avoiding insecure communication or bypassing SSL verification.
+Example:  
+```sh
+docker node update --label-add environment=production <node_name>
+```  
+This command adds a label (`environment=production`) to the specified node (`<node_name>`).
 
-1. **Add the self-signed certificate** to the **`/etc/docker/certs.d/`** directory:
-   - Place the self-signed certificate (e.g., `myregistry.crt`) in the `/etc/docker/certs.d/` directory on the Docker client.
-   - The path should be `/etc/docker/certs.d/<registry-domain>/ca.crt`, where `<registry-domain>` is the domain of your registry.
-   
-   Example:
-   ```sh
-   sudo mkdir -p /etc/docker/certs.d/myregistry.com
-   sudo cp myregistry.crt /etc/docker/certs.d/myregistry.com/ca.crt
-   ```
+### Why the other options are incorrect:  
+- **B. `docker node update --labels <label> <node name>`** → **Incorrect**  
+  - The correct option uses `--label-add` rather than `--labels`. The latter does not exist in this context.
 
-2. **Restart Docker** to apply the changes:
-   ```sh
-   sudo systemctl restart docker
-   ```
+- **C. `docker label add <label> <node name>`** → **Incorrect**  
+  - There is no `docker label add` command in Docker. The correct command is `docker node update`.
 
-This method ensures that Docker treats the self-signed certificate as **trusted** and establishes secure communication without bypassing security.
+- **D. `docker node tag <label> <node name>`** → **Incorrect**  
+  - There is no `docker node tag` command. The correct command is `docker node update`.
 
----
-
-### **Why the Other Options Are Not Recommended:**  
-
-❌ **"We add the registry to the insecure-registries list in /etc/docker/daemon.json."**  
-- Adding a registry to the **`insecure-registries`** list allows Docker to communicate with the registry **without certificate validation**, which is **insecure** and should be avoided, especially with self-signed certificates.
-
-❌ **"docker login --accept-cert"**  
-- Docker doesn't have an `--accept-cert` flag, and this approach is **not a standard or secure way** of accepting certificates.
-
-❌ **"docker login --trust-ca"**  
-- Similarly, there is **no `--trust-ca` flag** for the `docker login` command. This is not a valid or recommended option.
-
----
-
-### **Summary:**  
-The most secure method for Docker to authenticate with a registry using a self-signed certificate is to **add the certificate as a trusted certificate** under `/etc/docker/certs.d/`.
+Thus, **A** is the correct answer.
