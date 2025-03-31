@@ -1,7 +1,4 @@
-## Ensuring a Container Does Not Exceed Memory Limits
-
-### Question:
-You want to ensure that a container does not use more memory than it should. To do this, which of the following will be used by default by Docker?
+## You want to ensure that a container does not use more memory than it should. To do this, which of the following will be used by default by Docker?
 
 ```sh
 namespaces
