@@ -1,49 +1,40 @@
-## How would we back up the metadata for Docker Swarm? 
-1. We can back up the contents of /etc/docker/swarm. 
-2. We can run the swarm image with the backup command. 
-3. While the Docker daemon stops, we can back up the contents of /var/lib/docker/swarm on a Swarm manager. 
-4. We can back up the contents of /usr/local/swarm.
+## Which of the following statements concerning secrets is NOT correct? 
+1. Secrets are encrypted during transit and also at rest.
+2. Secrets are available to swarm services and  standalone containers.
+3. Secrets are mounted in the container’s filesystem directly.
+4. Secrets can be used for storing username and password
 
-The correct answer is:  
+# Docker Secrets - Correct and Incorrect Statements
 
-✅ **"While the Docker daemon stops, we can back up the contents of `/var/lib/docker/swarm` on a Swarm manager."**  
+## Incorrect Statement:
 
----
+❌ **"Secrets are available to swarm services and standalone containers"**
 
-### Explanation:  
-In Docker Swarm, the **Raft database** stores the cluster metadata, including service definitions, node memberships, and cryptographic keys. This data is located at:  
-**`/var/lib/docker/swarm`** (on a Swarm **manager** node).  
-
-To **safely back up Swarm metadata**, follow these steps:  
-1. **Stop the Docker daemon** on the Swarm **manager** node:  
-   ```sh
-   systemctl stop docker
-   ```
-2. **Create a backup** of the Swarm metadata directory:  
-   ```sh
-   tar -czf swarm-backup.tar.gz /var/lib/docker/swarm
-   ```
-3. **Restart Docker** after the backup:  
-   ```sh
-   systemctl start docker
-   ```
-
-This ensures that the backup is **consistent** and **not corrupted**, since the Raft database must not be modified during the backup process.
+## Explanation:
+Docker **secrets** are designed **only for Docker Swarm services**, not standalone containers. They provide a **secure way to store and manage sensitive data**, such as **passwords, API keys, and TLS certificates**.
 
 ---
 
-### Why the Other Options Are Incorrect:  
+## Why the Other Statements Are Correct:
 
-❌ **"We can back up the contents of `/etc/docker/swarm`."**  
-- The Swarm metadata **is not stored** in `/etc/docker/swarm`. This is not a valid path for backup.  
+✔ **Secrets are encrypted during transit and also at rest** ✅  
+   - Docker secrets are **encrypted when stored** in the Swarm's Raft log and **encrypted in transit** between nodes.
 
-❌ **"We can run the swarm image with the backup command."**  
-- There is **no official `swarm` image** or built-in **backup command** for Docker Swarm metadata.  
+✔ **Secrets are mounted in the container’s filesystem directly** ✅  
+   - When a secret is assigned to a service, it is **mounted as a file in `/run/secrets/`** inside the container.
 
-❌ **"We can back up the contents of `/usr/local/swarm`."**  
-- This is **not a default directory** used by Docker Swarm for storing metadata.  
+✔ **Secrets can be used for storing username and password** ✅  
+   - Secrets are commonly used for storing **credentials**, API keys, and other sensitive information.
 
 ---
 
-### Summary:  
-To back up **Docker Swarm metadata**, you must back up **`/var/lib/docker/swarm`** **on a manager node**, and the **Docker daemon must be stopped** to ensure data integrity.
+## Why the Incorrect Statement is Wrong:
+
+❌ **"Secrets are available to swarm services and standalone containers"**  
+   - **Secrets are only available to Swarm services**, not to **standalone** containers (`docker run`).  
+   - Standalone containers **cannot access secrets** because secrets are managed by the **Swarm manager** and securely distributed **only to Swarm nodes** running the service.
+
+---
+
+## Summary:
+If you need secrets in standalone containers, you must use **environment variables** or **mounted files**, but these methods are less secure than Docker Swarm secrets.
