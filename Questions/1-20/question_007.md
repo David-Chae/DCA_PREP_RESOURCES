@@ -1,38 +1,36 @@
-## Which of the following statements is correct? Choose two statements at random. 
-1. A container is a running instance of an image, whereas an image is a collection of immutable layers. 
-2. The image can exist without the container, but the container cannot exist without the image. 
-3. Only one container can be made from a given image at any moment. 
-4. When several containers are created from the same image, they all use the same memory copy of the image.
+## Question 7: What is a system administrator's correct order to create a Docker Enterprise Edition backup policy?
+### Correct Order for Creating a Docker Enterprise Edition Backup Policy
 
-## Correct Statements About Docker Containers and Images
+```sh
+1. swarm, ucp, dtr
+2. dtr, ucp, swarm
+3. ucp, dtr, swarm
+4. swarm, dtr, ucp
+```
 
-### The correct statements are:
-
-✅ **"A container is a running instance of an image, whereas an image is a collection of immutable layers."**  
-✅ **"The image can exist without the container, but the container cannot exist without the image."**  
-
----
+### Correct Answer:
+✅ **`3. ucp, dtr, swarm`**  
 
 ### Explanation:
-- **A container is a running instance of an image**:  
-  A **container** is created by running an image, which is a template or blueprint for the container. The **image** itself consists of immutable layers, which are stacked together to create the final image.
+A **Docker EE backup** should follow a structured approach to ensure consistency and restore capability:
 
-- **An image can exist without the container, but the container cannot exist without the image**:  
-  **Images** are stored as read-only files, and containers are created from images. A **container** cannot exist without being instantiated from an image, but an **image** can exist independently of any running container.
+1️⃣ **UCP (Universal Control Plane)**  
+   - UCP manages the **Swarm cluster, RBAC, and container orchestration**.  
+   - Backing it up first ensures that access control and cluster state are preserved.
 
----
+2️⃣ **DTR (Docker Trusted Registry)**  
+   - DTR is responsible for **storing and managing container images**.  
+   - It should be backed up after UCP since **it relies on UCP for authentication and access control**.
 
-### Why the Other Statements Are Incorrect:
+3️⃣ **Swarm**  
+   - Swarm mode is the foundation, but its state (such as services and nodes) is already included in the UCP backup.  
+   - Backing it up last ensures that it is consistent with UCP and DTR.
 
-❌ **"Only one container can be made from a given image at any moment."**  
-   - This is incorrect because multiple **containers** can be created from the same image simultaneously. Each container is a separate instance, but they all share the same image.
+### Summary of Backup Order:
+1. **UCP first** (to preserve cluster management and authentication).  
+2. **DTR second** (to save registry data after UCP is backed up).  
+3. **Swarm last** (as UCP already includes necessary Swarm data).
 
-❌ **"When several containers are created from the same image, they all use the same memory copy of the image."**  
-   - This is incorrect in terms of memory usage. While **containers** share the same image layers (which are read-only), each **container** has its own separate **runtime memory** for its writable layer. This means they do not share the same memory copy of the image in terms of their **running state**.
 
----
 
-### Final Summary:
-- Containers are instances of images, and an image can exist without a container, but the container cannot exist without the image.  
-- Multiple containers can be created from the same image.
 
