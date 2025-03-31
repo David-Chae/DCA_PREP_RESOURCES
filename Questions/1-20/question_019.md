@@ -1,38 +1,44 @@
-## What would be the best way to start a new swarm cluster? 
-1. Run docker cluster create. 
-2. Start dockerd with the swarm=true flag. 
-3. Run docker swarm init. 
-4. Use a Docker compose file that defines a new cluster.
+## When building it, how would we specify that a container is joined to a network called my-network? 
+1. We can use docker run -n my-network nginx. 
+2. We can use docker run --network-alias web nginx. 
+3. We can use docker run --attach my-network nginx. 
+4. docker run --network my-network nginx can be used. 
 
-The correct answer is:
+The correct answer is:  
 
-✅ **"Run docker swarm init."**
-
----
-
-### **Explanation:**  
-To **initialize** a new Docker Swarm cluster, the command **`docker swarm init`** is used on the **manager node**. This command sets up the current machine as a **Swarm manager** and prepares it to start managing the swarm cluster.
-
-#### **Steps:**
-1. On the manager node, run:
-   ```sh
-   docker swarm init
-   ```
-2. This will output a **join token** that worker nodes can use to join the swarm.
-   
-3. To join worker nodes to the swarm, run the **join command** on each worker node:
-   ```sh
-   docker swarm join --token <SWARM_JOIN_TOKEN> <MANAGER_NODE_IP>:2377
-   ```
-
-After these steps, your Docker Swarm cluster is ready to use!
+✅ **`docker run --network my-network nginx`**  
 
 ---
 
-### **Why the Other Options Are Incorrect:**
+### Explanation:  
+When running a container, you can specify which **Docker network** it should be attached to using the **`--network`** flag.  
 
-❌ **"Run docker cluster create."**  
-- There is no `docker cluster create` command. Swarm initialization is done with `docker swarm init`.
+**Syntax:**  
+```sh
+docker run --network <network-name> <image>
+```
+For example, to run an **nginx** container in the **"my-network"** network:  
+```sh
+docker run --network my-network nginx
+```
 
-❌ **"Start dockerd with the swarm=true flag."**  
-- Docker does not
+---
+
+### Why the Other Options Are Incorrect:  
+
+❌ **`docker run -n my-network nginx`**  
+- Docker **does not have a `-n` flag** for specifying a network. This option does not exist.  
+
+❌ **`docker run --network-alias web nginx`**  
+- `--network-alias` **only works inside Docker Compose or user-defined networks** but does not assign the container to a network. The container must already be attached to a user-defined **bridge** or **overlay** network.  
+
+❌ **`docker run --attach my-network nginx`**  
+- `--attach` is used to **attach to container input/output streams**, not for networks.  
+
+---
+
+### Summary:  
+To connect a container to a specific network when starting it, use:  
+```sh
+docker run --network my-network nginx
+```
