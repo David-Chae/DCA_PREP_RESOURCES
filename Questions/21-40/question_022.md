@@ -1,45 +1,18 @@
-## Which commands would we use to view a container's logs? 
-1. sudo journalctl -u docker
-2. docker logs <container>
-3. docker service logs <service>
-4. docker container get-log
+## 22. How would we back up Docker Swarm?
+```sh
+A. On a Swarm manager, make a backup of the contents of /etc/docker.
+B. On a Swarm manager, make a backup of the contents of /var/lib/docker/swarm
+C. Back up all of the containers in the swarm's tiered file systems.
+D. On a Swarm manager, make a backup of the contents of /etc/docker/swarm.
+```
 
-The correct answers are:
+The correct answer is **B. On a Swarm manager, make a backup of the contents of /var/lib/docker/swarm**.
 
-✅ **`docker logs <container>`**
+Docker Swarm's state is stored in the `/var/lib/docker/swarm` directory on Swarm managers. This directory contains the data necessary for the Swarm cluster to operate, including cryptographic keys, certificates, and cluster configuration. Backing up this directory ensures that you can restore the cluster's state if needed.
 
-✅ **`docker service logs <service>`**
+### Suggested Documentation
+For detailed information, you can refer to the official Docker documentation:
+- [Docker Swarm Overview](https://docs.docker.com/engine/swarm/)
+- [Backing Up and Restoring Docker Swarm](https://docs.docker.com/engine/swarm/admin_guide/)
 
----
-
-### **Explanation:**
-
-1. **`docker logs <container>`**:
-   - This command is used to view the logs of a **specific container**. You replace `<container>` with the container's name or ID.
-   - Example:
-     ```sh
-     docker logs my-container
-     ```
-
-2. **`docker service logs <service>`**:
-   - This command is used to view the logs for a **service** in Docker Swarm. It allows you to see logs for all the tasks that make up the service.
-   - Example:
-     ```sh
-     docker service logs my-service
-     ```
-
----
-
-### **Why the Other Options Are Incorrect:**
-
-❌ **`sudo journalctl -u docker`**:  
-- This command is used to view **system logs** related to the Docker daemon, not the logs of a specific container or service. It's typically used for troubleshooting Docker daemon-related issues, not for container logs.
-
-❌ **`docker container get-log`**:  
-- This is **not a valid Docker command**. The correct command for viewing logs is `docker logs <container>`, not `docker container get-log`.
-
----
-
-### **Summary:**
-
-To view a container's logs, use `docker logs <container>`. For service logs in Docker Swarm, use `docker service logs <service>`.
+These resources provide insights into managing and backing up Docker Swarm clusters effectively. Let me know if you'd like further assistance!
