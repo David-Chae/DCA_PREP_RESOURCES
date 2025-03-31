@@ -1,18 +1,28 @@
-##  Overlay networks cannot be created if the docker engine is not a manager node in the docker swarm. True or False
+## 8. Which commands can take a tar file as an argument and automatically add the extracted content into the image? Choose the possible options.
+A. COPY  
+B. ADD  
+C. ADD and DELETE both  
+D. None of these  
 
 The correct answer is:  
 
-✅ **True**  
+**B. ADD**  
 
-### Explanation:
-In Docker Swarm, **overlay networks** are used for **multi-host communication** between containers. Overlay networks require the Docker engine to be part of a **Swarm cluster** and specifically a **manager node** in the swarm to create and manage them. 
+### Explanation:  
+- **`ADD`** can take a `.tar` file as an argument and automatically extract its contents into the image.  
+  Example:  
+  ```dockerfile
+  ADD archive.tar /app/
+  ```
+  This will extract `archive.tar` into `/app/`.  
 
-- **Manager nodes** in Docker Swarm are responsible for maintaining the **Swarm state**, including network configurations like overlay networks.
-- **Worker nodes** can join the swarm and participate in the network but cannot create overlay networks.
+- **`COPY`** does **not** extract `.tar` files automatically. It only copies files as-is.  
+  Example:  
+  ```dockerfile
+  COPY archive.tar /app/
+  ```
+  This just copies `archive.tar` to `/app/` without extracting it.  
 
-Thus, **overlay networks cannot be created** unless the Docker engine is part of a **Swarm manager node**.
+- **DELETE** is not a valid Dockerfile command.  
 
----
-
-### Summary:
-To create an overlay network, the Docker engine must be a **manager node** in the Docker Swarm. If it's not a manager node, it **cannot create overlay networks**.
+Thus, the correct answer is **B. ADD**.
