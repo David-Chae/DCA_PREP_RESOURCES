@@ -1,45 +1,28 @@
-## Sally wants to prevent Docker Swarm encryption keys from storing insecurely on her swarm managers. How can she tackle enforcing a lock on the swarm cluster? 
-1. Sally cannot do this because Docker does not offer this functionality. 
-2. Sally can use the --autolock=true flag with the docker swarm update command. 
-3. Sally can locate the critical files after the installation and delete them. 
-4. The autolock feature must be turned on when the cluster is initialized and cannot be enabled after the fact.
+## 20. How would we back up the metadata for Docker Swarm?
+```sh
+A. We can back up the contents of /etc/docker/swarm.
+B. We can run the swarm image with the backup command
+C. While the Docker daemon stops, we can back up the contents of /var/lib/docker/swarm on a Swarm manager
+D. We can back up the contents of /usr/local/swarm.
+```
 
-The correct answer is:
 
-✅ **"Sally can use the --autolock=true flag with the docker swarm update command."**
+Let's evaluate each option for backing up Docker Swarm metadata:
 
----
+**A. We can back up the contents of /etc/docker/swarm.**  
+**True** – The configuration files related to Docker Swarm, including swarm-related metadata, are typically stored in `/etc/docker/swarm` on Swarm manager nodes. Backing this up is a good approach to ensure that you have the Swarm's current configuration.
 
-### **Explanation:**
+**B. We can run the swarm image with the backup command.**  
+**False** – Docker itself does not have a specific `swarm image` or `backup command` built into its standard functionality. Swarm-related backup typically involves manually backing up configurations or state files from the manager nodes, not running a specific image or command.
 
-In Docker Swarm, **autolock** is a feature that encrypts the swarm's **manager node encryption keys**, ensuring that they are not stored insecurely on the swarm managers. The **autolock** feature prevents unauthorized access to the keys and ensures they are only accessible with the proper unlocking mechanism.
+**C. While the Docker daemon stops, we can back up the contents of /var/lib/docker/swarm on a Swarm manager.**  
+**True** – The state of a Docker Swarm is stored in `/var/lib/docker/swarm` on the manager node, which includes information like the state of services, tasks, and nodes. Backing up this directory while the Docker daemon is stopped ensures consistency and integrity of the metadata.
 
-1. **To enable autolock** after initializing the swarm:
-   - Sally can use the `docker swarm update --autolock=true` command to enforce autolock on her swarm cluster, ensuring the encryption keys are locked.
+**D. We can back up the contents of /usr/local/swarm.**  
+**False** – `/usr/local/swarm` is not a standard location for storing Docker Swarm metadata. Swarm-related files are not typically stored in this directory. The primary locations for Swarm metadata are `/etc/docker/swarm` and `/var/lib/docker/swarm`.
 
-   Example:
-   ```sh
-   docker swarm update --autolock=true
-   ```
-
-2. **To unlock the swarm** when needed:
-   - The `docker swarm unlock` command is required to unlock the swarm, and it will prompt for the unlock key when performing any operation on the swarm that requires access to the keys.
-
----
-
-### **Why the Other Options Are Incorrect:**
-
-❌ **"Sally cannot do this because Docker does not offer this functionality."**  
-- This is incorrect because Docker **does** offer the `--autolock` feature to secure the swarm encryption keys.
-
-❌ **"Sally can locate the critical files after the installation and delete them."**  
-- Simply deleting files is not a secure or recommended method. It would not ensure the proper encryption or safety of the swarm keys. Docker provides a more secure mechanism with **autolock**.
-
-❌ **"The autolock feature must be turned on when the cluster is initialized and cannot be enabled after the fact."**  
-- This is **incorrect**. The **autolock feature can be enabled at any time** after the swarm has been initialized, using the `docker swarm update --autolock=true` command. It is **not limited to initialization**.
-
----
-
-### **Summary:**
-
-To ensure Docker Swarm encryption keys are stored securely and locked on the managers, Sally should use the `docker swarm update --autolock=true` command.
+### Summary:
+- **A**: True
+- **B**: False
+- **C**: True
+- **D**: False
