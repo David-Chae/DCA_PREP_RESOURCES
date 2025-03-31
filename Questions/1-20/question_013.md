@@ -1,48 +1,26 @@
-## Which of the instructions below will start a new bridge network? 
-1. docker network create --network-driver bridge my-network 
-2. docker network create --network bridge my-network 
-3. docker network create --driver overlay my-network 
-4. docker network create my-network
+## 13. Global service runs task/tasks on every node that meets the placement and resource constraints.
+A. many  
+B. one  
+C. more than one  
+D. none  
 
 The correct answer is:  
 
-✅ **`docker network create --network-driver bridge my-network`**  
-
-OR  
-
-✅ **`docker network create --driver bridge my-network`**  
-
----
+**B. one**  
 
 ### Explanation:  
-To create a new **bridge** network in Docker, you must specify the **bridge driver** explicitly. The correct syntax is:  
+In Docker Swarm, a **global service** ensures that **one task runs on every node** that meets the placement and resource constraints. Unlike replicated services, which run a specific number of tasks across the cluster, a **global service** automatically schedules exactly one task per eligible node.  
 
+### Example:  
+If you create a global service:  
 ```sh
-docker network create --driver bridge my-network
-```
-OR  
-```sh
-docker network create --network-driver bridge my-network
-```
-Both **`--driver`** and **`--network-driver`** are valid options.
+docker service create --mode global --name my_global_service alpine top
+```  
+This service will run **one instance per node** in the Swarm.  
 
----
+### Why the other options are incorrect:  
+- **A. many** → **False** (A global service runs exactly **one** task per node, not multiple.)  
+- **C. more than one** → **False** (Each node gets exactly **one** task, not more.)  
+- **D. none** → **False** (As long as the node meets constraints, at least **one** task will run.)  
 
-### Why the Other Options Are Incorrect:  
-
-❌ **`docker network create --network bridge my-network`**  
-- There is **no `--network` flag** when creating a network. The correct flag is `--driver` or `--network-driver`.
-
-❌ **`docker network create --driver overlay my-network`**  
-- This creates an **overlay network**, not a **bridge network**. Overlay networks are used in **Docker Swarm** for multi-host communication.
-
-❌ **`docker network create my-network`**  
-- This creates a network, but **by default, it uses the `bridge` driver**. However, explicitly specifying `--driver bridge` ensures you get the intended behavior.
-
----
-
-### Summary:  
-To create a **bridge network**, use:  
-```sh
-docker network create --driver bridge my-network
-```
+Thus, **B. one** is the correct answer.
