@@ -1,40 +1,28 @@
-## Which of the following statements concerning secrets is NOT correct? 
-1. Secrets are encrypted during transit and also at rest.
-2. Secrets are available to swarm services and  standalone containers.
-3. Secrets are mounted in the container’s filesystem directly.
-4. Secrets can be used for storing username and password
+## 6. Which of the following lvm modes should a production host use the devicemapper as a storage driver?
+A. loop-lvm  
+B. overlay  
+C direct-lvm  
+D. zfs  
 
-# Docker Secrets - Correct and Incorrect Statements
 
-## Incorrect Statement:
 
-❌ **"Secrets are available to swarm services and standalone containers"**
+Here are the answers with explanations:  
 
-## Explanation:
-Docker **secrets** are designed **only for Docker Swarm services**, not standalone containers. They provide a **secure way to store and manage sensitive data**, such as **passwords, API keys, and TLS certificates**.
+### **A. loop-lvm → False**  
+**Reason:** `loop-lvm` is a **testing** mode for the DeviceMapper storage driver, which uses loopback devices instead of direct block devices. It is **not recommended for production** because it has poor performance and stability issues.  
 
----
+### **B. overlay → False**  
+**Reason:** `overlay` is not related to the DeviceMapper storage driver. Instead, it is an independent storage driver based on the OverlayFS filesystem. If using OverlayFS, the recommended driver is `overlay2`, but this does not involve LVM or DeviceMapper.  
 
-## Why the Other Statements Are Correct:
+### **C. direct-lvm → True**  
+**Reason:** `direct-lvm` is the **recommended production mode** for the DeviceMapper storage driver. It provides better performance by using dedicated block devices instead of loopback files. It requires manual configuration but offers improved reliability and speed.  
 
-✔ **Secrets are encrypted during transit and also at rest** ✅  
-   - Docker secrets are **encrypted when stored** in the Swarm's Raft log and **encrypted in transit** between nodes.
+### **D. zfs → False**  
+**Reason:** `zfs` is a completely different storage driver that does not use DeviceMapper or LVM. ZFS is a powerful filesystem and volume manager, but it is unrelated to the DeviceMapper storage backend.  
 
-✔ **Secrets are mounted in the container’s filesystem directly** ✅  
-   - When a secret is assigned to a service, it is **mounted as a file in `/run/secrets/`** inside the container.
+### **Final Answers:**  
+- **A. loop-lvm → False**  
+- **B. overlay → False**  
+- **C. direct-lvm → True**  
+- **D. zfs → False**  
 
-✔ **Secrets can be used for storing username and password** ✅  
-   - Secrets are commonly used for storing **credentials**, API keys, and other sensitive information.
-
----
-
-## Why the Incorrect Statement is Wrong:
-
-❌ **"Secrets are available to swarm services and standalone containers"**  
-   - **Secrets are only available to Swarm services**, not to **standalone** containers (`docker run`).  
-   - Standalone containers **cannot access secrets** because secrets are managed by the **Swarm manager** and securely distributed **only to Swarm nodes** running the service.
-
----
-
-## Summary:
-If you need secrets in standalone containers, you must use **environment variables** or **mounted files**, but these methods are less secure than Docker Swarm secrets.
