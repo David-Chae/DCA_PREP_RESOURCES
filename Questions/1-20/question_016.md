@@ -1,51 +1,36 @@
-## What volume driver allows you to use SSH to create and access external storage shared across a Docker Swarm cluster? 
-A. overlay 
-B. vieux/sshfs 
-C. overlay2 
-D. devicemapper 
+## Which of the following is not a namespace used by Docker? 
+1. net
+2. pid
+3. uts
+4. mem
 
 The correct answer is:  
 
-✅ **B. vieux/sshfs**  
+✅ **mem**  
 
----
+### Explanation:  
+Docker uses several namespaces to **isolate** different aspects of containerized applications. The valid namespaces used by Docker include:
 
-### **Explanation:**  
-The **`vieux/sshfs`** volume driver allows Docker to use **SSHFS (SSH Filesystem)** for mounting external storage across a **Docker Swarm cluster**. This enables secure remote access to shared storage using SSH.  
+- **`net`** (Network Namespace)  
+  - This isolates network resources, allowing containers to have their own network interfaces and IP addresses.
 
-#### **Key Features of `vieux/sshfs`:**  
-- Uses **SSHFS** to mount remote directories as Docker volumes.  
-- Allows containers to share storage **across multiple Swarm nodes**.  
-- Securely connects to external storage via **SSH authentication**.  
+- **`pid`** (Process ID Namespace)  
+  - This isolates process IDs, so processes in one container cannot see or interfere with processes in another container.
 
-#### **Example Usage:**
-To create a volume using `vieux/sshfs`:  
-```sh
-docker volume create \
-  --driver vieux/sshfs \
-  -o sshcmd=user@remote-server:/path/to/data \
-  -o password=mysecurepassword \
-  my-ssh-volume
-```
-Then, use it in a container:  
-```sh
-docker run -v my-ssh-volume:/data my-container
-```
+- **`uts`** (UTS Namespace)  
+  - This isolates the hostname and domain name, allowing each container to have its own hostname.
 
----
+However, there is **no `mem` namespace** in Docker. While **memory limits** can be set for containers, **memory** is not isolated by a specific namespace. Memory isolation is typically handled by **cgroups**, not namespaces.
 
-### **Why the Other Options Are Incorrect?**  
+### Summary:
+- The **mem** namespace is not a valid namespace in Docker.
 
-❌ **A. overlay**  
-- `overlay` is a **storage driver**, not a volume driver. It is used for Docker’s **union filesystem**, not for shared storage.  
+### What does UTS stand for in UTS names pace?
 
-❌ **C. overlay2**  
-- `overlay2` is an **improved version** of `overlay`, but it is also a storage driver, not a volume driver.  
+**UTS** stands for **Unix Timesharing System**.
 
-❌ **D. devicemapper**  
-- `devicemapper` is a **storage driver** that manages container **layered storage** but does not provide external shared storage across a Swarm cluster.  
+### Explanation:
+In the context of Docker and Linux namespaces, the **UTS namespace** isolates the hostname and domain name of a container. This means each container can have its own **hostname** and **domain name**, which is independent of the host system or other containers. This is particularly useful in multi-container environments where each container might need a unique identity.
 
----
-
-### **Summary:**  
-To **use SSHFS for shared storage in Docker Swarm**, the correct **volume driver** is **`vieux/sshfs`**.
+### Summary:
+**UTS** refers to the Unix Timesharing System, and the UTS namespace isolates the hostname and domain name within a containerized environment.
