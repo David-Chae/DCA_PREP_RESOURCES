@@ -1,28 +1,51 @@
-## 20. How would we back up the metadata for Docker Swarm?
-```sh
-A. We can back up the contents of /etc/docker/swarm.
-B. We can run the swarm image with the backup command
-C. While the Docker daemon stops, we can back up the contents of /var/lib/docker/swarm on a Swarm manager
-D. We can back up the contents of /usr/local/swarm.
-```
+## How would we back up the metadata for Docker Swarm? 
+1. We can back up the contents of /etc/docker/swarm. 
+2. We can run the swarm image with the backup command. 
+3. While the Docker daemon stops, we can back up the contents of /var/lib/docker/swarm on a Swarm manager. 
+4. We can back up the contents of /usr/local/swarm.
 
+The correct answer is:  
 
-Let's evaluate each option for backing up Docker Swarm metadata:
+✅ **"While the Docker daemon stops, we can back up the contents of `/var/lib/docker/swarm` on a Swarm manager."**  
 
-**A. We can back up the contents of /etc/docker/swarm.**  
-**True** – The configuration files related to Docker Swarm, including swarm-related metadata, are typically stored in `/etc/docker/swarm` on Swarm manager nodes. Backing this up is a good approach to ensure that you have the Swarm's current configuration.
+---
 
-**B. We can run the swarm image with the backup command.**  
-**False** – Docker itself does not have a specific `swarm image` or `backup command` built into its standard functionality. Swarm-related backup typically involves manually backing up configurations or state files from the manager nodes, not running a specific image or command.
+### Explanation:  
+In Docker Swarm, the **Raft database** stores the cluster metadata, including service definitions, node memberships, and cryptographic keys. This data is located at:  
+**`/var/lib/docker/swarm`** (on a Swarm **manager** node).  
 
-**C. While the Docker daemon stops, we can back up the contents of /var/lib/docker/swarm on a Swarm manager.**  
-**True** – The state of a Docker Swarm is stored in `/var/lib/docker/swarm` on the manager node, which includes information like the state of services, tasks, and nodes. Backing up this directory while the Docker daemon is stopped ensures consistency and integrity of the metadata.
+To **safely back up Swarm metadata**, follow these steps:  
+1. **Stop the Docker daemon** on the Swarm **manager** node:  
+   ```sh
+   systemctl stop docker
+   ```
+2. **Create a backup** of the Swarm metadata directory:  
+   ```sh
+   tar -czf swarm-backup.tar.gz /var/lib/docker/swarm
+   ```
+3. **Restart Docker** after the backup:  
+   ```sh
+   systemctl start docker
+   ```
 
-**D. We can back up the contents of /usr/local/swarm.**  
-**False** – `/usr/local/swarm` is not a standard location for storing Docker Swarm metadata. Swarm-related files are not typically stored in this directory. The primary locations for Swarm metadata are `/etc/docker/swarm` and `/var/lib/docker/swarm`.
+This ensures that the backup is **consistent** and **not corrupted**, since the Raft database must not be modified during the backup process.
 
-### Summary:
-- **A**: True
-- **B**: False
-- **C**: True
-- **D**: False
+---
+
+### Why the Other Options Are Incorrect:  
+
+❌ **"We can back up the contents of `/etc/docker/swarm`."**  
+- The Swarm metadata **is not stored** in `/etc/docker/swarm`. This is not a valid path for backup.  
+
+❌ **"We can run the swarm image with the backup command."**  
+- There is **no official `swarm` image** or built-in **backup command** for Docker Swarm metadata.  
+
+❌ **"We can back up the contents of `/usr/local/swarm`."**  
+- This is **not a default directory** used by Docker Swarm for storing metadata.  
+
+---
+
+### Summary:  
+To back up **Docker Swarm metadata**, you must back up **`/var/lib/docker/swarm`** **on a manager node**, and the **Docker daemon must be stopped** to ensure data integrity.
+
+https://docs.docker.com/engine/swarm/admin_guide/
