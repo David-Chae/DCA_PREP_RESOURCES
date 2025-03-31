@@ -1,36 +1,39 @@
-## How would we keep track of changes made to an image in source control (i.e., git)? 
-1. We would use Docker Trusted Registry (DTR) to handle this.
-2. Maintain tags for each new version within the Docker registry.
-3. We would push the image layers to a source control repository.
-4. We would store the Dockerfile in source control.
+## Tracy has a Docker Trusted Registry (DTR), and her development team mistakenly overwrote images in a repository by pushing a different image with an existing tag. How can she prevent this from happening? 
+1. Tracy can back up the registry.
+2. Tracy can make the repository private.
+3. Tracy can remove the team's access to the registry.
+4. Tracy can mark the repository as immutable.
 
-The correct answer is:
+The correct answer is:  
 
-✅ **We would store the Dockerfile in source control.**
-
----
-
-### **Explanation:**
-
-- **Storing the Dockerfile in source control (e.g., Git)** is the best practice for tracking changes made to an image. The Dockerfile contains the instructions for building the Docker image, so keeping it in source control allows you to track changes in the image's configuration, dependencies, and setup over time.
-
-- By versioning the Dockerfile in a repository, you can trace the exact changes that have been made to the Docker image, ensuring a transparent and reproducible build process. This is particularly useful in collaboration and CI/CD (Continuous Integration/Continuous Delivery) workflows.
+✅ **"Tracy can mark the repository as immutable."**  
 
 ---
 
-### **Why the Other Options Are Incorrect:**
+### **Explanation:**  
+In **Docker Trusted Registry (DTR)**, an **immutable repository** prevents images from being **overwritten** if they have the same tag. This ensures that once an image is pushed, it remains unchanged, avoiding accidental overwrites.  
 
-❌ **"We would use Docker Trusted Registry (DTR) to handle this."**
-- Docker Trusted Registry (DTR) is useful for storing and managing Docker images in a private registry, but it does not provide version tracking or history of changes like source control (e.g., Git) does for Dockerfiles.
+To mark a repository as **immutable** in DTR:  
+1. **Go to the DTR web UI**  
+2. **Select the repository**  
+3. **Enable the "Immutable tags" setting**  
 
-❌ **"Maintain tags for each new version within the Docker registry."**
-- While tags help identify different versions of an image, they do not give you a detailed history of the specific changes made to the image over time. Tags are useful for versioning but do not provide the full context of what has changed inside the image.
-
-❌ **"We would push the image layers to a source control repository."**
-- Pushing image layers (i.e., the binary data representing different parts of the Docker image) to source control is inefficient and unnecessary. Source control systems like Git are designed to handle text files (like the Dockerfile), not large binary files, and this would lead to bloated repositories.
+Once enabled, any attempt to push an image **with an existing tag** will be **blocked**.
 
 ---
 
-### **Summary:**
+### **Why the Other Options Are Incorrect?**  
 
-To keep track of changes made to an image in source control, the best approach is to store the **Dockerfile** in a Git repository. This allows for effective versioning and tracking of changes in the image's build process.
+❌ **"Tracy can back up the registry."**  
+- Backups help restore data but **do not prevent accidental overwrites** from happening in the first place.  
+
+❌ **"Tracy can make the repository private."**  
+- A private repository only **restricts access**, but it does **not** prevent overwriting existing tags.  
+
+❌ **"Tracy can remove the team's access to the registry."**  
+- This would **block all access**, preventing the team from pushing any images, not just overwrites.  
+
+---
+
+### **Summary:**  
+To prevent accidental overwrites in Docker Trusted Registry, **Tracy should mark the repository as immutable.**
