@@ -1,28 +1,22 @@
-## Which of the following commands will run a busybox container and automatically delete it once it exits? 
-1. docker run --rm busybox
-2. docker container rm busybox
-3. docker run --rm --restart on-failure busybox
-4. docker run --restart no busybox
+## 41.How can we use multi-stage builds to generate small, efficient Docker images?
+```sh
+A. We can build the image and then run diagnostics on it in a separate stage to make it more efficient
+B. We can use separate build stages to delete files from the image
+C. We can copy only specific files from previous stages to keep the image as small as possible.
+D. We can leverage the implementation of multi-stage builds, which will shorten the build processing times.
+```
 
-The correct command is:  
+The correct answer is:  
 
-✅ **`docker run --rm busybox`**  
+**C. We can copy only specific files from previous stages to keep the image as small as possible.**  
 
-### **Explanation:**  
-- The `--rm` flag ensures that the container is **automatically removed** when it stops.  
-- This means **no manual cleanup** is needed after the container exits.  
+### Explanation:  
+Multi-stage builds in Docker allow you to use multiple `FROM` statements in a `Dockerfile`, where each stage can have its own environment. This helps in:  
+- Compiling or building dependencies in an intermediate stage.  
+- Copying only the necessary artifacts (like compiled binaries) to the final image, reducing size.  
+- Avoiding the inclusion of unnecessary files, build tools, and dependencies.  
 
-### **Why the Other Options Are Incorrect:**  
-❌ **`docker container rm busybox`**  
-- This command **removes an existing container**, but **it does not run** one.  
-- Also, it does **not ensure automatic deletion upon exit**—it requires manual execution.  
-
-❌ **`docker run --rm --restart on-failure busybox`**  
-- The `--rm` flag **conflicts with** `--restart on-failure`.  
-- Containers with `--rm` **cannot** have a restart policy because they are deleted upon exit.  
-
-❌ **`docker run --restart no busybox`**  
-- This command runs the container **without an automatic restart**, but it **does not delete** the container upon exit.  
-
-### **Final Answer:**  
-✅ **`docker run --rm busybox`**
+### Why not the others?  
+- **A**: Running diagnostics does not inherently make an image smaller.  
+- **B**: Deleting files does not always reduce the image size since Docker images retain layers. Multi-stage builds allow avoiding unnecessary files altogether.  
+- **D**: Multi-stage builds primarily reduce image size, not necessarily build time.
