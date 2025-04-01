@@ -1,27 +1,33 @@
-## How can you enable Docker Content Trust (DCT) in Docker Community Edition (CE)? 
-1. Set "content-trust": true in /etc/docker/daemon.json.
-2. Set the DOCKER_CONTENT_TRUST environment variable to 1.
-3. Set the CONTENT_TRUST environment variable to 1.
+## Which of the following commands can create a new named volume? 
+1. docker run --mount source=/my-vol,destination=/tmp nginx \ 
+2. docker run -v /my-vol:/tmp nginx 
+3. docker run -v my-vol:/tmp nginx 
+4. docker run -v /my-vol:/tmp:create nginx
 
-The correct way to enable **Docker Content Trust (DCT)** in Docker Community Edition (CE) is:
+The correct answer is:  
 
-✅ **Set the DOCKER_CONTENT_TRUST environment variable to 1.**
+**`docker run -v my-vol:/tmp nginx`**  
 
 ### **Explanation:**
-- **Docker Content Trust (DCT)** ensures that images pulled from or pushed to a registry are signed, verifying their authenticity and integrity. 
-- The `DOCKER_CONTENT_TRUST` environment variable controls whether content trust is enabled. When set to `1`, it enables DCT for operations like `docker pull` and `docker push`.
+- In Docker, a **named volume** is a persistent storage unit managed by Docker, which is separate from the container’s lifecycle.
+- The **`-v` (or `--volume`)** option allows you to specify a volume.
+- When you use **`-v my-vol:/tmp`**, Docker **creates a named volume** called **`my-vol`** (if it does not exist) and mounts it to **`/tmp`** in the container.
 
-### **Other Options:**
+### **Why the Other Options Are Incorrect:**
+1. **`docker run --mount source=/my-vol,destination=/tmp nginx`**  
+   - The **`--mount`** option uses a different syntax.
+   - For named volumes, the correct syntax should be:  
+     **`--mount type=volume,source=my-vol,target=/tmp`**  
+   - Also, **`source=/my-vol`** suggests a path, but named volumes don’t use absolute paths.
 
-❌ **"Set 'content-trust': true in /etc/docker/daemon.json."**  
-- This setting is **not valid** in the `daemon.json` configuration file for Docker CE. DCT is controlled via the environment variable, not the daemon configuration.
+2. **`docker run -v /my-vol:/tmp nginx`**  
+   - **Incorrect because `/my-vol` is an absolute path**, which creates a **bind mount** instead of a **named volume**.
+   - A named volume should **not** start with `/`.
 
-❌ **"Set the CONTENT_TRUST environment variable to 1."**  
-- The environment variable **should be `DOCKER_CONTENT_TRUST`**, not `CONTENT_TRUST`.
+3. **`docker run -v /my-vol:/tmp:create nginx`**  
+   - **Syntax is incorrect.**  
+   - The `-v` option does **not** accept a `:create` argument.
 
-### **Final Answer:**
-To enable Docker Content Trust, set:
-
-```
-DOCKER_CONTENT_TRUST=1
-```
+### **Conclusion:**
+The correct way to create a **new named volume** is:  
+**`docker run -v my-vol:/tmp nginx`**
