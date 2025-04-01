@@ -1,30 +1,33 @@
-## A group of endpoints that can communicate with one another is referred to by what part of the Docker Container Networking Model (CNM)? 
-A. Sandbox  
-B. Network device  
-C. Network  
-D. IP Address Management (IPAM) driver  
+## Eric's application comprises many different containers that communicate with one another. In a Docker Swarm, how should he handle this application? 
+```sh
+1. Eric should use docker-compose.
+2. Eric should use a service with multiple tasks.
+3. Eric should use a task.
+4. Eric should use a stack.
+```
 
-The correct answer is:  
-
-✔ **C. Network**  
+✅ **Eric should use a stack.**  
 
 ### **Explanation:**  
-In the **Docker Container Networking Model (CNM)**, a **Network** is a group of **endpoints** that can communicate with one another.  
+- In **Docker Swarm**, a **stack** is the best way to manage **multi-container applications** because it allows defining and deploying multiple **services** that work together.  
+- A stack is managed using **Docker Compose files (`docker-compose.yml`)**, which define **services, networks, and volumes** needed for the application.  
+- Running **`docker stack deploy`** in Swarm mode ensures that the application is orchestrated across multiple nodes.
 
-- A **Network** connects multiple **endpoints**, allowing containers to communicate with each other.  
-- It provides **isolation** and **connectivity** between containers using **network drivers** like **bridge, overlay, or macvlan**.  
-- Multiple **containers** can be connected to the same **network**, enabling them to communicate **securely**.  
+### **Why the Other Options Are Incorrect:**
+1. **`Eric should use docker-compose.`**  
+   ❌ **Incorrect**:  
+   - **`docker-compose`** is primarily for **single-host deployments**, not Swarm clusters.  
+   - In Swarm mode, **`docker stack deploy`** (which uses Compose files) is the preferred method.
 
-### **Why are the other options incorrect?**  
+2. **`Eric should use a service with multiple tasks.`**  
+   ❌ **Incorrect**:  
+   - A **service** in Swarm represents **a single application component**, not the entire app.  
+   - Since Eric’s app has **multiple containers** that need to communicate, using **only one service** is insufficient.
 
-1. **A. Sandbox** ❌  
-   - A **sandbox** is an **isolated environment** for a single container's networking **configuration** (e.g., IP address, routes). It does not define a group of communicating endpoints.
-
-2. **B. Network device** ❌  
-   - A **network device** is a low-level component that connects a container to a network, like a **veth pair** or **bridge interface**, but it does not define a group of endpoints.
-
-3. **D. IP Address Management (IPAM) driver** ❌  
-   - The **IPAM driver** assigns IP addresses to networks but does not define a group of communicating endpoints.  
+3. **`Eric should use a task.`**  
+   ❌ **Incorrect**:  
+   - A **task** is just an instance of a container running as part of a service.  
+   - Tasks are **not used to manage applications** directly.
 
 ### **Final Answer:**  
-✔ **C. Network**
+✅ **Eric should use a stack.**
