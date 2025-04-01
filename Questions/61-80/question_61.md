@@ -1,8 +1,10 @@
 ## Which of the claims concerning the overlay network driver is correct? 
+```sh
 1. Each node must manually configure the network.
 2. Only containers running on the same host can communicate with each other using the overlay driver.
 3. As soon as the network is created, it is set up on every node in the cluster.
 4. When jobs are scheduled on a node, networking components are built dynamically.
+```
 
 The correct claim is:  
 
