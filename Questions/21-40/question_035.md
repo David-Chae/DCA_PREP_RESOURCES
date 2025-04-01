@@ -1,33 +1,21 @@
-## Which of the following commands will limit the amount of active RAM a container uses to 1 GB? 
-1. docker run --memory-swap 2G --memory-reservation 1G nginx 
-2. docker run --memory-reservation 1G nginx 
-3. docker run --memory-swap 2G nginx 
-4. docker run --memory 1G nginx
+## 35. Which of the following commands will attach the tasks of a new service to an existing overlay net work called my-overlay?
+```sh
+A. docker service create --network-driver overlay nginx
+B. docker service create --n my-overlay nginx
+C. docker service create --attach my-overlay nginx
+D. docker service create --network my-overlay nginx
+```
 
 The correct answer is:  
 
-✅ **`docker run --memory 1G nginx`**  
+**D. `docker service create --network my-overlay nginx`**  
 
-### **Explanation:**  
-- The **`--memory`** flag **directly limits** the amount of **active RAM** a container can use.  
-- **`--memory 1G`** restricts the container to a maximum **1 GB of RAM**.  
-- If the container tries to exceed this limit, it will be **throttled** or **killed** by the kernel's Out-of-Memory (OOM) manager.
+### Explanation:  
+- The `--network` option specifies which network the service should connect to.  
+- `my-overlay` is the name of the existing overlay network.  
+- `nginx` is the service being created.  
 
-### **Why the Other Options Are Incorrect:**
-1. **`docker run --memory-swap 2G --memory-reservation 1G nginx`**  
-   ❌ **Incorrect**:  
-   - **`--memory-swap`** sets the **total memory + swap** limit, but **does not** directly limit active RAM.  
-   - **`--memory-reservation`** only sets a **soft limit** (a preferred minimum, but not an enforced cap).  
-
-2. **`docker run --memory-reservation 1G nginx`**  
-   ❌ **Incorrect**:  
-   - **`--memory-reservation`** is a **soft limit** that the container can exceed.  
-   - It does **not** enforce a **hard** **1 GB RAM limit**.  
-
-3. **`docker run --memory-swap 2G nginx`**  
-   ❌ **Incorrect**:  
-   - **`--memory-swap`** only sets the **total memory + swap** limit.  
-   - It **does not** control the **RAM limit separately**.
-
-### **Final Answer:**  
-✅ **`docker run --memory 1G nginx`**
+### Why not the others?  
+- **A**: `--network-driver` is incorrect here; it is used when creating a network, not when attaching a service.  
+- **B**: `--n` is not a valid option.  
+- **C**: `--attach` is not used for networks in Docker Swarm.
