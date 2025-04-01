@@ -1,41 +1,31 @@
-## Which of the following commands can help us find the real files that a container uses to store its internal data? 
-A. docker image inspect <image>  
-B. docker container inspect volume ls  
-C. docker volume ls  
-D. docker container inspect <container>  
+## In a Kubernetes, what happens when you perform a rolling update using a Deployment?  
+1. A new ReplicaSet is created, which gradually increases its replica count. Meanwhile, the old ReplicaSet gradually decreases its replica count as new Pods spin up. 
+2. The Deployment's ReplicaSet deletes its existing Pods gradually, replacing them with new ones. 
+3. The Deployment creates a new Service, which gradually replaces the old Service. 
+4. The old Pods are removed, and new ones are created once fully terminated.
 
+The correct description of how a **Kubernetes Deployment** updates its Pods is:  
 
-
-The correct answer is:  
-
-✔ **D. `docker container inspect <container>`**  
+✅ **"A new ReplicaSet is created, which gradually increases its replica count. Meanwhile, the old ReplicaSet gradually decreases its replica count as new Pods spin up."**  
 
 ### **Explanation:**  
-The `docker container inspect <container>` command provides **detailed metadata** about a container, including:  
-- The **mount points** (volumes and bind mounts)  
-- The **file paths** used for persistent storage  
-- The **container's configuration** and runtime settings  
+- **Kubernetes Deployments** use a **rolling update** strategy by default.  
+- When a new Deployment version is applied:  
+  1. A **new ReplicaSet** is created.  
+  2. The new ReplicaSet **gradually increases** its Pod count.  
+  3. The old ReplicaSet **gradually decreases** its Pod count.  
+  4. This continues until all old Pods are replaced by new Pods.  
 
-By running:  
-```sh
-docker container inspect <container>
-```
-You can find the **real files** stored on the host system under the `"Mounts"` section in the output.
+### **Why the Other Statements Are Incorrect:**  
+❌ **"The Deployment's ReplicaSet deletes its existing Pods gradually, replacing them with new ones."**  
+- The **ReplicaSet itself** does not delete its Pods one by one. Instead, Kubernetes **creates a new ReplicaSet** and scales the old one down.  
 
----
+❌ **"The Deployment creates a new Service, which gradually replaces the old Service."**  
+- **Deployments do not create Services.** Services remain unchanged during updates and continue routing traffic to available Pods.  
 
-### **Why are the other options incorrect?**  
-
-1. **A. `docker image inspect <image>`** ❌  
-   - This inspects a **Docker image**, showing metadata like layers and environment variables, but **not runtime storage details**.  
-
-2. **B. `docker container inspect volume ls`** ❌  
-   - This command is **invalid syntax**. There is no `volume ls` option with `docker container inspect`.  
-
-3. **C. `docker volume ls`** ❌  
-   - This **lists Docker volumes** on the system but does not show which **real files** a container is using.  
-
----
+❌ **"The old Pods are removed, and new ones are created once fully terminated."**  
+- This describes a **Recreate strategy**, where old Pods are **terminated first** before new ones start.  
+- The default **RollingUpdate strategy** works **incrementally**, so old and new Pods **coexist** during the update.  
 
 ### **Final Answer:**  
-✔ **D. `docker container inspect <container>`**
+✅ **"A new ReplicaSet is created, which gradually increases its replica count. Meanwhile, the old ReplicaSet gradually decreases its replica count as new Pods spin up."**
