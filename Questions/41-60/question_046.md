@@ -1,28 +1,35 @@
-## Anastasia has created a container with a volume called shared-data. She wants to create a new container to access the same data as the first. However, she wants this new container only to be able to read the data, not modify it. How can she accomplish this? 
-1. Anastasia can create a bind mount for the new container that points to the physical location of the shared volume on the host.
-2. Anastasia can use docker run --name new-container -v shared-data:/tmp nginx.
-3. This task is impossible for Anastasia to complete because we cannot mount the same volume to two containers.
-4. Anastasia can use docker run --name new-container -v shared-data:/tmp:ro nginx.
+## What command will help us delete my-service and all its tasks? 
+```sh
+1. docker service rm --all my-service 
+2. docker service rm my-service 
+3. docker service rm my-service --cascade 
+4. docker service rm --my-service
+```
 
-The correct way for Anastasia to accomplish this is:
+The correct command is:  
 
-✅ **Anastasia can use docker run --name new-container -v shared-data:/tmp:ro nginx.**
+**`docker service rm my-service`**  
 
 ### **Explanation:**
+- The **`docker service rm`** command is used to **remove a service** from a Docker Swarm.
+- **`my-service`** is the name of the service you want to delete.
+- When a service is removed, **all associated tasks (containers) are also removed automatically**.
 
-- The `-v shared-data:/tmp:ro` option allows Anastasia to mount the `shared-data` volume into the new container, but with **read-only** (`ro`) access. This means the new container will be able to read data from the volume but not modify it.
-  
-### **Other Options:**
+### **Why the Other Options Are Incorrect:**
+1. **`docker service rm --all my-service`**  
+   - **Incorrect syntax**: `--all` is not a valid flag for `docker service rm`.
+   - To remove **all services**, you would need to **list them first** and use a loop or command like:  
+     ```sh
+     docker service rm $(docker service ls -q)
+     ```
 
-❌ **Anastasia can create a bind mount for the new container that points to the physical location of the shared volume on the host.**  
-- This approach would allow read/write access to the volume unless explicitly specified. It's not the recommended solution if you want to control access permissions as the bind mount gives direct access to the host filesystem.
+2. **`docker service rm my-service --cascade`**  
+   - **Invalid flag**: Docker **does not have a `--cascade` option** for `docker service rm`.
+   - Removing a service **already deletes its tasks**.
 
-❌ **This task is impossible for Anastasia to complete because we cannot mount the same volume to two containers.**  
-- This is incorrect. Docker allows you to mount the same volume to multiple containers with proper access control like the `:ro` option.
+3. **`docker service rm --my-service`**  
+   - **Incorrect syntax**: The `--my-service` flag is **not a valid argument**.
+   - The correct syntax is simply: **`docker service rm <service_name>`**.
 
-### **Final Answer:**
-To give the new container **read-only** access to the `shared-data` volume, Anastasia should use:
-
-```
-docker run --name new-container -v shared-data:/tmp:ro nginx
-```
+### **Final Answer:**  
+✅ **`docker service rm my-service`**
