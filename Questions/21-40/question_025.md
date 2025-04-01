@@ -1,9 +1,10 @@
 ## What volume driver allows you to use SSH to create and access external storage shared across a Docker Swarm cluster? 
+```sh
 A. overlay 
 B. vieux/sshfs 
 C. overlay2 
 D. devicemapper 
-
+```
 The correct answer is:  
 
 ✅ **B. vieux/sshfs**  
