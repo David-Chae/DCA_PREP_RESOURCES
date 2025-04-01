@@ -1,46 +1,27 @@
-## Which flag in Docker Inspect enables us to return particular fields?
-A. --filter  
-B.--field-limit  
-C.--pretty  
-D.--format  
+## Which of the following are insecure ways to allow a Docker client to authenticate against a registry that uses a self-signed certificate? (Choose two) 
+1. Under /etc/docker/certs.d/, we add the self-signed certificate as a trusted registry certificate. 
+2. We add the registry to insecure-registries in /etc/docker/daemon.json. 
+3. We pass the --insecure-registry flag to the Docker daemon. 
+4. We use the --skip-tls flag with the docker login.
 
-The correct answer is:  
+The **insecure** ways to allow a Docker client to authenticate against a registry that uses a self-signed certificate are:  
 
-✔ **A. `--filter`**
+✅ **We add the registry to `insecure-registries` in `/etc/docker/daemon.json`**  
+✅ **We pass the `--insecure-registry` flag to the Docker daemon**  
 
----
+### **Explanation:**  
+- **Adding the registry to `insecure-registries`** or using `--insecure-registry` tells Docker **to ignore certificate validation** entirely.  
+- This means Docker will **accept any certificate, even if it is untrusted or compromised**, making it **vulnerable to MITM (Man-in-the-Middle) attacks**.  
 
-### **Explanation:**
+### **Why the Other Options Are Secure:**  
+❌ **Under `/etc/docker/certs.d/`, we add the self-signed certificate as a trusted registry certificate.**  
+- This is the **correct and secure** way to handle a self-signed certificate.  
+- It explicitly tells Docker to **trust the specific certificate** rather than disabling security altogether.  
 
-#### **1️⃣ Option A (`--filter`)**  
-- The **`--filter`** flag is used to return particular fields or filter out certain information when using `docker inspect`.  
-- This flag is typically used to filter results based on specific criteria (e.g., filtering containers by status, image, etc.).  
-- **Example usage:**  
-  ```bash
-  docker inspect --filter "status=running" container_name_or_id
-  ```
+❌ **We use the `--skip-tls` flag with `docker login`.**  
+- No such flag exists in Docker.  
+- If it did, it would be insecure, but this is a **wrong option** in this context.  
 
----
-
-#### **2️⃣ Option D (`--format`)**  
-- The **`--format`** flag allows you to format the output using Go templating to display specific fields in a custom format.  
-- It is used to display selected fields rather than filtering, which is more flexible in extracting data from the inspection output.  
-- **Example usage:**  
-  ```bash
-  docker inspect --format '{{.Config.Image}}' container_name_or_id
-  ```
-
----
-
-#### **Why the other options are incorrect?**
-
-- **❌ Option B (`--field-limit`)**  
-  - This is **not a valid flag** in `docker inspect`.
-
-- **❌ Option C (`--pretty`)**  
-  - **`--pretty`** is **not a valid flag** in `docker inspect`.
-
----
-
-### **Final Answer:**  
-✔ **A. `--filter`**
+### **Final Answer (Insecure Methods):**  
+✅ **Adding the registry to `insecure-registries` in `/etc/docker/daemon.json`**  
+✅ **Using the `--insecure-registry` flag**
