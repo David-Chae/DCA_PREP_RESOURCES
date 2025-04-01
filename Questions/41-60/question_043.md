@@ -1,29 +1,21 @@
-## We have seven Swarm manager nodes in total. How should we distribute them across just three availability zones? 
-1. 5-1-1
-2. 6-1-0
-3. 4-2-1
-4. 3-2-2
+## 43. Which of the following statements about docker images is correct?
+```sh
+A. There can only be one FROM directive per Dockerfile.
+B. Only those layers (and any subsequent layers) that have changed since the last build are built.
+C. Docker Compose files are used to create Docker images.
+D. Every time the docker build is run, every image layer is rebuilt,
+```
 
-The best way to distribute **seven Swarm manager nodes** across **three availability zones** is:  
+The correct answer is:  
 
-✅ **3-2-2**  
+**B. Only those layers (and any subsequent layers) that have changed since the last build are built.**  
 
-### **Explanation:**  
-- **Docker Swarm uses Raft consensus**, which requires a majority (quorum) of managers to be available for the cluster to function.  
-- With **seven** managers, a majority means at least **four nodes must be available** to maintain quorum.  
-- **Distributing nodes as 3-2-2** ensures that losing a single availability zone **does not bring down the cluster** because:  
-  - If **one AZ fails**, at least **five nodes remain**, maintaining a quorum.  
-  - If **two AZs fail**, at most **three nodes remain**, breaking quorum, but that would happen with any distribution.  
+### Explanation:  
+Docker uses a **layered caching mechanism** to optimize builds. When building an image, Docker checks if each layer has changed:  
+- If a layer remains unchanged, Docker reuses the cached version.  
+- If a layer changes, that layer and all subsequent layers must be rebuilt.  
 
-### **Why the Other Options Are Less Optimal:**  
-❌ **5-1-1:**  
-- If the AZ with **five nodes** fails, only **two nodes remain**, which is **not enough for a quorum** (minimum needed: 4).  
-
-❌ **6-1-0:**  
-- The AZ with **six nodes** is a **single point of failure**—if it goes down, only **one node remains**, and the cluster **fails**.  
-
-❌ **4-2-1:**  
-- Better than **5-1-1**, but still risky. If the **zone with four nodes** fails, only **three remain**, which is **not enough for quorum**.  
-
-### **Conclusion:**  
-✅ **3-2-2** is the best distribution to maintain high availability and resilience.
+### Why not the others?  
+- **A**: Incorrect. A `Dockerfile` can have **multiple `FROM` directives**, especially in **multi-stage builds**.  
+- **C**: Incorrect. **Docker Compose** is used for defining and running multi-container applications, but it does **not** build Docker images.  
+- **D**: Incorrect. Docker **does not rebuild every layer** every time. It **uses caching** to avoid rebuilding unchanged layers.
