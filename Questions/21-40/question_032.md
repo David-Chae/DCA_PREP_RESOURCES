@@ -1,33 +1,45 @@
-## What command will help us delete my-service and all its tasks? 
-1. docker service rm --all my-service 
-2. docker service rm my-service 
-3. docker service rm my-service --cascade 
-4. docker service rm --my-service
+## Which commands would we use to view a container's logs? 
+1. sudo journalctl -u docker
+2. docker logs <container>
+3. docker service logs <service>
+4. docker container get-log
 
-The correct command is:  
+The correct answers are:
 
-**`docker service rm my-service`**  
+✅ **`docker logs <container>`**
+
+✅ **`docker service logs <service>`**
+
+---
 
 ### **Explanation:**
-- The **`docker service rm`** command is used to **remove a service** from a Docker Swarm.
-- **`my-service`** is the name of the service you want to delete.
-- When a service is removed, **all associated tasks (containers) are also removed automatically**.
 
-### **Why the Other Options Are Incorrect:**
-1. **`docker service rm --all my-service`**  
-   - **Incorrect syntax**: `--all` is not a valid flag for `docker service rm`.
-   - To remove **all services**, you would need to **list them first** and use a loop or command like:  
+1. **`docker logs <container>`**:
+   - This command is used to view the logs of a **specific container**. You replace `<container>` with the container's name or ID.
+   - Example:
      ```sh
-     docker service rm $(docker service ls -q)
+     docker logs my-container
      ```
 
-2. **`docker service rm my-service --cascade`**  
-   - **Invalid flag**: Docker **does not have a `--cascade` option** for `docker service rm`.
-   - Removing a service **already deletes its tasks**.
+2. **`docker service logs <service>`**:
+   - This command is used to view the logs for a **service** in Docker Swarm. It allows you to see logs for all the tasks that make up the service.
+   - Example:
+     ```sh
+     docker service logs my-service
+     ```
 
-3. **`docker service rm --my-service`**  
-   - **Incorrect syntax**: The `--my-service` flag is **not a valid argument**.
-   - The correct syntax is simply: **`docker service rm <service_name>`**.
+---
 
-### **Final Answer:**  
-✅ **`docker service rm my-service`**
+### **Why the Other Options Are Incorrect:**
+
+❌ **`sudo journalctl -u docker`**:  
+- This command is used to view **system logs** related to the Docker daemon, not the logs of a specific container or service. It's typically used for troubleshooting Docker daemon-related issues, not for container logs.
+
+❌ **`docker container get-log`**:  
+- This is **not a valid Docker command**. The correct command for viewing logs is `docker logs <container>`, not `docker container get-log`.
+
+---
+
+### **Summary:**
+
+To view a container's logs, use `docker logs <container>`. For service logs in Docker Swarm, use `docker service logs <service>`.
