@@ -1,31 +1,58 @@
-## What procedure should we follow to upgrade the Docker engine on an Ubuntu server? 
-1. Remove all containers, stop Docker, and then install the newer version. 
-2. Stop Docker, then install the packages with the newer version. 
-3. Stop Docker, remove the packages, and then reinstall the packages with a newer version. 
-4. Install newer versions of the docker-ce and docker-ce-cli packages.
+## How should we permit users to interact with the Docker daemon on a machine without giving them unnecessary additional access? 
+```sh
+A. Give the user the root user credentials to run the docker commands as root. 
+B. Give the user the ability to run docker commands with sudo. 
+C. Add the user to the docker group. 
+D. Have them log in as the docker user. 
+```
+The correct answer is:  
 
-The correct procedure to upgrade the Docker engine on an Ubuntu server is:
+✅ **"Add the user to the docker group."**  
 
-**Install newer versions of the `docker-ce` and `docker-ce-cli` packages.**
+---
 
-### **Steps:**
-1. **Update the apt package index:**
-   ```bash
-   sudo apt-get update
+### **Explanation:**  
+In Docker, the **Docker daemon (`dockerd`)** runs as **root**, but allowing every user to run commands as root is a security risk. The best way to **grant controlled access** to Docker is by **adding the user to the `docker` group**.  
+
+#### **Steps to Add a User to the Docker Group:**  
+1. **Check if the `docker` group exists:**  
+   ```sh
+   cat /etc/group | grep docker
+   ```
+   If it doesn't exist, create it:  
+   ```sh
+   sudo groupadd docker
    ```
 
-2. **Install the latest version of Docker:**
-   ```bash
-   sudo apt-get install --only-upgrade docker-ce docker-ce-cli
+2. **Add the user to the `docker` group:**  
+   ```sh
+   sudo usermod -aG docker username
    ```
 
-   This will upgrade the Docker Engine and CLI to the latest version available in the Docker repository.
-
-3. **Restart Docker service:**
-   ```bash
-   sudo systemctl restart docker
+3. **Apply the group change (log out and log back in, or run):**  
+   ```sh
+   newgrp docker
    ```
 
-### **Explanation:**
-- Docker packages (`docker-ce` and `docker-ce-cli`) can be directly upgraded by running the above commands without needing to remove containers, stop Docker, or reinstall packages.
-- Docker's package management system ensures that the newer versions are installed when upgrading using the `apt` package manager on Ubuntu.
+4. **Verify that the user can run Docker commands without `sudo`:**  
+   ```sh
+   docker ps
+   ```
+
+---
+
+### **Why the Other Options Are Incorrect?**  
+
+❌ **"Give the user the root user credentials to run the docker commands as root."**  
+- **Bad practice!** Giving out **root credentials** exposes the entire system to security risks.  
+
+❌ **"Give the user the ability to run docker commands with sudo."**  
+- While using **`sudo`** works, it **requires entering a password** each time, which is inconvenient.  
+
+❌ **"Have them log in as the docker user."**  
+- There is **no default `docker` user** in Linux. Docker runs as a **daemon**, not as a separate user account.  
+
+---
+
+### **Summary:**  
+To safely grant users access to Docker **without giving them unnecessary privileges**, **add them to the `docker` group**.
