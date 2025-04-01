@@ -2,8 +2,7 @@
 ```sh
 A. Tracy can back up the registry.
 B. Tracy can make the repository private
-C. Tracy can remove the team's access to the
-registry.
+C. Tracy can remove the team's access to the registry.
 D. Tracy can mark the repository as immutable
 ```
 
