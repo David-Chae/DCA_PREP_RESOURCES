@@ -1,27 +1,24 @@
-## Which of the following are insecure ways to allow a Docker client to authenticate against a registry that uses a self-signed certificate? (Choose two) 
-1. Under /etc/docker/certs.d/, we add the self-signed certificate as a trusted registry certificate. 
-2. We add the registry to insecure-registries in /etc/docker/daemon.json. 
-3. We pass the --insecure-registry flag to the Docker daemon. 
-4. We use the --skip-tls flag with the docker login.
+## What type of data exists in a container's writable file system layer? 
+1. A snapshot of the data in its current state would reside in the layer. 
+2. It would be only the data from the base image. 
+3. The data would consist of only container logs. 
+4. The data would consist of only changes from the previous layer made by the container.
 
-The **insecure** ways to allow a Docker client to authenticate against a registry that uses a self-signed certificate are:  
+The correct answer is:
 
-✅ **We add the registry to `insecure-registries` in `/etc/docker/daemon.json`**  
-✅ **We pass the `--insecure-registry` flag to the Docker daemon**  
+**The data would consist of only changes from the previous layer made by the container.**
 
-### **Explanation:**  
-- **Adding the registry to `insecure-registries`** or using `--insecure-registry` tells Docker **to ignore certificate validation** entirely.  
-- This means Docker will **accept any certificate, even if it is untrusted or compromised**, making it **vulnerable to MITM (Man-in-the-Middle) attacks**.  
+### **Explanation:**
+- In Docker, when a container is created from an image, it uses a **writable layer** on top of the read-only layers of the image. Any changes made to the container, such as modified files, newly created files, or removed files, are stored in this writable layer.
+- The writable layer only contains the changes made by the container since it was created. This layer is distinct from the base image, which is read-only and provides the initial filesystem state.
 
-### **Why the Other Options Are Secure:**  
-❌ **Under `/etc/docker/certs.d/`, we add the self-signed certificate as a trusted registry certificate.**  
-- This is the **correct and secure** way to handle a self-signed certificate.  
-- It explicitly tells Docker to **trust the specific certificate** rather than disabling security altogether.  
+### **Why the Other Options Are Incorrect:**
+1. **A snapshot of the data in its current state would reside in the layer**:
+   - This is incorrect because the writable layer only tracks changes (modifications, additions, deletions), not the entire state of the filesystem.
 
-❌ **We use the `--skip-tls` flag with `docker login`.**  
-- No such flag exists in Docker.  
-- If it did, it would be insecure, but this is a **wrong option** in this context.  
+2. **It would be only the data from the base image**:
+   - The base image provides the read-only layers that the container uses, but the writable layer contains the changes made after the container is started. The writable layer is not the same as the base image data.
 
-### **Final Answer (Insecure Methods):**  
-✅ **Adding the registry to `insecure-registries` in `/etc/docker/daemon.json`**  
-✅ **Using the `--insecure-registry` flag**
+3. **The data would consist of only container logs**:
+   - This is not correct because the writable layer can contain more than just logs. It includes any file system changes made by the container, not just logs.
+ 
