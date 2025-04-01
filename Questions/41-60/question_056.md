@@ -1,52 +1,19 @@
-## The /my/path directory on the host can be mounted to a container using which of the following commands? (Select two)?
-A. docker run -v /my/path:/tmp nginx  
-B. docker run --mount source=new-volume,hostpath=/my/path,destination=/tmp nginx  
-C. docker run --mount source=/my/path,destination=/tmp nginx  
-D. docker run --mount source=new-volume,destination=/tmp nginx  
+## 56. In terms of establishing a high level of availability, what is the benefit of having more manager nodes present in a swarm?
+```sh
+A. It would allow for more worker nodes to be present.
+B. It would help bolster fault-tolerance
+C. The cluster would be easier to set up
+D. It would result in being more efficient with resources.
+```
 
-The correct answers are:  
+The correct answer is:  
 
-✔ **A. `docker run -v /my/path:/tmp nginx`**  
-✔ **D. `docker run --mount source=new-volume,destination=/tmp nginx`**  
+**B. It would help bolster fault-tolerance**  
 
----
+### Explanation:  
+In Docker Swarm, manager nodes are responsible for the orchestration and decision-making of the cluster. Having **more manager nodes** improves **fault tolerance** because the swarm can tolerate the failure of one or more manager nodes without losing the ability to manage the cluster. With an odd number of managers, the swarm can also ensure a quorum for making decisions (i.e., maintaining cluster consistency and avoiding split-brain scenarios).
 
-### **Explanation:**  
-
-#### **1️⃣ Option A (`-v` flag) → Correct ✅**  
-- The **`-v` (volume) option** is a legacy method to mount directories.  
-- **Syntax:** `-v <host-path>:<container-path>`  
-- In this case, `/my/path` (host) is mounted to `/tmp` (container).  
-- **Works correctly** and is still widely used.
-
----
-
-#### **2️⃣ Option D (`--mount` with a named volume) → Correct ✅**  
-- **`--mount`** is the modern method, offering more options and clarity.  
-- `source=new-volume` refers to a **named volume**, not a host directory.  
-- `destination=/tmp` mounts it inside the container.  
-- This is **correct for using a named volume**, but it does not map `/my/path`.  
-
----
-
-### **Why are the other options incorrect?**  
-
-#### **❌ Option B (`--mount` with `hostpath` instead of `type=bind`)**  
-- **Incorrect Syntax:** `hostpath=/my/path` is **not a valid parameter**.  
-- Correct syntax should be:  
-  ```bash
-  docker run --mount type=bind,source=/my/path,target=/tmp nginx
-  ```  
-
-#### **❌ Option C (`--mount` with `source=/my/path`)**  
-- **Incorrect usage:** `source=/my/path` does not work for **host directories** in `--mount`.  
-- `--mount` requires `type=bind` for **binding host directories**, so the correct format is:  
-  ```bash
-  docker run --mount type=bind,source=/my/path,target=/tmp nginx
-  ```  
-
----
-
-### **Final Answer:**  
-✔ **A. `docker run -v /my/path:/tmp nginx`** (valid legacy syntax)  
-✔ **D. `docker run --mount source=new-volume,destination=/tmp nginx`** (valid named volume syntax)  
+### Why not the others?  
+- **A**: More manager nodes do not directly affect the ability to add more worker nodes. Worker nodes are typically added based on capacity, not the number of manager nodes.  
+- **C**: Adding more manager nodes actually makes the cluster more complex to set up, not easier.  
+- **D**: Having more manager nodes doesn't necessarily make the system more efficient with resources. It actually consumes more resources because of the overhead of running multiple manager nodes.
