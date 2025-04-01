@@ -1,9 +1,10 @@
 ## Which of the following statements about Docker image vulnerability scanning is accurate? 
+```sh
 1. Image vulnerability scanning inspects images before they are running on a host.
 2. Docker Enterprise Edition (EE) will prevent you from running images that contain vulnerabilities.
 3. We need a Docker Enterprise Edition (EE) license to scan images within our registry.
 4. Docker Trusted Registry (DTR) will scan all images by default.
-
+```
 
 The correct answer is:  
 
