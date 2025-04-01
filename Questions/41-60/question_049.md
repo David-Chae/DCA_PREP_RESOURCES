@@ -1,31 +1,21 @@
-## What does the EXPOSE directive do? 
-1. It records ports meant to be published when a container is running. 
-2. When you run a container, it automatically publishes ports. 
-3. It allows a container's port to be accessed from the outside. 
-4. It makes the container listen to a specific port.
+## 49. Which of the following statements about the none network driver is accurate?
+```sh
+A. The none driver implements communication between containers.
+B. The none driver implements sandboxes
+C. The none driver does not provide network isolation between containers.
+D. The none driver is the default when no driver is selected
+```
 
 The correct answer is:  
 
-**"It records ports meant to be published when a container is running."**  
+**B. The none driver implements sandboxes**  
 
-### **Explanation:**  
-- The **`EXPOSE`** directive in a Dockerfile **does not** automatically publish ports or allow external access.  
-- Instead, it is a **documentation feature** that **informs users** and other tools about which ports are intended to be exposed for network communication.  
-- To actually **publish** the port and allow external access, you need to use the `-p` flag with `docker run`, such as:  
-  ```
-  docker run -p 8080:80 my-container
-  ```
-- The **`EXPOSE`** directive is useful when defining images because it hints at the intended network behavior but does not enforce it.  
+### Explanation:  
+The **`none` network driver** essentially disables networking for containers and isolates them from any network stack. This is often used when you want to completely control networking externally or don't want the container to have any network capabilities. It's useful for scenarios where the container doesn't need to communicate with others or the outside world. 
 
-### **Why the other options are incorrect?**
-1. **"When you run a container, it automatically publishes ports."** ❌  
-   - Incorrect because **`EXPOSE`** does not publish ports automatically; you must use `-p` or `--publish` when running the container.  
+- It creates a **network sandbox** for the container but doesn't allow network communication.
 
-2. **"It allows a container's port to be accessed from the outside."** ❌  
-   - Incorrect because **`EXPOSE`** only documents the intended port; external access requires explicit port publishing.  
-
-3. **"It makes the container listen to a specific port."** ❌  
-   - Incorrect because a container listens on a port only if the application inside it is configured to do so. **`EXPOSE`** does not force this behavior.  
-
-### **Final Answer:**  
-✔ **"It records ports meant to be published when a container is running."**
+### Why not the others?  
+- **A**: The `none` driver does not implement communication between containers; it disables networking entirely.  
+- **C**: The `none` driver does provide isolation in the sense that it prevents networking entirely, not enabling communication between containers.  
+- **D**: The **default driver** is typically `bridge`, not `none`, unless specified otherwise.
