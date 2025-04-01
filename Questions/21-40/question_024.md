@@ -1,38 +1,27 @@
-## A Kubernetes Pod uses a PersistentVolumeClaim for storage. The Pod is deleted, along with the PersistentVolumeClaim. Which configurations would allow the PersistentVolume to be re-used without manual intervention? 
-1. A Recycle reclaimPolicy on the PersistentVolumeClaim.
-2. A Delete reclaimPolicy on the PeristentVolume.
-3. A Retain reclaimPolicy on the PeristentVolume.
-4. A Recycle reclaimPolicy on the PersistentVolume.
+## 24. Tracy has a Docker Trusted Registry (DTR), and her development team mistakenly overwrote images in a repository by pushing a different image with an existing tag. How can she prevent this from happening?
+```sh
+A. Tracy can back up the registry.
+B. Tracy can make the repository private
+C. Tracy can remove the team's access to the
+registry.
+D. Tracy can mark the repository as immutable
+```
 
-The correct answer is:
+Let's analyze each option for preventing accidental overwrites of images in a Docker Trusted Registry (DTR):
 
-✅ **A Retain reclaimPolicy on the PersistentVolume.**
+### **A. Tracy can back up the registry.**  
+**False** – While backing up the registry is a good practice for disaster recovery, it does not prevent images from being accidentally overwritten in the first place. A backup would allow recovery after the fact but does not provide proactive protection.
 
----
+### **B. Tracy can make the repository private.**  
+**False** – Making a repository private only restricts who can access it, but it does not prevent users who already have push access from overwriting images. The issue here is accidental overwrites, not unauthorized access.
 
-### **Explanation:**
+### **C. Tracy can remove the team's access to the registry.**  
+**False** – Completely removing access is not a practical solution because the development team still needs to push images. The goal is to prevent overwrites, not block all contributions.
 
-In Kubernetes, **PersistentVolumes (PVs)** are resources that provide persistent storage, and **PersistentVolumeClaims (PVCs)** are requests for that storage. When a Pod and its PVC are deleted, the fate of the associated PV depends on the **reclaimPolicy** of the PV.
+### **D. Tracy can mark the repository as immutable.**  
+**True** – Marking a repository as **immutable** prevents tags from being overwritten. Once an image is pushed with a tag, no one can overwrite that tag with a new image, effectively preventing the accidental overwriting issue described in the question.
 
-- **`Retain` reclaimPolicy**:
-  - The **`Retain`** policy ensures that when a PVC is deleted, the corresponding PV is not automatically deleted. Instead, the PV is "retained" and the data within it persists. The PV can then be manually reused by creating a new PVC or reused without manual intervention if the volume is correctly configured to be made available again.
-  - This allows the PersistentVolume to be reused without manual intervention.
+### **Conclusion:**  
+- **Correct Answer:** **D. Tracy can mark the repository as immutable.**  
+- **Other options are incorrect** because they either do not address the problem directly or are impractical.
 
----
-
-### **Why the Other Options Are Incorrect:**
-
-❌ **"A Recycle reclaimPolicy on the PersistentVolumeClaim."**
-- There is **no** `Recycle` reclaim policy for PVCs in Kubernetes. The `Recycle` policy was deprecated and removed in newer versions of Kubernetes, so it is not applicable.
-
-❌ **"A Delete reclaimPolicy on the PersistentVolume."**
-- The **`Delete`** reclaim policy means that when the PVC is deleted, the associated PV is also deleted, and its data is lost. This is the opposite of what you need if you want to re-use the PersistentVolume.
-
-❌ **"A Recycle reclaimPolicy on the PersistentVolume."**
-- The **`Recycle`** reclaim policy is deprecated and was removed in Kubernetes 1.14. Even when it was available, it would only delete the data and reuse the volume, which is not ideal for reusing a volume without manual intervention. The correct reclaim policy for reusing a volume is `Retain`.
-
----
-
-### **Summary:**
-
-To allow a **PersistentVolume** to be re-used without manual intervention after the deletion of a **Pod** and its **PersistentVolumeClaim**, you should configure the **PersistentVolume** with a **`Retain` reclaimPolicy**. This ensures the volume persists and can be reused as needed.
