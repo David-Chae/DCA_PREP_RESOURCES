@@ -1,24 +1,49 @@
-## Sara wants to run a container using the busybox image and pass a custom command to the container: echo Docker is great! Which of the following commands will accomplish this? 
-1. docker run busybox -cmd echo Docker is great! 
-2. docker run busybox ["echo", "Docker is great!"] 
-3. docker run busybox -c echo Docker is great! 
-4. docker run busybox echo Docker is great!
+## Which approach is the most secure for a Docker client to authenticate with a registry that employs a self-signed certificate? 
+1. We add the registry to the insecure-registries list in /etc/docker/daemon.json. 
+2. docker login --accept-cert 
+3. docker login --trust-ca 
+4. Under /etc/docker/certs.d/, we add the self-signed certificate as a trusted registry certificate.
 
-The correct command is:
+The most secure approach is:
 
-**`docker run busybox echo Docker is great!`**
+✅ **"Under /etc/docker/certs.d/, we add the self-signed certificate as a trusted registry certificate."**
 
-### **Explanation:**
-- In this command, `docker run busybox` starts a container using the `busybox` image.
-- The `echo Docker is great!` part is the command that is passed to the container, and `echo` is the default executable for the `busybox` image. The rest of the text, `"Docker is great!"`, is the argument passed to the `echo` command.
+---
 
-### **Why the Other Options Are Incorrect:**
-1. **`docker run busybox -cmd echo Docker is great!`**:
-   - The `-cmd` flag is not a valid option for the `docker run` command. You should pass the command directly after the image name.
+### **Explanation:**  
+To securely authenticate with a Docker registry that uses a self-signed certificate, the most secure approach is to **explicitly add the self-signed certificate** to the list of trusted certificates. This ensures that Docker clients can securely communicate with the registry while avoiding insecure communication or bypassing SSL verification.
 
-2. **`docker run busybox ["echo", "Docker is great!"]`**:
-   - This syntax would be correct if the command were specified in the `CMD` or `ENTRYPOINT` instruction of a Dockerfile, but not for running it directly via `docker run`. The correct way to pass commands is to do it as arguments, not in array format.
+1. **Add the self-signed certificate** to the **`/etc/docker/certs.d/`** directory:
+   - Place the self-signed certificate (e.g., `myregistry.crt`) in the `/etc/docker/certs.d/` directory on the Docker client.
+   - The path should be `/etc/docker/certs.d/<registry-domain>/ca.crt`, where `<registry-domain>` is the domain of your registry.
+   
+   Example:
+   ```sh
+   sudo mkdir -p /etc/docker/certs.d/myregistry.com
+   sudo cp myregistry.crt /etc/docker/certs.d/myregistry.com/ca.crt
+   ```
 
-3. **`docker run busybox -c echo Docker is great!`**:
-   - The `-c` flag is used in shell commands (e.g., `sh -c`), but it's not necessary for this case. The `echo` command can be passed directly without the need for `-c`.
+2. **Restart Docker** to apply the changes:
+   ```sh
+   sudo systemctl restart docker
+   ```
 
+This method ensures that Docker treats the self-signed certificate as **trusted** and establishes secure communication without bypassing security.
+
+---
+
+### **Why the Other Options Are Not Recommended:**  
+
+❌ **"We add the registry to the insecure-registries list in /etc/docker/daemon.json."**  
+- Adding a registry to the **`insecure-registries`** list allows Docker to communicate with the registry **without certificate validation**, which is **insecure** and should be avoided, especially with self-signed certificates.
+
+❌ **"docker login --accept-cert"**  
+- Docker doesn't have an `--accept-cert` flag, and this approach is **not a standard or secure way** of accepting certificates.
+
+❌ **"docker login --trust-ca"**  
+- Similarly, there is **no `--trust-ca` flag** for the `docker login` command. This is not a valid or recommended option.
+
+---
+
+### **Summary:**  
+The most secure method for Docker to authenticate with a registry using a self-signed certificate is to **add the certificate as a trusted certificate** under `/etc/docker/certs.d/`.
