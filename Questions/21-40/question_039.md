@@ -1,25 +1,24 @@
-## What Linux feature does Docker use to allow containers to listen on ports lower than 1024 without running as root on the host? 
-1. Linux jails
-2. Capabilities
-3. Namespaces
-4. Control Groups
+## What tool should we use to manage a multi-container application as a unit on a single Docker host? 
+1. We should use Docker Compose. 
+2. We should execute docker-run. 
+3. We should use a Docker stack. 
+4. We should use Docker Swarm.
 
-The correct answer is:  
+The correct tool to manage a multi-container application as a unit on a single Docker host is:
 
-✅ **Capabilities**  
+**We should use Docker Compose.**
 
-### **Explanation:**  
-- In Linux, **ports lower than 1024** (known as **privileged ports**) usually require **root privileges** to bind.  
-- Docker **avoids running containers as root** while still allowing them to bind to privileged ports using **Linux capabilities**.  
-- Specifically, **Docker grants the `CAP_NET_BIND_SERVICE` capability** to containers by default, allowing them to bind to ports **below 1024** without requiring full root privileges.  
+### **Explanation:**
+- **Docker Compose** is specifically designed to define and manage multi-container Docker applications. It allows you to define services, networks, and volumes in a `docker-compose.yml` file and then bring up the application with a single command (`docker-compose up`). It is typically used for managing containers on a single Docker host.
 
-### **Why the Other Options Are Incorrect:**  
-❌ **Linux jails**  
-- **Linux jails do not exist**—this is a FreeBSD feature, not Linux.  
+### **Why the Other Options Are Incorrect:**
+1. **We should execute docker-run**:
+   - `docker run` is used to run individual containers but not to manage multiple containers as a unit.
 
-❌ **Namespaces**  
-- **Namespaces** isolate resources (e.g., network, processes, users) but **do not grant fine-grained permissions like binding to privileged ports**.  
-- **Namespaces alone wouldn't let a container bind to ports < 1024 without root.**  
+2. **We should use a Docker stack**:
+   - Docker stacks are used in Docker Swarm mode to manage multi-container applications across multiple nodes, not for single-host deployments.
 
-### **Final Answer:**  
-✅ **Capabilities** (specifically `CAP_NET_BIND_SERVICE`)
+3. **We should use Docker Swarm**:
+   - Docker Swarm is used for orchestrating and managing clusters of Docker nodes, not just single Docker hosts.
+
+Therefore, for managing multi-container applications on a single host, **Docker Compose** is the most appropriate tool.
