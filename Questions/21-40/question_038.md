@@ -1,33 +1,23 @@
-## Dave needs Docker to use a custom stop signal for halting his software. How can he build an image instructing Docker on which stop signal to use? 
-1. Dave should locate the process and kill it manually. 
-2. Dave should use the STOPSIGNAL directive. 
-3. Dave should use the docker stop command. 
-4. Dave should use the STOP directive.
+## Sara wants to run a container using the busybox image and pass a custom command to the container: echo Docker is great! Which of the following commands will accomplish this? 
+1. docker run busybox -cmd echo Docker is great! 
+2. docker run busybox ["echo", "Docker is great!"] 
+3. docker run busybox -c echo Docker is great! 
+4. docker run busybox echo Docker is great!
 
-The correct answer is:  
+The correct command is:
 
-✅ **Dave should use the `STOPSIGNAL` directive.**  
+**`docker run busybox echo Docker is great!`**
 
-### **Explanation:**  
-- In a **Dockerfile**, the `STOPSIGNAL` directive **specifies which system signal** should be sent to the container's main process when stopping the container.  
-- By default, Docker sends **SIGTERM** to stop a container, but some applications may need a different signal, like **SIGKILL** or **SIGHUP**.  
-- Example usage in a **Dockerfile**:  
-  ```dockerfile
-  FROM ubuntu
-  STOPSIGNAL SIGQUIT
-  CMD ["my-app"]
-  ```  
-  - This ensures that when `docker stop` is used, **SIGQUIT** is sent instead of the default **SIGTERM**.  
+### **Explanation:**
+- In this command, `docker run busybox` starts a container using the `busybox` image.
+- The `echo Docker is great!` part is the command that is passed to the container, and `echo` is the default executable for the `busybox` image. The rest of the text, `"Docker is great!"`, is the argument passed to the `echo` command.
 
-### **Why the Other Options Are Incorrect:**  
-❌ **"Dave should locate the process and kill it manually."**  
-- This is inefficient and **not automated**. Docker provides built-in ways to handle process termination.  
+### **Why the Other Options Are Incorrect:**
+1. **`docker run busybox -cmd echo Docker is great!`**:
+   - The `-cmd` flag is not a valid option for the `docker run` command. You should pass the command directly after the image name.
 
-❌ **"Dave should use the `docker stop` command."**  
-- `docker stop` sends the stop signal but does **not define** which signal should be used. The `STOPSIGNAL` directive defines it **inside the image**.  
+2. **`docker run busybox ["echo", "Docker is great!"]`**:
+   - This syntax would be correct if the command were specified in the `CMD` or `ENTRYPOINT` instruction of a Dockerfile, but not for running it directly via `docker run`. The correct way to pass commands is to do it as arguments, not in array format.
 
-❌ **"Dave should use the `STOP` directive."**  
-- There is **no `STOP` directive** in Docker. The correct directive is `STOPSIGNAL`.  
-
-### **Final Answer:**  
-✅ **"Dave should use the `STOPSIGNAL` directive."**
+3. **`docker run busybox -c echo Docker is great!`**:
+   - The `-c` flag is used in shell commands (e.g., `sh -c`), but it's not necessary for this case. The `echo` command can be passed directly without the need for `-c`.
