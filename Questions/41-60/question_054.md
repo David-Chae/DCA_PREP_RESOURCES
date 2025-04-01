@@ -1,40 +1,35 @@
-## When building a volume alongside a service that uses docker service create, what flag should we use to define a custom volume driver?
-A. --volumedriver <driver>  
-B.--driver <driver>  
-C. --volume-driver <driver>  
-D. --mount volume-driver=<driver>  
+## Dave needs Docker to use a custom stop signal for halting his software. How can he build an image instructing Docker on which stop signal to use? 
+```sh
+1. Dave should locate the process and kill it manually. 
+2. Dave should use the STOPSIGNAL directive. 
+3. Dave should use the docker stop command. 
+4. Dave should use the STOP directive.
+```
 
 The correct answer is:  
 
-✔ **C. `--volume-driver <driver>`**  
-
----
+✅ **Dave should use the `STOPSIGNAL` directive.**  
 
 ### **Explanation:**  
-When creating a service with `docker service create`, you can specify a **custom volume driver** using the `--volume-driver` flag. This tells Docker which storage driver to use when managing volumes for the service.  
+- In a **Dockerfile**, the `STOPSIGNAL` directive **specifies which system signal** should be sent to the container's main process when stopping the container.  
+- By default, Docker sends **SIGTERM** to stop a container, but some applications may need a different signal, like **SIGKILL** or **SIGHUP**.  
+- Example usage in a **Dockerfile**:  
+  ```dockerfile
+  FROM ubuntu
+  STOPSIGNAL SIGQUIT
+  CMD ["my-app"]
+  ```  
+  - This ensures that when `docker stop` is used, **SIGQUIT** is sent instead of the default **SIGTERM**.  
 
-Example:  
-```sh
-docker service create --name my-service \
-  --volume-driver my-custom-driver \
-  --mount source=my-volume,target=/app \
-  nginx
-```
+### **Why the Other Options Are Incorrect:**  
+❌ **"Dave should locate the process and kill it manually."**  
+- This is inefficient and **not automated**. Docker provides built-in ways to handle process termination.  
 
----
+❌ **"Dave should use the `docker stop` command."**  
+- `docker stop` sends the stop signal but does **not define** which signal should be used. The `STOPSIGNAL` directive defines it **inside the image**.  
 
-### **Why are the other options incorrect?**  
-
-1. **A. `--volumedriver <driver>`** ❌  
-   - This is **not a valid Docker flag**.  
-
-2. **B. `--driver <driver>`** ❌  
-   - The `--driver` flag is used when creating a **volume** (e.g., `docker volume create --driver`), but **not** when using `docker service create`.  
-
-3. **D. `--mount volume-driver=<driver>`** ❌  
-   - The correct syntax for the `--mount` option does **not** include `volume-driver=...`. Instead, you define the driver separately with `--volume-driver`.  
-
----
+❌ **"Dave should use the `STOP` directive."**  
+- There is **no `STOP` directive** in Docker. The correct directive is `STOPSIGNAL`.  
 
 ### **Final Answer:**  
-✔ **C. `--volume-driver <driver>`**
+✅ **"Dave should use the `STOPSIGNAL` directive."**
