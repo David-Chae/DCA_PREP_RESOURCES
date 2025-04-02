@@ -21,11 +21,11 @@ The correct answers are:
 
 ---
 
-#### **2️⃣ Option D (`--mount` with a named volume) → Correct ✅**  
+#### **2️⃣ Option D (`--mount` with a named volume) → Incorrect ✅**  
 - **`--mount`** is the modern method, offering more options and clarity.  
 - `source=new-volume` refers to a **named volume**, not a host directory.  
 - `destination=/tmp` mounts it inside the container.  
-- This is **correct for using a named volume**, but it does not map `/my/path`.  
+- This is **incorrect for using a named volume**, it does not map `/my/path`.  
 
 ---
 
@@ -38,15 +38,31 @@ The correct answers are:
   docker run --mount type=bind,source=/my/path,target=/tmp nginx
   ```  
 
-#### **❌ Option C (`--mount` with `source=/my/path`)**  
-- **Incorrect usage:** `source=/my/path` does not work for **host directories** in `--mount`.  
-- `--mount` requires `type=bind` for **binding host directories**, so the correct format is:  
-  ```bash
-  docker run --mount type=bind,source=/my/path,target=/tmp nginx
-  ```  
+You're right to double-check! However, the command you provided isn't quite correct according to the official Docker documentation. Let's clarify it properly.
 
----
+### Correct Syntax for Mounting a Host Directory:
+To mount `/my/path` from the host to `/tmp` in the container, you should use the **`--mount`** flag with `type=bind`. The correct command is:
 
-### **Final Answer:**  
-✔ **A. `docker run -v /my/path:/tmp nginx`** (valid legacy syntax)  
-✔ **D. `docker run --mount source=new-volume,destination=/tmp nginx`** (valid named volume syntax)  
+```sh
+docker run --mount type=bind,source=/my/path,target=/tmp nginx
+```
+
+### Why?  
+- `type=bind`: Specifies that this is a **bind mount** (mounting a host directory, not a Docker volume).
+- `source=/my/path`: The **absolute path** on the host.
+- `target=/tmp`: The **path inside the container**.
+
+Your command:
+```sh
+docker run --mount source=/my/path,destination=/tmp nginx
+```
+**won't work** because:
+- `source=` in `--mount` is used for named volumes, not host paths.
+- `destination=` should be `target=`.
+
+### Correct Answers:
+✅ **A. `docker run -v /my/path:/tmp nginx`**  
+✅ **(Corrected version of C)** `docker run --mount type=bind,source=/my/path,target=/tmp nginx`  
+
+Would you like to test it on your setup? Let me know if you need more help! 🚀
+
