@@ -1,4 +1,4 @@
-## 73. What is the name of the Docker feature that allows us to sign images and check the signatures on those images before running them?
+## 73. Which of the following statement is correct?
 ```sh
 A. Only files kept in Docker Hub's cloud can be signed.
 B. A Docker Enterprise Edition (EE) license is necessary for Docker Content Trust.
