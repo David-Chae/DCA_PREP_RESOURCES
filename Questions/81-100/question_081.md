@@ -7,7 +7,6 @@ D. docker run --mount source=new-volume,destination=/tmp nginx
 The correct answers are:  
 
 ✔ **A. `docker run -v /my/path:/tmp nginx`**  
-✔ **D. `docker run --mount source=new-volume,destination=/tmp nginx`**  
 
 ---
 
