@@ -1,8 +1,10 @@
 ## Which command enables us to build a secure overlay network? 
+```sh
 A. docker network create --opt encrypted --driver overlay my-net 
 B. docker network create --opt encrypted my-net 
 C. docker network create --encrypted --driver overlay my-net 
 D. docker network create --secure --driver overlay my-net
+```
 
 The correct answer is:  
 
