@@ -2,7 +2,7 @@
 ```sh
 A. use --dns flag with docker run
 B. Edit the /etc/hosts file on the host
-C. set "dns" in /etc/docker/deamon.json
+C. set "dns" in /etc/docker/daemon.json
 D. use docker config set dns
 ```
 
