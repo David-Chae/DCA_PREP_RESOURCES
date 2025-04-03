@@ -30,7 +30,7 @@ The correct answer is:
   - The correct flag to publish ports is `-p`, not `--port`.
 
 - **B. docker run -d -p 3001:5050 foo**
-  - This reverses the order of the ports. It would publish container port 3001 to host port 5050, but Nancy wanted to publish container port 3001 to host port 5050, so this is not the right command.
+  - This reverses the order of the ports. It would publish container port 5050 to host port 3001, but Nancy wanted to publish container port 3001 to host port 5050, so this is not the right command.
 
 - **D. docker run foo -p 5050:3001**
   - This is incorrect syntax. The correct form is to place `-p 5050:3001` immediately after `docker run` rather than at the end.
