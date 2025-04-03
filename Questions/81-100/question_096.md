@@ -1,9 +1,10 @@
 ## 96. Bob has put up a new Docker server. The overlay2 driver is the server's default, but he prefers to use devicemapper. How could this modification be put into practice?
+```sh
 A. Set devicemapper as the storage-driver in /etc/docker/daemon.json.
 B. In Docker's unit file, modify the dockerd call to include the --storage-driver flag
 C. Change your Docker version.
 D. Reformat the storage disk
-
+```
 The correct answer is:
 
 **A. Set devicemapper as the storage-driver in /etc/docker/daemon.json.**
