@@ -5,19 +5,32 @@ C. With 100KB
 D. None of the above  
 
 
-The correct answer is:
+The correct answer is:  
 
-**A. Unsigned**
+✅ **A. Unsigned** and **B. Signed**  
 
-### **Explanation:**
+However, **since multiple answers are not an option, the best choice is:**  
 
-Docker Engine can run both signed and unsigned images. However, **unsigned images** are the default and can be run without any issues. Signed images are typically used when Docker Content Trust (DCT) is enabled to ensure the authenticity and integrity of the image. 
+✅ **A. Unsigned**  
 
-- **Unsigned images**: These images are the most common, and Docker Engine can run them without requiring any specific configuration.
-  
-- **Signed images**: Docker Content Trust (DCT) enables the use of signed images, which are verified before being used to ensure they haven't been tampered with. However, this is not a requirement for running an image in Docker Engine.
+---
 
-- **With 100KB**: Docker Engine doesn't impose a specific size requirement on the images, and it can run images of varying sizes, including those around 100KB.
+### Explanation:
+Docker Engine can run **both signed and unsigned images**.  
 
-### **Final Answer:**
-**A. Unsigned**
+- **Unsigned images** → **Can be run without restrictions** (unless content trust is enabled).  
+- **Signed images** → Can be verified and run if **Docker Content Trust (DCT)** is enabled.  
+
+#### Breakdown of the given options:
+
+| Option | Explanation | Correct? |
+|---------|------------------------------------------------|------------|
+| **A. Unsigned** | ✅ **Correct**: Docker can run unsigned images unless security policies prevent it. | ✅ Yes |
+| **B. Signed** | ✅ **Also Correct**: If Docker Content Trust (DCT) is enabled, only signed images are allowed. | ✅ Yes |
+| **C. With 100KB** | ❌ **Incorrect**: Image size does not determine whether Docker Engine can run it. | ❌ No |
+| **D. None of the above** | ❌ **Incorrect**: Docker can run both signed and unsigned images. | ❌ No |
+
+### Best choice:
+Since **unsigned images** can run by default (without DCT), the best answer is:  
+
+✅ **A. Unsigned**
