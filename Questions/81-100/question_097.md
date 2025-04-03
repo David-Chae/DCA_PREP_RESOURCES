@@ -1,8 +1,10 @@
 ## 97. Amanda wants to use a Docker container to complete a one-time task. However, this task occasionally fails and needs to be redone. If it fails, Amanda does not want to restart it manually. Which command should she issue to guarantee the container completes theone-time job?
+```sh
 A. docker run --restart failure-only cleanup-job
 B. docker run --recover-failure cleanup-job
 C. docker run --restart unless-stopped cleanup-job
 D. docker run --restart on-failure cleanup-job
+```
 
 The correct answer is:  
 
