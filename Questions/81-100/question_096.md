@@ -32,7 +32,7 @@ Docker allows configuring its storage driver through the `daemon.json` file, whi
   While it is possible to specify the storage driver using the `--storage-driver` flag when starting the Docker daemon, modifying systemd unit files manually is not the recommended approach because changes may be overwritten by updates.
 
 - **C. Change your Docker version**  
-  There is no need to change the Docker version unless the installed version does not support `devicemapper`, which is unlikely since `devicemapper` is a supported storage driver.
+  There is no need to change the Docker version unless the installed version does not support `devicemapper`. Devicemapper became a deprecated storage driver and was removed from Docker Engine from v25.0. To use devicemapper, docker version has to be below v25.0. (https://docs.docker.com/engine/storage/drivers/device-mapper-driver/)
 
 - **D. Reformat the storage disk**  
   Reformatting the disk is unnecessary to change the storage driver. However, if the `devicemapper` driver is using direct-lvm mode, additional disk setup might be required.
