@@ -1,5 +1,5 @@
 ## 99. Which of the following allows users to deploy images confidently?
-A. Deamon  
+A. Daemon  
 B. Virtual network  
 C. Docker Content Trust  
 D. Simulator  
