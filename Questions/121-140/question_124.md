@@ -4,7 +4,7 @@ A. Docker Swarm
 B. Registry  
 C. Container  
 D. Volume driver  
-```sh
+```
 The correct answer is:  
 
 **D. Volume driver**  
