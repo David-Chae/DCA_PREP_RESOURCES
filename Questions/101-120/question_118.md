@@ -20,13 +20,13 @@ If the question is about connecting to a container’s terminal, it would make m
 
 For example, a more suitable question for DOMC might be:
 
-"Which of the following commands allows you to open an interactive terminal session inside a running container?"
-
+## "Which of the following commands allows you to open an interactive terminal session inside a running container?"
+```sh
 A. docker exec -it <container_id> bash
 B. docker rm
 C. docker ps
 D. docker service ls
-
+```
 The correct answer would be A, as docker exec is used to run commands inside a container and open a terminal session.
 
 This revised question better tests knowledge of Docker's interactive features, which would be more aligned with Docker certification-level questions.
