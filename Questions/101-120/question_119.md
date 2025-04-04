@@ -22,4 +22,3 @@ The three types of storage options typically discussed in the context of Docker 
 
 This more precise wording would clarify the focus on **types of storage categories** used by Docker for handling persistent container data, making it much more appropriate for an exam question. 
 
-Thanks again for pointing this out!
