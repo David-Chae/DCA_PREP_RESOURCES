@@ -1,4 +1,5 @@
 ## 117. Which of the following is the default mode?
+### ("When deploying a service in Docker Swarm, which port publishing mode is used by default if no specific mode is specified?")
 A. Ingress  
 B. Egress  
 C. Host  
