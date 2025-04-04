@@ -6,8 +6,10 @@ D. Bind Mount
 
 The correct answer is:  
 
-**D. Bind Mount**  
+**B. npipe Mount**  
 
-- **Bind Mounts** allow communication between the Docker **host** and **container** by mounting a directory from the host into the container.  
-- Changes made in the mounted directory on either the host or the container are reflected in both.  
-- This is useful for sharing configurations, logs, or application files.  
+- For communication between the Docker host and a container, a npipe mount can be utilized. A common use case is to run a third-party tool within a container and use a named pipe to connect to the Docker Engine API.
+
+### Docker Documentation 
+**Named pipes**
+Named pipes can be used for communication between the Docker host and a container. Common use case is to run a third-party tool inside of a container and connect to the Docker Engine API using a named pipe. (REF: https://docs.docker.com/engine/storage/)
