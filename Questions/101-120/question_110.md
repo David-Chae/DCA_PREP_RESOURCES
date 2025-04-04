@@ -10,10 +10,6 @@ The correct answer is:
 
 ### **Explanation:**
 
-Sure! Here's the DOMC (Discrete Option Multiple Choice) style evaluation of the question:
-
-**Question 110: Which of the following is responsible for allocating the IP address and subnet?**
-
 ---
 
 ### **A. IPAM Driver**  
@@ -23,7 +19,7 @@ Sure! Here's the DOMC (Discrete Option Multiple Choice) style evaluation of the 
 ---
 
 ### **B. Network Driver**  
-✅ **True**  
+✅ **False**  
 **Reason:** The **Network Driver** is responsible for managing the overall network connectivity and configuration, including interfacing with the IPAM driver. While it doesn't *directly* allocate IPs, it works **with** the IPAM driver to ensure the container gets the right IP/subnet as part of the network setup. So, in a broader sense, it's involved in the process.
 
 ---
