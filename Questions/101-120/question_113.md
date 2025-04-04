@@ -9,11 +9,16 @@ The correct answer is:
 
 **A. ipvlan**
 
-### **Explanation:**
+**Explanation:**
 
-The **ipvlan** network driver provides complete control over IP addresses by allowing containers to be assigned their own IP addresses within a network, without the need for a virtual network bridge. This driver is often used when you need to manage IP addresses directly for each container, offering flexibility for networking and better integration with external systems.
+- **ipvlan** provides complete control of IP addresses within a network. It is a network driver that allows for multiple containers or virtual interfaces to share the same MAC address but have different IP addresses. This gives greater control over IP address management in a containerized environment.
 
-- **macvlan** also provides containers with their own MAC addresses and allows containers to be treated as physical devices on the network, but **ipvlan** offers more precise control over the IP address allocation.
+The other options:
 
-### **Final Answer:**
-**A. ipvlan**
+- **B. None** is not correct because **ipvlan** does indeed provide control over IP addresses.
+  
+- **C. Bridge** is a common network driver but does not provide as much control over IP addresses. It typically uses the host's network stack to manage IP addresses, relying more on Docker’s or the system's default network settings.
+  
+- **D. macvlan** creates virtual network interfaces with unique MAC addresses but does not directly control IP addresses in the way **ipvlan** does. It typically allows devices to appear on the network as if they are physical devices but does not provide the same level of IP management control as **ipvlan**.
+
+Therefore, **ipvlan** is the correct choice as it allows for precise control over IP addresses in containerized environments.
