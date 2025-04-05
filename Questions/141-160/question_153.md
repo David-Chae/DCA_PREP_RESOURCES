@@ -2,7 +2,7 @@
 A. Separate Dockerfiles are not needed for multi-stage builds.  
 B. Smaller image sizes can be produced with the use of multi-stage constructions.  
 C. Once all stages have been established for a multi-stage build, you cannot choose which step to begin the build process  
-D. You can make images using multi-stage builds for various uses, including development and pro-duction.  
+D. You can make images using multi-stage builds for various uses, including development and production.  
 
 The correct answer is:
 
