@@ -1,5 +1,6 @@
 ## 189. You wish to give a container a configuration file during runtime. Is the given set of Kubernetes tools and steps sufficient?
-## Steps: Convert the configuration file to a configMap object, populate a volume associated with the pod, and mount the file from the volume to the proper container and path.
+- Steps: Convert the configuration file to a configMap object, populate a volume associated with the pod, and mount the file from the volume to the proper container and path.
+
 A. Yes
 B. No
 
