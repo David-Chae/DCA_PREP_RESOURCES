@@ -69,6 +69,60 @@ Should show the manager and worker(s).
 
 ---
 
+
+To join a **manager node** to an existing Docker Swarm cluster, you’ll need to follow these steps:
+
+### 1. **Initialize the Swarm Cluster on the First Manager Node**  
+This step is done once when you set up the **first manager node** (if the cluster doesn't already exist). You’ll use this command to create the initial manager.
+
+```bash
+docker swarm init --advertise-addr <MANAGER-IP>
+```
+
+After running this command, you'll see an output like this:
+
+```
+Swarm initialized: current node is now a manager.
+To add a worker to this swarm, run the following command:
+    docker swarm join --token <WORKER-TOKEN> <MANAGER-IP>:2377
+To add a manager to this swarm, run the following command:
+    docker swarm join --token <MANAGER-TOKEN> <MANAGER-IP>:2377
+```
+
+- The `<MANAGER-IP>` will be your manager node's IP address.
+- The **join token for managers** will be displayed in the output as `<MANAGER-TOKEN>`.
+
+### 2. **Join the New Manager Node to the Cluster**
+
+Now, on your **second manager node** (or any additional manager nodes), you’ll need to run the `docker swarm join` command with the manager join token:
+
+```bash
+docker swarm join --token <MANAGER-TOKEN> <MANAGER-IP>:2377
+```
+
+- `<MANAGER-TOKEN>`: This is the token that you got from the first manager when you initialized the Swarm.
+- `<MANAGER-IP>`: This is the IP address of any current manager node in the Swarm (it doesn't have to be the one you initialized the swarm with, just another manager in the cluster).
+
+### 3. **Verify the Node is Added as a Manager**
+
+To check that the new manager node is successfully added to the Swarm cluster, run the following command on the **first manager node**:
+
+```bash
+docker node ls
+```
+
+You should see the new manager node listed in the output with the role `MANAGER`.
+
+---
+
+### Summary
+
+1. **First Manager Node**: Run `docker swarm init --advertise-addr <MANAGER-IP>` to initialize the cluster.
+2. **Subsequent Manager Nodes**: Run `docker swarm join --token <MANAGER-TOKEN> <MANAGER-IP>:2377` on the new manager node.
+
+Let me know if you'd like more details or test yourself questions on this!
+
+
 ## 🧪 3. **Test Yourself**
 
 Here’s a sample self-test you can try:
