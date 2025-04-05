@@ -1,5 +1,4 @@
-## 151. Bob wants to test a rogue Docker image with a problem that causes it to start consuming memory quickly, resulting in other apps on the system crashing due to memory exhaustion. 
-## Bob wants the container to run with a 512MB maximum memory limit. Which of the following may Bob utilize to solve this issue when operating a container?
+## 151. Bob wants to test a rogue Docker image with a problem that causes it to start consuming memory quickly, resulting in other apps on the system crashing due to memory exhaustion. Bob wants the container to run with a 512MB maximum memory limit. Which of the following may Bob utilize to solve this issue when operating a container?
 A. docker run-m 512  
 B. docker run -limit 5 12  
 C. docker run -limit 5 12m  
