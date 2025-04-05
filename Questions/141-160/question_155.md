@@ -1,8 +1,10 @@
 ## 155. Bob wants to update a secret that one of his employees is using. What steps does he need to do in the right order?
+```sh
 A. Using docker secret update, update the current secret.
 B. Restart all services using this secret after updating the existing one
 C. Update the service to utilize the new secret create a new secret, and destroy the previous secret.
 D. Create a new secret, use that secret to create a new Service, and then remove the prior secret and service.
+```
 
 The correct answer is:
 
