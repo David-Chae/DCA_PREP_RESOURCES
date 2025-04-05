@@ -1,7 +1,7 @@
-## 147. which of the following connects the container to the network bridge?
+147. Which of the following connects the container to the network bridge?
 ```sh
-A. --bridge string --ip
-B. IP
+A. --bridge string
+B. --ip IP
 C. --icc
 D. All of the above
 ```
