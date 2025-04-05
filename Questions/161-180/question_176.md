@@ -1,5 +1,4 @@
-## 176. Will the given command return a list of volumes for a given container?
-## docker container inspect nginx
+## 176. Will the given command return a list of volumes for a given container? docker container inspect nginx
 A. Yes  
 B. No  
 
