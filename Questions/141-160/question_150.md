@@ -5,14 +5,20 @@ C. Module
 D. Containers  
 
 The correct answer is:  
+**B** 
+**Explanation**
+A Docker image is a Docker container file to run code. Like a template, Docker images serve as instructions for constructing a container. When utilizing Docker, Docker images also serve as a starting point. In Virtual Machine (VM) environments, an image resembles a snapshot.
 
-**D. Containers**  
+This question is a bit broad and could be interpreted in different ways depending on the context. If the intended answer was **B. Images**, the question should have been framed to specifically highlight what is used to store and define code that will later be executed in a container.
 
-Containers are the running instances of Docker images. They are used to execute code, as they encapsulate the application and its environment. When you run a container, it executes the code defined within its image in an isolated environment.  
+Here’s how the question could be rewritten for better clarity:
 
-Here's a breakdown of the other options:  
-- **A. Registry**: A Docker registry stores Docker images, but it is not responsible for executing code.  
-- **B. Images**: Docker images are templates or blueprints for creating containers, but they do not execute code by themselves.  
-- **C. Module**: This is not a term specifically used in Docker to describe executing code.  
+**"Which of the following is used to define and store the code that will be executed in a Docker container?"**
 
-Therefore, **Containers** are used to execute code in a Docker environment.  
+This rewording would clarify that **Docker Images** are responsible for containing and defining the application code and dependencies, which is later executed inside a Docker container. 
+
+### Here's the breakdown:
+- **Docker Image** is used to define the environment and the code that will be run inside a container.
+- **Docker Container** is what actually runs the code based on the image.
+
+By rewording the question to focus on storage and definition of code, the answer **B. Images** becomes more intuitive.
