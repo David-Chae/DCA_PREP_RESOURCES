@@ -37,6 +37,8 @@ C. compose.json
 D. docker-stack.yml  
 ✔️ **Answer: B**
 
+The default path for a Compose file is compose.yaml (preferred) or compose.yml that is placed in the working directory. Compose also supports docker-compose.yaml and docker-compose.yml for backwards compatibility of earlier versions. If both files exist, Compose prefers the canonical compose.yaml.
+
 ---
 
 ### ✅ Version 2: Workflow-Focused
