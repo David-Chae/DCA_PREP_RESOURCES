@@ -10,9 +10,9 @@ spec:
   selector:  
     app:nginx  
     ports:  
-    - port: 8080  
+      port: 8080  
       targetPort: 80  
-    - port: 4443  
+      port: 4443  
       targetPort: 443  
 ```
 
