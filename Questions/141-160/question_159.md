@@ -1,5 +1,4 @@
-## 159. Bob installed docker from scratch on his new Linux server. He only installed docker packages from the official repository and has not played around with anything else. 
-## Which logging driver will be used by the new container when launched using the command "docker run -d nginx"?
+## 159. Bob installed docker from scratch on his new Linux server. He only installed docker packages from the official repository and has not played around with anything else. Which logging driver will be used by the new container when launched using the command "docker run -d nginx"?
 A. Logentries  
 B. Jounald  
 C. Syslog  
