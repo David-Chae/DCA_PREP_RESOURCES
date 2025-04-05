@@ -1,8 +1,10 @@
 ## 133. Which of the following is used to split the app code into numerous independently running services?
+```sh
 A. Docker Compose 
 B. Docker Stack  
 C. Docker Swarm  
 D. None of the Above  
+```
 
 The correct answer is:  
 
