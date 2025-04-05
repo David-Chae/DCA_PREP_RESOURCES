@@ -1,8 +1,10 @@
-## Layers in a Docker image corresponds to a Dockerfile instruction. Each layer is a delta of the modifications from the layer beneath it, and the layers are layered.
-A. Movable  
-B. read-only  
-C. write only  
-D. read and write  
+## 154. _______________ layers in a Docker image corresponds to a Dockerfile instruction. Each layer is a delta of the modifications from the layer beneath it, and the layers are layered.
+```sh
+A. Movable
+B. read-only
+C. write only
+D. read and write
+```
 
 The correct answer is:
 
