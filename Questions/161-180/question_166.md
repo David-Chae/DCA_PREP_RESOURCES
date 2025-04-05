@@ -1,5 +1,4 @@
-## 166. Will the given command build a swarm service that only listens on port 53 and uses the UDP protocol?
-## docker service create -name dns-cache -p 53:53 -udp dns-cache
+## 166. Will the given command build a swarm service that only listens on port 53 and uses the UDP protocol? docker service create -name dns-cache -p 53:53 -udp dns-cache
 A. Yes  
 B. No  
 
