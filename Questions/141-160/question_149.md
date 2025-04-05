@@ -16,3 +16,5 @@ Here's a breakdown of the options:
 - **Linux Security Modules**: Provide security features at the OS level but do not directly focus on the content security of Docker images.
 
 Therefore, **Docker Content Trust** is the correct choice to improve content security.
+
+REF: https://docs.docker.com/engine/security/trust/
