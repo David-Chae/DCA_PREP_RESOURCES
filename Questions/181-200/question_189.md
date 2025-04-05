@@ -7,6 +7,9 @@ B. No
 **A. Yes**  
 
 ### Explanation:  
+
+This set of Kubernetes tools and steps achieves this by following the recommended method of sending a configuration file to a container at runtime via a configMap object. According to the official literature, this allows you to divorce configuration artifacts from image content and update them without restarting containers. https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/#add-configmap-data-to-a-volume
+
 In Kubernetes, you can provide a container with a configuration file at runtime by following these steps:  
 
 1. **Convert the Configuration File to a ConfigMap:**  
