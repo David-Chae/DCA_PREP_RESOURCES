@@ -26,4 +26,4 @@ The other options are incorrect:
 - **D.** `-d` is used for detached mode in `docker run`, not for specifying a Dockerfile.
 
 So, the correct way to build an image with a Dockerfile named `Dockerfile-app` is **A**.
-[****](https://docs.docker.com/reference/cli/docker/buildx/build/)
+[**REF: docker buildx build**](https://docs.docker.com/reference/cli/docker/buildx/build/)
