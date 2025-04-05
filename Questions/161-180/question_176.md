@@ -3,7 +3,47 @@
 A. Yes  
 B. No  
 
-**B. No**
+✅ **Correct Answer: A. Yes**
 
-Explanation:
-The command `docker container inspect nginx` provides detailed information about the container named `nginx`, but it does not specifically return a list of volumes. To get a list of volumes, you would need to query Docker volumes separately using the command `docker volume ls` or inspect the container's specific mount points within the output of `docker container inspect`.
+---
+
+### 📘 **Explanation:**
+
+The command:
+
+```bash
+docker container inspect nginx
+```
+
+will return **detailed JSON output** about the container named `nginx`, including:
+
+- Volume mounts  
+- Networking information  
+- Configuration  
+- Environment variables  
+- Image used  
+- And much more.
+
+---
+
+### 🔍 **Volume Information:**
+
+Inside the JSON output, under:
+
+```json
+"Mounts": [...]
+```
+
+you'll find a list of **volumes**, including:
+
+- **Source** (host path or named volume)  
+- **Destination** (mount point inside container)  
+- **Type** (bind, volume, tmpfs)  
+- **ReadOnly** flag
+
+So yes — **`docker container inspect`** **does show the volumes used by the container**.
+
+---
+
+### ✅ **Final Answer: A. Yes**  
+Let me know if you'd like to see a sample output or how to filter just the volumes from it.
