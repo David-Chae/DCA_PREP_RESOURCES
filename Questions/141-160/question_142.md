@@ -66,22 +66,6 @@ D. Docker Hub
 
 ---
 
-### ✅ Alternative Rewording (If Focusing on Containers and Processes)
-
-If the intent of the question is to focus on what **directly interacts** with the OS, and the DCA question is meant to gauge knowledge of Docker containers and processes, it could be written this way:
-
-> **Which of the following represents a process running inside a container that interacts with the host operating system?**  
-A. Docker Daemon  
-B. Process inside the container  
-C. Host Network  
-D. Web app inside the container  
-
-**Correct Answer: B. Process inside the container**
-
-This revision narrows the question specifically to **processes within Docker containers**, which directly interact with the operating system.
-
----
-
 ### ✅ Final Summary
 
 The original question was too broad, and it didn't focus on Docker-specific interactions. Additionally, it presented options that could all be argued as correct in different contexts. By narrowing the question to focus on Docker components like the **Docker Daemon** or processes inside containers, it would be more suitable for the **Docker Certified Associate (DCA)** exam.
