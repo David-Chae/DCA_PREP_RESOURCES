@@ -16,3 +16,5 @@ Explanation:
 3. **Remove the prior secret and service**: After the service is updated to use the new secret, Bob should delete the old secret and any services that were using the outdated secret.
 
 This approach ensures that the service is using the updated secret and avoids potential disruptions during the update process.
+
+Secrets in a docker swarm are unchangeable. They cannot be changed, thus. Therefore, you must create a new secret file to modify a secret. Despite this, the current procedure for updating a secret is first to create a new one (since we cannot update an existing one) and attach the new secret to the service by updating the service (this would necessitate the service's restart; docker swarm would handle that), and then delete the old secret. Reference: https://docs.docker.com/engine/swarm/secrets/
