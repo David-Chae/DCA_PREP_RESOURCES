@@ -4,7 +4,7 @@ B. Virtual network
 C. Docker  
 D. Simulator  
 
-This is **another vague, overly broad question** that could easily mislead candidates. Let’s break it down clearly:
+This is **another vague, overly broad question** that could easily mislead candidates. It's not suited to be used as a DOMC question. Let’s break it down clearly:
 
 ---
 
