@@ -1,5 +1,8 @@
-## 162. Assuming there are no constraints on the amount and type of external storage, are the following two criteria sufficient for Kubernetes to provision a Persistent Volume dynamically: A default StorageClass is supplied. 
-A PersistentVolumeClaim (PVC) is established.
+## 162. Assuming there are no constraints on the amount and type of external storage, are the following two criteria sufficient for Kubernetes to provision a Persistent Volume dynamically:
+
+- A default StorageClass is supplied. 
+- A PersistentVolumeClaim (PVC) is established.
+ 
 A. Yes  
 B. No  
 
