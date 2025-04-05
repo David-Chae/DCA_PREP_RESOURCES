@@ -1,6 +1,4 @@
-## 173. Your company uses a centralized logging solution like Splunk.
-## Will the given command set up a Docker container to send container logs to the logging solution?
-docker logs  
+## 173. Your company uses a centralized logging solution like Splunk. Will the given command set up a Docker container to send container logs to the logging solution? docker logs  
 A. Yes  
 B. No  
 
