@@ -1,5 +1,4 @@
-## 164. During the development of an application to be orchestrated by Kubernetes, you want to mount the /data directory on your laptop into a container. 
-## Will the following strategy accomplish this: Add a volume to the Pod that sets hostPath.path: /data Mount this volume into the Pod's containers as desired.
+## 164. During the development of an application to be orchestrated by Kubernetes, you want to mount the /data directory on your laptop into a container. Will the following strategy accomplish this: Add a volume to the Pod that sets hostPath.path: /data Mount this volume into the Pod's containers as desired.
 A. Yes
 B. No
 
