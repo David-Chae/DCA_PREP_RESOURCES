@@ -1,6 +1,4 @@
-## 160. You are now in a directory that contains the Dockerfile-app file. 
-## Without renaming it to "Dockerfile," you can use this "Dockerfile-app" file to create a Docker image. 
-## Which of the subsequent responses is true?
+## 160. You are now in a directory that contains the Dockerfile-app file. Without renaming it to "Dockerfile," you can use this "Dockerfile-app" file to create a Docker image. Which of the subsequent responses is true?
 A. docker build -f Dockerfile-app  
 B. docker build -from-file Dockerfile-app  
 C. docker build -dockerfile Dockerfile-app  
