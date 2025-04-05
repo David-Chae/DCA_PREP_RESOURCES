@@ -1,5 +1,4 @@
-## 170. Will the given sequence of commands determine a container's published port(s)?
-## docker container inspect, docker port
+## 170. Will the given sequence of commands determine a container's published port(s)? docker container inspect, docker port
 A. Yes  
 B. No  
 
