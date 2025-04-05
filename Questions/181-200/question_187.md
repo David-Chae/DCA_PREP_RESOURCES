@@ -1,5 +1,4 @@
-## 187. According to a company's security policy development and production containers must run on separate nodes in a Swarm cluster
-## Can "label contraints" be used to schedule containers by security policy?
+## 187. According to a company's security policy, development and production containers must run on separate nodes in a Swarm cluster. Can "label contraints" be used to schedule containers by security policy?
 A. Yes  
 B. No  
 
