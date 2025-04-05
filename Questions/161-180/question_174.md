@@ -64,4 +64,3 @@ This is **accurate** based on the health check configuration.
 Let me know if you want help tweaking or testing health checks!
 
 
-175. Could the failure of a user’s attempts to set the system time from within a Docker container constitute a hindrance to the operation of the container? A. Yes B. No   176. Will the given command return a list of volumes for a given container? docker container inspect nginx A. Yes B. No   177. How to remove the label from the node?
