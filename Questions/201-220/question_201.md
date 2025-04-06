@@ -3,6 +3,11 @@
 A. Yes  
 B. No  
 
-**B. No**  
 
-Simply removing the image from the Docker Trusted Registry (DTR) and the image repository does not necessarily erase it entirely from disk. DTR may retain layers of the image due to garbage collection policies. To completely remove the image, you may need to run a **garbage collection** process in DTR to free up the storage.
+
+**201.Answer: B**
+Explanation: Deleting the image and deleting the image repository from the Docker Trusted Registry will not remove the image entirely from the disk.
+To recoup disk space, you must additionally execute trash collection on the Docker Trusted Registry, ac-
+cording to the official instructions.
+Reference:
+https://docs.docker.com/ee/dtr/admin/manage-images/garbage-collection/
