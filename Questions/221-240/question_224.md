@@ -17,3 +17,31 @@ The other options are incorrect:
 - **D**: `docker inspect <service> --format="{{.Spec.Name}}" -pretty` is also incorrect due to improper formatting and the invalid use of `-pretty`.
 
 So, the correct answer is **A**.
+
+---
+
+### 🔍 Now, regarding my follow-up:
+> Can `docker service inspect --format="{{.Spec.Name}}" <service name>` be a valid answer?
+
+✅ **Yes, it is a valid command**, but it’s **not the best answer** to the question as asked.
+
+- It **doesn’t print "limited information in a readable format"** by itself — instead, it outputs **just one specific field** (in this case, the service name), and you must **specify the service name** too.
+  
+Example:
+```bash
+docker service inspect --format="{{.Spec.Name}}" nginx-web
+```
+This will output:
+```
+nginx-web
+```
+
+So yes, it’s valid Docker syntax and helpful if you're scripting or querying specific fields — but for **general human-readable inspection**, `--pretty` is more appropriate.
+
+---
+
+### ✅ TL;DR:
+- **A** is the correct and best answer for this question.
+- **`--format` is valid**, but it's **not a replacement** for `--pretty` in this context. It's more for targeted scripting.
+
+Let me know if you want examples using both!
