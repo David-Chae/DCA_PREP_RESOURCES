@@ -9,7 +9,7 @@ The correct command to inspect a service on the swarm and print limited informat
 **A. docker service inspect <service> --pretty**
 
 Explanation:
-- **A** uses the `--pretty` flag with `docker service inspect`, which provides a more human-readable format with limited and key information about the service.
+- **A** uses the `--pretty` flag with `docker service inspect`, which provides a more human-readable format with limited and key information about the service. Reference: https://docs.docker.com/reference/cli/docker/service/inspect/
 
 The other options are incorrect:
 - **B**: `docker inspect service <service> --format="{{.Spec.Name}}"` is not a valid command as the `docker inspect` command does not use "service" in that context.
