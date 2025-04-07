@@ -10,6 +10,7 @@ The correct answer is:
 
 ### Explanation:  
 - **`docker node ls`** lists all the nodes in the Swarm cluster, showing details like their ID, status, availability, and manager role. This command is specifically used to get information about the nodes in the Docker Swarm.  
+Reference: https://docs.docker.com/engine/reference/commandline/node_ls/
 
 ### Eliminations:  
 ❌ **B. `docker swarm nodes`**  
