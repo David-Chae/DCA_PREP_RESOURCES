@@ -1,8 +1,10 @@
-230. How to filter the services in the stack?
+## 230. How to filter the services in the stack?
+```
 A. To filter the services in the stack, use the docker stack service nginx-web --filter name=web command with the --filter flag  
 B. Filtering services in the stack can be done using the docker stack filter command.  
 C. Use the docker stack service nginx-web f name=web command to filter services in the stack  
 D. To filter services, use the docker service filter command within the specific stack.
+```
 
 The correct answer is:  
 
