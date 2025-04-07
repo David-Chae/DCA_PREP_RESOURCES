@@ -6,12 +6,21 @@ D. Use docker scale service=50 to adjust the number of replicas in a service
 
 The correct answer is:
 
-**B. You can increase the number of replicas using `docker service update --replicas=50 frontend`.**
+**A. To increase the number of replicas, you can use the docker service scale SERVICE=REPLICAS, for example, docker service scale frontend=50. You can also scale multiple services with this command.**
 
-### Explanation:
-- **B** is correct because `docker service update --replicas=50` is the proper way to modify the number of replicas for an existing service.
-- **A** is also technically correct (`docker service scale`) but is deprecated in favor of `docker service update --replicas`.
-- **C** is incorrect because the number of replicas can be modified after the initial deployment using `docker service update`.
-- **D** is incorrect because `docker scale service=50` is not a valid Docker command.
+Explanation:
+- The `docker service scale` command is used to increase (or decrease) the number of replicas for a specific service in Docker Swarm. You can scale multiple services at once by specifying them in the same command, as shown in the example.
 
-So, **B** is the most accurate and current method.
+Example:
+```bash
+docker service scale frontend=50
+```
+
+This will scale the `frontend` service to 50 replicas.
+
+### **Other options:**
+- **B** is also valid in some cases, as `docker service update --replicas` can also be used to modify the number of replicas, but `docker service scale` is typically the more common and direct way.
+- **C** is incorrect because you can change the number of replicas at any time, not just during initial deployment.
+- **D** is incorrect because `docker scale` is not a valid Docker command.
+
+Let me know if you need further details!
