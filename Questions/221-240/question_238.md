@@ -13,7 +13,7 @@ The correct answer is:
   
 - **B** is incorrect because `docker network show` is not a valid command in Docker for inspecting networks.
 
-- **C** is incorrect because the `docker inspect network` command is not valid; `docker network inspect` is the correct command.
+- **C** is incorrect because the `docker inspect network` command is not valid; `docker network inspect` is the correct command. Docker will output "Error: No such object: network".
 
 - **D** is incorrect because `docker network view` is not a valid command in Docker.
 
