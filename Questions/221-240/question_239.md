@@ -1,8 +1,10 @@
-## 239. How to attach a service to an overlay network?
-A. To attach a service to an overlay network, use the docker service create --replicas 3 --name my-web --network my-network nginx command.  
-B. Services are automatically attached to the default overlay manual network configuration, in a swarm dud and ao do not not require  
-C. The docker network attach command can attach a service to an overlay network  
-D. To connect a service to an overlay network, use the docker-compose up -d command with the appropriate network configuration in the Compose file.  
+## 239. How to attach a service to an overlay network? 
+```
+A. To attach a service to an overlay network, use the docker service create --replicas 3 --name my-web --network my-network nginx command.
+B. Services are automatically attached to the default overlay network in a swarm and do not require manual configuration.
+C. The docker network attach command can attach a service to an overlay network.
+D. To connect a service to an overlay network, use the docker-compose up -d command with the appropriate network configuration in the Compose file.
+```
 
 The correct answer is:
 
