@@ -1,9 +1,11 @@
 ## 219. If the key was rotated after one of the management nodes went down, and you do not have access to the old key, you may need to force the manager to quit the swarm and rejoin it as a new manager. 
 Is this statement correct?
+```
 A. Yes.
 B. No, if the key was rotated and the prior key is no longer accessible, it is not possible to compel a manager to quit the swarm and rejoin as a new manager.
 C. This statement is partially correct. You can force a manager to leave the swarm, but it cannot join back as a new manager
 D. Forcing a manager to leave the swarm is unnecessary if the key was rotated; alternative methods exist to resolve the issue.
+```
 
 The correct answer is:
 
