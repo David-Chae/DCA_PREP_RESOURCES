@@ -36,7 +36,4 @@ So, **option A is incomplete** and **assumes you must use the ingress network fo
 ---
 
 ## 🔚 Conclusion:
-
-You're absolutely justified in calling out Option A as **misleading**. There’s **no perfectly correct** answer in the choices as written.
-
-Would you like to rewrite this question/choices together in a technically precise way? Might be fun 🙂
+https://docs.docker.com/engine/network/drivers/overlay/#connection-limit-for-overlay-networks
