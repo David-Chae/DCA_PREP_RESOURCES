@@ -1,5 +1,9 @@
 ## Where can we find a repository URL for installing the Docker Enterprise Edition (EE)?
 
+Docker Hub. If we have a Docker EE license, then we can pinpoint and retrieve a repository URL on Docker Hub.
+
+BELOW IS FROM CHATGPT and I don't think this is right. I only got to download the UCP and DTR using Mirantis Launchpad.
+
 To find the **repository URL for installing Docker Enterprise Edition (EE)**, you must go through **Docker’s official enterprise partner portal or subscription service**, as **Docker EE is a commercial product** and not openly available like Docker CE (Community Edition).
 
 ---
