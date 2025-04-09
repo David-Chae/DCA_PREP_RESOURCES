@@ -99,3 +99,67 @@ services:
 | Compose file `dns:`           | Per service            | ✅          | ❌                 |
 
 ---
+
+## SAMPLE QUESTION : Which of the following is a valid method that we can use for setting the default DNS server for all containers on a host?
+
+```
+1. We can use docker config set dns.
+2. We can set "dns" in /etc/docker/daemon.json.
+3. We can edit the /etc/hosts file on the host.
+4. We can use the --dns flag with docker run.
+```
+
+The **correct answer** is:
+
+> ✅ **We can set `"dns"` in `/etc/docker/daemon.json`.**
+
+---
+
+### 🔍 Explanation of Each Option:
+
+#### ❌ **"We can use `docker config set dns`."**
+- **Incorrect.**  
+There is **no** such Docker command as `docker config set dns`.  
+You might be thinking of `docker config`, which is used for **Swarm configs**, not for DNS settings.
+
+---
+
+#### ✅ **"We can set `"dns"` in `/etc/docker/daemon.json`."**
+- **Correct.**  
+This is the **standard and persistent** way to set default DNS for all containers on a Docker host.
+
+Example:
+```json
+{
+  "dns": ["8.8.8.8", "1.1.1.1"]
+}
+```
+Then restart Docker:
+```bash
+sudo systemctl restart docker
+```
+
+---
+
+#### ❌ **"We can edit the `/etc/hosts` file on the host."**
+- **Incorrect.**  
+The host’s `/etc/hosts` file does **not affect** container DNS resolution.  
+Each container has its own `/etc/hosts` and `/etc/resolv.conf`.
+
+---
+
+#### ❌ **"We can use the `--dns` flag with `docker run`."**
+- **Technically correct**, but **not a method to set the default for all containers**.  
+It sets DNS **only for that specific container** at run time.
+
+Example:
+```bash
+docker run --dns 8.8.8.8 alpine
+```
+But you'd have to do this **every time**, which doesn’t qualify as a **default for all containers**.
+
+---
+
+### ✅ Final Answer:
+> **We can set `"dns"` in `/etc/docker/daemon.json`.**
+
