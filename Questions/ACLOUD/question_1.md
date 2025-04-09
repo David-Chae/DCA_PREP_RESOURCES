@@ -25,3 +25,12 @@ If your nodes have these labels:
 ...then the tasks will be distributed across `us-east`, `us-west`, and `us-central` as evenly as possible (e.g., 2 tasks per zone for 6 replicas).
 
 Let me know if you want to see how to **set those node labels** or inspect the task distribution after it's running!
+
+## QUESTION : Which of the following commands will evenly spread out tasks based upon the values of a node label?
+```
+1. docker service create --placement-pref even-spread=node.labels.availability_zone nginx
+2. docker service create --placement-pref spread nginx
+3. docker service create --constraint spread=node.labels.availability_zone nginx
+4. docker service create --placement-pref spread=node.labels.availability_zone nginx
+```
+***ANS: 4. docker service create --placement-pref spread=node.labels.availability_zone nginx***
