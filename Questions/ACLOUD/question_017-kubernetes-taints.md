@@ -41,3 +41,5 @@ taints:
 | `PreferNoSchedule` | ⚠️ (soft)        | ❌                   |
 
 Let me know if you want a manifest example with tolerations!
+
+[Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/#taint-based-evictions)
