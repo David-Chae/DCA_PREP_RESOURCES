@@ -1,4 +1,4 @@
-What is the difference between a manager and a worker in Docker swarm?
+## What is the difference between a manager and a worker in Docker swarm?
 ```
 1. Managers never execute containers, workers do.
 2. Managers handle networking, while workers handle containers.
