@@ -39,6 +39,94 @@ If a pod were in the same namespace (`auth-gateway`), it could use:
 
 But since you're in the `default` namespace, only the **fully qualified name** works reliably.
 
+Question : Verify below:
+```
+1. 10-23-254-63.auth-gateway.pod.cluster.local
+2. user-db.auth-gateway.svc.cluster.local
+3. 10.23.254.63
+4. user-db
+```
+
+Let's go through each option to determine which address can be used to communicate with the `user-db` **ClusterIP service** from a pod in the **default namespace**:
+
+---
+
+### ❌ `10-23-254-63.auth-gateway.pod.cluster.local`
+- ❌ **Invalid**: This is a malformed DNS name. Kubernetes doesn’t use IPs with dashes in service DNS.
+- Also, `.pod.cluster.local` is used for individual pod DNS, **not** services.
+### ❌ **No, Kubernetes does not use IP addresses in Fully Qualified Domain Names (FQDNs).**
+
+---
+
+### 🔍 Kubernetes DNS Naming Convention
+
+Kubernetes uses **DNS-based service discovery** with **names**, not IPs.
+
+For example, the FQDN of a service is structured like this:
+
+```
+<service-name>.<namespace>.svc.cluster.local
+```
+
+Example:
+```
+user-db.auth-gateway.svc.cluster.local
+```
+
+This is how services are **reliably and dynamically** resolved, regardless of whether their underlying IPs change.
+
+---
+
+### 🛑 Why IPs aren’t used in FQDNs
+
+- Service IPs (like ClusterIP) are **internal and subject to change**.
+- Using IPs in hostnames like `10-23-254-63.auth-gateway.pod.cluster.local`:
+  - Is **not valid syntax**.
+  - Doesn’t map to any actual DNS entry in Kubernetes.
+  - The `.pod.cluster.local` suffix is for **pods**, and even then, it's based on **pod names**, not IPs.
+
+---
+
+### ✅ TL;DR
+
+- Kubernetes **does not use IPs in FQDNs**.
+- Always use service names for discovery: `my-service.my-namespace.svc.cluster.local`
+- Leave the IPs to kube-proxy, CoreDNS, and the networking layer.
+
+Let me know if you want to see how DNS names resolve inside a pod!
+
+---
+
+### ✅ `user-db.auth-gateway.svc.cluster.local`
+- ✅ **Correct**: This is the **fully qualified domain name (FQDN)** of the `user-db` service in the `auth-gateway` namespace.
+- It will correctly resolve via DNS **from any namespace**, including `default`.
+
+---
+
+### ⚠️ `10.23.254.63`
+- ⚠️ **Works**, but **not recommended**.
+- This is the **ClusterIP** address of the service.
+- Direct IP access skips DNS and works within the cluster, but:
+  - If the service is recreated, the IP might change.
+  - Using the service name is **more robust** and preferred.
+
+---
+
+### ❌ `user-db`
+- ❌ **Invalid from `default` namespace**.
+- This is a **short name**, and it only works **within the same namespace** (`auth-gateway` in this case).
+- Since you're in the `default` namespace, it will try to resolve `user-db.default.svc.cluster.local` — which doesn’t exist.
+
+---
+
+### ✅ Final Answer:
+**`user-db.auth-gateway.svc.cluster.local`**
+
+Let me know if you want a DNS resolution or connection test example again!
+
+
+
+
 ## How to test it from a pod or write a quick `curl`/`wget` example!
 
 Awesome! Here’s how you can **test access to `user-db.auth-gateway.svc.cluster.local`** from a pod in the **default namespace**, using `curl` or `wget`.
