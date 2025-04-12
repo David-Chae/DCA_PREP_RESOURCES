@@ -90,3 +90,6 @@ You should see the standard success message from Docker 🎉
 ### ✅ Done!
 
 Let me know if you want a quick check script to verify group membership or troubleshoot permissions.
+
+
+[Install Docker Engine on Ubuntu](https://docs.docker.com/engine/install/ubuntu/#installation-methods)
