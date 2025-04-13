@@ -40,3 +40,80 @@ spec:
 ```
 
 More details: [Kubernetes Volumes Documentation](https://kubernetes.io/docs/concepts/storage/volumes/).
+
+
+Great question! Both `-v` and `--mount` are used in Docker to **attach storage (volumes, bind mounts, tmpfs) to containers**, but there are some important differences between them.
+
+---
+
+## 🆚 `-v` vs `--mount`: Quick Summary
+
+| Feature        | `-v` / `--volume`                | `--mount`                            |
+|----------------|----------------------------------|--------------------------------------|
+| Syntax         | Short and concise                | More verbose but more **explicit**   |
+| Flexibility    | Mostly used for **volumes** and **bind mounts** | Supports **volume**, **bind**, and **tmpfs** |
+| Clarity        | Ambiguous (less readable)        | Clear and self-documenting           |
+| Recommended?   | ✅ Legacy, still works            | ✅✅ **Preferred** in modern usage     |
+
+---
+
+## 📦 Example with `-v` (Short Syntax)
+
+```bash
+docker run -v myvolume:/data nginx
+```
+
+This:
+- Mounts a **named volume** called `myvolume`
+- Inside container at `/data`
+
+```bash
+docker run -v $(pwd)/logs:/var/log nginx
+```
+
+This:
+- Mounts a **host directory** (bind mount)
+- From current dir’s `logs/` to container `/var/log`
+
+> ❗ But this syntax can be ambiguous—Docker figures out if it’s a bind mount or volume based on the path format.
+
+---
+
+## 📦 Example with `--mount` (Explicit Syntax)
+
+```bash
+docker run \
+  --mount type=volume,source=myvolume,target=/data \
+  nginx
+```
+
+or bind mount:
+
+```bash
+docker run \
+  --mount type=bind,source="$(pwd)"/logs,target=/var/log \
+  nginx
+```
+
+> Much more **declarative** and **less error-prone**, especially in scripts or complex setups.
+
+---
+
+## 📝 When to Use What?
+
+| Use Case                         | Recommendation         |
+|----------------------------------|-------------------------|
+| Quick, simple CLI commands       | `-v` is fine            |
+| Complex mounts, scripting, clarity | Prefer `--mount`      |
+| Docker Compose                   | Uses `volume` and `bind` in YAML — clearer than `-v` |
+
+---
+
+### ✅ TL;DR:
+
+> Use `-v` for quick CLI work.  
+> Use `--mount` when you want clarity, control, or are dealing with **non-standard setups** (e.g., read-only bind mounts, tmpfs, etc.).
+
+---
+
+Want to see how these look in a `docker-compose.yml` too?
