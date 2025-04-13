@@ -116,4 +116,60 @@ docker run \
 
 ---
 
-Want to see how these look in a `docker-compose.yml` too?
+🔥 Great question — and a very **testable topic** for Docker certification!
+
+---
+
+## ✅ Short Answer
+
+**`-v` will create the volume if it does not exist.**  
+**`--mount` will NOT create a named volume automatically.**
+
+---
+
+## 🧪 Let's break it down:
+
+### ✅ `-v` flag (or `--volume`)
+
+```bash
+docker run -v myvolume:/app nginx
+```
+
+- If `myvolume` does **not exist**, Docker **creates** it automatically as a **named volume**.
+- Super handy for quick setups!
+
+🟢 **Creates volumes automatically**  
+🟡 Can be ambiguous (is `myvolume` a path or a volume name?)
+
+---
+
+### ❌ `--mount` flag
+
+```bash
+docker run --mount type=volume,source=myvolume,target=/app nginx
+```
+
+- If `myvolume` does **not exist**, Docker **throws an error**:
+  > "no such volume: myvolume"
+
+🛑 **Does NOT auto-create volumes**
+
+You have to create it manually first:
+
+```bash
+docker volume create myvolume
+```
+
+---
+
+## 🎯 Certification Tip:
+
+If the question is:
+
+> "Which mount type automatically creates a volume if it doesn't exist?"
+
+✅ **Answer: `-v` (or `--volume`)**
+
+---
+
+Let me know if you want a hands-on practice script for both styles!
