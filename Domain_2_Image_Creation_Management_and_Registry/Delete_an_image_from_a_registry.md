@@ -5,7 +5,102 @@
 
 Deleting a Docker image from a registry involves using the registry's API or user interface. The process may vary depending on the type of registry you are using (e.g., Docker Hub, Azure Container Registry, Amazon ECR, etc.). This guide provides general instructions for deleting images from a Docker registry.
 
-## Steps to Delete a Docker Image from a Registry
+## Steps to Delete a Docker Image from Registry
+
+If you're using the **local Docker registry** (the one running with `docker run -p 5000:5000 registry:2`), here's how you can:
+
+---
+
+## ✅ 1. 📋 **Check Images in Your Local Registry**
+
+The Docker Registry API v2 doesn't have a pretty UI by default, but you can query it using `curl` or a browser.
+
+### 🔍 List Repositories
+
+```bash
+curl http://localhost:5000/v2/_catalog
+```
+
+Example response:
+```json
+{
+  "repositories": ["myapp", "nginx", "alpine"]
+}
+```
+
+### 🔍 List Tags for a Repository
+
+```bash
+curl http://localhost:5000/v2/myapp/tags/list
+```
+
+Example response:
+```json
+{
+  "name": "myapp",
+  "tags": ["latest", "v1"]
+}
+```
+
+---
+
+## 🧹 2. ❌ **Remove Image from Local Registry**
+
+Unfortunately, the default Docker registry **does not support deletion via API** out of the box. But you can do it by:
+
+### Option A: Use Registry with Delete Support Enabled
+
+You must run the registry with **delete enabled**:
+
+```bash
+docker run -d \
+  -p 5000:5000 \
+  -e REGISTRY_STORAGE_DELETE_ENABLED=true \
+  --name registry \
+  registry:2
+```
+
+### Then perform these steps:
+
+#### 📌 Step 1: Get image digest
+
+```bash
+curl -v http://localhost:5000/v2/myapp/manifests/latest \
+  -H "Accept: application/vnd.docker.distribution.manifest.v2+json"
+```
+
+Look for a response header like this:
+```
+Docker-Content-Digest: sha256:<digest>
+```
+
+#### 📌 Step 2: Delete the image by digest
+
+```bash
+curl -X DELETE http://localhost:5000/v2/myapp/manifests/sha256:<digest>
+```
+
+---
+
+## 🚮 3. (Optional) Garbage Collect
+
+Even after deletion, the blob still exists until garbage collection is run.
+
+```bash
+docker exec registry bin/registry garbage-collect /etc/docker/registry/config.yml
+```
+
+Make sure no active pushes/pulls are happening when you do this.
+
+---
+
+## 🧪 Pro Tip: Use UI for Easier Browsing
+
+You can use a UI like **[Portus](https://github.com/SUSE/Portus)** or **[docker-registry-ui](https://github.com/Joxit/docker-registry-ui)** to view and manage images visually.
+
+---
+
+
 
 ### Step 1: Log into the Registry
 
@@ -35,6 +130,11 @@ To delete an image from Docker Hub, follow these steps:
 2. Navigate to the repository containing the image.
 3. Select the image tag you want to delete.
 4. Click the "Delete" button and confirm the deletion.
+
+
+
+
+
 
 #### Using Azure Container Registry
 
