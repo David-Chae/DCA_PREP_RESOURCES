@@ -218,6 +218,7 @@ kubectl exec -i deployment/msr-api -- msr backup --ignore-scan-data - > backup.t
 ```
 
 #### Back up MSR image content
+
 **Backing Up MSR Images and Charts (PersistentVolume Example)**
 As you can configure **MSR** (Mirantis Secure Registry) for several types of storage backends, the method for backing up images and charts will vary. The example below is specific to the **PersistentVolume** storage backend. 
 > If you are using a different storage backend (e.g., AWS EBS, GCP Persistent Disk, etc.), you should follow the backup practices recommended for that system.
@@ -253,15 +254,11 @@ sudo tar -cvf /tmp/msr-backup.tar /tmp/hostpath-provisioner/myns0/msr
 This command creates a `.tar` archive that can be stored for backup or transferred elsewhere.
 ---
 
-## Notes
+**Notes**
 
 - Ensure you have **sufficient disk space** for the archive.
 - You may want to **stop MSR temporarily** during backup to avoid changes while archiving (not mandatory for all environments).
 - This is for **image and chart content only** ??use `dtr backup` to get metadata and config.
-
----
-
-_Backup created on: 2025-04-16_
 
 
 
