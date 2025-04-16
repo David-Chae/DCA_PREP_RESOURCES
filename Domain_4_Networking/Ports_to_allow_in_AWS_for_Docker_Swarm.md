@@ -4,6 +4,17 @@ Here are the **required ports** for **Docker Swarm mode** to work properly:
 
 ---
 
+### Docker Swarm Required Ports
+
+| **Port(s)**           | **Description**                                                                 |
+|-----------------------|---------------------------------------------------------------------------------|
+| `2377/tcp`            | The default **Swarm control plane** port. Configurable with `docker swarm join --listen-addr`. |
+| `4789/udp`            | The default port for **overlay network traffic**. Configurable with `docker swarm init --data-path-addr`. |
+| `7946/tcp`, `7946/udp`| Used for **communication among nodes** (gossip protocol). **Not configurable**. |
+
+
+
+
 ### ✅ **Required Ports for Docker Swarm Communication**
 
 | Purpose                         | Protocol | Port  | Direction | Description |
