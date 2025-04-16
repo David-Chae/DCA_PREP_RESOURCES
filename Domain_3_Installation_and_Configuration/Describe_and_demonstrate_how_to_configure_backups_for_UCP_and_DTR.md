@@ -8,7 +8,7 @@ The **correct backup order** when you're running Docker Enterprise components (U
    - Backup `/var/lib/docker/swarm`  
    - Swarm contains the Raft data (cluster state, services, secrets, etc.)
 
-# Swarm Backup Contents
+ **Swarm Backup Contents**
 
 | **Data**            | **Backed Up** | **Description**                                                                 |
 |---------------------|---------------|---------------------------------------------------------------------------------|
