@@ -26,8 +26,6 @@ The **correct backup order** when you're running Docker Enterprise components (U
    - UCP stores cluster config, RBAC, certificates, etc.  
    - Use the `docker container run ... backup` command provided in UCP docs.
 
-Here’s your content formatted as a Markdown (`.md`) file:
-
 ```markdown
 # 📦 MKE Backup Contents
 
