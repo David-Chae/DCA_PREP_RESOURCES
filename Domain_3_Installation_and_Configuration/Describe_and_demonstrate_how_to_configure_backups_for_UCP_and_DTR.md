@@ -42,5 +42,8 @@ docker run --rm \
 ```
 
 ## Official Documentation
-- UCP Backup and Restore: [https://docs.mirantis.com/ucp/current/admin/backups/](https://docs.mirantis.com/ucp/current/admin/backups/)
-- DTR Backup and Restore: [https://docs.mirantis.com/dtr/current/admin/backups/](https://docs.mirantis.com/dtr/current/admin/backups/)
+- Mirantis Doc Swarm Backup : [https://docs.mirantis.com/mke/3.8/ops/disaster-recovery/back-up-swarm.html]
+- Mirantis Doc Swarm Restore : [https://docs.mirantis.com/mke/3.8/ops/disaster-recovery/restore-swarm.html]
+- MKE UCP Backup and Restore: [MKE UCP Backup procedure](https://docs.mirantis.com/mke/3.8/ops/disaster-recovery/back-up-mke/backup-procedure.html)
+- MSR DTR Backup : [Create an MSR backup](https://docs.mirantis.com/msr/3.1/ops/disaster-recovery/create-a-backup.html)
+- MSR DTR Restore : [Restore from an MSR backup](https://docs.mirantis.com/msr/3.1/ops/disaster-recovery/restore-from-backup.html)
