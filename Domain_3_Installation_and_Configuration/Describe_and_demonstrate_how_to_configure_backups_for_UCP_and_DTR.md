@@ -223,7 +223,7 @@ kubectl exec -i deployment/msr-api -- msr backup --ignore-scan-data - > backup.t
 As you can configure **MSR** (Mirantis Secure Registry) for several types of storage backends, the method for backing up images and charts will vary. The example below is specific to the **PersistentVolume** storage backend. 
 > If you are using a different storage backend (e.g., AWS EBS, GCP Persistent Disk, etc.), you should follow the backup practices recommended for that system.
 ---
-**Where Are Images and Charts Stored?**
+Where Are Images and Charts Stored?
 When MSR is configured with a `PersistentVolume`, images and charts are stored on the **local file system** or on **mounted network storage**.
 ---
 **Steps to Back Up MSR Image and Chart Data**
