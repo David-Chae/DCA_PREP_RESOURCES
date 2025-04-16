@@ -8,6 +8,20 @@ The **correct backup order** when you're running Docker Enterprise components (U
    - Backup `/var/lib/docker/swarm`  
    - Swarm contains the Raft data (cluster state, services, secrets, etc.)
 
+# Swarm Backup Contents
+
+| **Data**            | **Backed Up** | **Description**                                                                 |
+|---------------------|---------------|---------------------------------------------------------------------------------|
+| **Raft keys**       | Yes           | Keys used to encrypt communication between Swarm nodes and to encrypt and decrypt raft logs |
+| **Membership**      | Yes           | List of the nodes in the cluster                                               |
+| **Services**        | Yes           | Stacks and services stored in Swarm mode                                       |
+| **Overlay networks**| Yes           | Overlay networks created on the cluster                                        |
+| **Configs**         | Yes           | Configs created in the cluster                                                 |
+| **Secrets**         | Yes           | Secrets saved in the cluster                                                   |
+| **Swarm unlock key**| No            | Secret key needed to unlock a manager after its Docker daemon restarts         |
+
+
+
 2. **UCP** (Universal Control Plane)  
    - UCP stores cluster config, RBAC, certificates, etc.  
    - Use the `docker container run ... backup` command provided in UCP docs.
