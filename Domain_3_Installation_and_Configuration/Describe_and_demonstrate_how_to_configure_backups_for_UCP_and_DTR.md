@@ -26,6 +26,44 @@ The **correct backup order** when you're running Docker Enterprise components (U
    - UCP stores cluster config, RBAC, certificates, etc.  
    - Use the `docker container run ... backup` command provided in UCP docs.
 
+Here’s your content formatted as a Markdown (`.md`) file:
+
+```markdown
+# 📦 MKE Backup Contents
+
+> The following backup contents are stored in a `.tar` file.  
+> Backups contain MKE configuration metadata for recreating configurations such as **LDAP**, **SAML**, and **RBAC**.
+
+---
+
+## ✅ Backed Up
+
+| **Data**              | **Backed up** | **Description**                                                                 |
+|-----------------------|---------------|---------------------------------------------------------------------------------|
+| **Configurations**    | Yes           | MKE configurations, including MCR license, Swarm, and client CAs.              |
+| **Access control**    | Yes           | Swarm resource permissions for teams, including collections, grants, and roles.|
+| **Certificates/Keys** | Yes           | Certificates, public and private keys used for authentication and mTLS.        |
+| **Metrics data**      | Yes           | Monitoring data gathered by MKE.                                               |
+| **Organizations**     | Yes           | Users, teams, and organizations.                                               |
+| **Volumes**           | Yes           | All MKE-named volumes including component certs and data.                      |
+
+---
+
+## ❌ Not Backed Up
+
+| **Data**               | **Backed up** | **Description**                                                                 |
+|------------------------|---------------|---------------------------------------------------------------------------------|
+| **Overlay networks**   | No            | Swarm mode overlay network definitions, including port info.                   |
+| **Configs, secrets**   | No            | MKE configs and secrets — use a **Swarm backup** to save these.                |
+| **Services**           | No            | MKE stacks/services are in Swarm or SCM.                                       |
+| **ucp-metrics-data**   | No            | Metrics server data.                                                           |
+| **ucp-node-certs**     | No            | Certs for locking down MKE system components.                                  |
+| **Routing mesh**       | No            | Interlock layer 7 ingress config. Manual backup/restore process is required.   |
+```
+
+Let me know if you'd like to download it or include links/document references!
+
+
 3. **DTR** (Docker Trusted Registry)  
    - Backup DTR metadata, images, config  
    - Use the `docker container run ... backup` command for DTR as well.
@@ -44,7 +82,7 @@ The **correct backup order** when you're running Docker Enterprise components (U
 
 ## Quick command cheat sheet for each backup step
 
-To back up Swarm:
+### To back up Swarm:
 
 1. Stop Docker on the manager node before backing up the data, so that no data is changed during the backup:
 ```bash
@@ -67,6 +105,35 @@ systemctl start docker
 ```
 
 
+### To backup UCP (MKE)
+
+1. "Run the mirantis/ucp:3.8.4 backup command on a single MKE manager node, including the --file and --include-logs options.
+This creates a .tar archive with the contents of all volumes used by MKE and streams it to stdout. Replace 3.8.4 with the version you are currently running."
+```bash
+docker container run \
+  --rm \
+  --log-driver none \
+  --name ucp \
+  --volume /var/run/docker.sock:/var/run/docker.sock \
+  --volume /tmp:/backup \
+  mirantis/ucp:3.8.4 backup \
+  --file mybackup.tar \
+  --passphrase "secret12chars" \
+  --include-logs=false
+```
+
+If you are running MKE with Security-Enhanced Linux (SELinux) enabled, which is typical for RHEL hosts, include --security-opt label=disable in the docker command, replacing 3.8.4 with the version you are currently running:
+
+```bash
+docker container run \
+  --rm \
+  --log-driver none \
+  --security-opt label=disable \
+  --name ucp \
+  --volume /var/run/docker.sock:/var/run/docker.sock \
+  mirantis/ucp:3.8.4 backup \
+  --passphrase "secret12chars" > /tmp/mybackup.tar
+```
 
 
 ## Official Documentation
