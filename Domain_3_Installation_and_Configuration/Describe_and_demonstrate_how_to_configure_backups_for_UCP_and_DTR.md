@@ -42,7 +42,33 @@ The **correct backup order** when you're running Docker Enterprise components (U
 
 ---
 
-Would you like a quick command cheat sheet for each backup step?
+## Quick command cheat sheet for each backup step
+
+To back up Swarm:
+
+1. Stop Docker on the manager node before backing up the data, so that no data is changed during the backup:
+```bash
+systemctl stop docker
+```
+
+2. Back up the /var/lib/docker/swarm directory:
+```bash
+tar cvzf "/tmp/swarm-$(hostname -s)-$(date +%s%z).tgz" /var/lib/docker/swarm/
+```
+
+3. If auto-lock is enabled, unlock the swarm:
+```bash
+docker swarm unlock
+```
+
+4. Restart Docker on the manager node:
+```
+systemctl start docker
+```
+
+
+
+
 ## Official Documentation
 - Mirantis Doc Swarm Backup : [https://docs.mirantis.com/mke/3.8/ops/disaster-recovery/back-up-swarm.html]
 - Mirantis Doc Swarm Restore : [https://docs.mirantis.com/mke/3.8/ops/disaster-recovery/restore-swarm.html]
