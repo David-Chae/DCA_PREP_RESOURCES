@@ -133,6 +133,66 @@ docker container run \
   --passphrase "secret12chars" > /tmp/mybackup.tar
 ```
 
+#### Create a backup using the MKE web UI¶
+
+Log in to the MKE web UI.
+In the left-side navigation panel, navigate to Admin Settings.
+Click Backup.
+Initiate an immediate backup by clicking Backup Now.
+The MKE web UI also provides the following options:
+Display the status of a running backup
+Display backup history
+Display backup outcome
+
+#### Create, list, and retrieve backups using the MKE API
+The MKE API provides three endpoints for managing MKE backups:
+/api/ucp/backup
+/api/ucp/backups
+/api/ucp/backup/{backup_id}
+You must be an MKE administrator to access these API endpoints.
+
+
+Here’s your content formatted as a Markdown (`.md`) file:
+
+
+#### 📦 Creating a Backup Using the MKE API
+
+You can create a backup using the `POST: /api/ucp/backup` endpoint.
+
+This JSON endpoint accepts the following arguments:
+
+| **Field Name** | **JSON Data Type** | **Description**                                           |
+|----------------|--------------------|-----------------------------------------------------------|
+| `passphrase`   | String             | Encryption passphrase                                     |
+| `noPassphrase` | Boolean            | Whether a passphrase is used (`true` to disable)          |
+| `fileName`     | String             | Backup file name                                          |
+| `includeLogs`  | Boolean            | Whether to include a log file in the backup               |
+| `hostPath`     | String             | File system location for storing the backup               |
+
+---
+
+**✅ Response Codes**
+
+- `200`: Success
+- `400`: Malformed request (payload fails validation)
+- `500`: Internal server error
+
+---
+
+**📋 Example API Call**
+
+```bash
+curl -sk -H "Authorization: Bearer $AUTHTOKEN" https://$UCP_HOSTNAME/api/ucp/backup \
+  -X POST \
+  -H "Content-Type: application/json" \
+  --data '{"passphrase": "secret12chars", "includeLogs": true, "fileName": "backup1.tar", "logFileName": "backup1.log", "hostPath": "/tmp"}'
+```
+
+Replace `$AUTHTOKEN` and `$UCP_HOSTNAME` with your actual UCP authentication token and host name.
+
+
+
+
 
 ## Official Documentation
 - Mirantis Doc Swarm Backup : [https://docs.mirantis.com/mke/3.8/ops/disaster-recovery/back-up-swarm.html]
