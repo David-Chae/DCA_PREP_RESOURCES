@@ -1,5 +1,6 @@
 
 # Configuring L7 Load Balancing with Docker EE
+Describe and demonstrate how to use Docker to load balance HTTP/HTTPs traffic to an application (Configure L7 load balancing with Docker EE).
 
 ## Introduction
 
