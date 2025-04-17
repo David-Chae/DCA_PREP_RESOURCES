@@ -36,7 +36,7 @@ In Docker Enterprise, access management is enforced via **Docker Universal Contr
 ### d. **Security Administrator**
 - Manages security policies, role-based access, and secrets.
 
-[Official Documentation](https://docs.docker.com/ee/ucp/authorization/)
+[Official Documentation](https://docs.mirantis.com/mke/3.8/ref-arch/rbac.html#rbac)
 
 ## 3. User Authentication and Authorization
 Docker Enterprise integrates with authentication providers to manage identities:
@@ -46,7 +46,7 @@ Docker Enterprise integrates with authentication providers to manage identities:
 
 These integrations help enforce access policies and manage security efficiently.
 
-[Official Documentation](https://docs.docker.com/ee/ucp/user-management/)
+[Official Documentation](https://docs.mirantis.com/mke/3.8/ops/administer-cluster/integrate-with-LDAP-directory/configure-ldap-integration.html)
 
 ## Conclusion
 Identity roles in Docker, particularly in **Swarm and Docker Enterprise**, define access control and security policies. Understanding these roles ensures a secure and well-managed containerized environment.
