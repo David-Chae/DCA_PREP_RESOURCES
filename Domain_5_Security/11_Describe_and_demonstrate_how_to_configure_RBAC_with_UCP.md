@@ -99,15 +99,15 @@ Only an administrator can manage grants, subjects, roles, and access to resource
 
 ### OFFICIAL DOCUMENTATIONS
 
-[Authorize role-based access](https://docs.mirantis.com/mke/3.4/ops/authorize-rolebased-access.html)
-[RBAC tutorials](https://docs.mirantis.com/mke/3.4/ops/authorize-rolebased-access/rbac-tutorials.html)
-[Define roles with authorized API operations](https://docs.mirantis.com/mke/3.4/ops/authorize-rolebased-access/define-roles.html#define-roles)
-[Create organizations, teams, and users](https://docs.mirantis.com/mke/3.4/ops/authorize-rolebased-access/create-subjects.html)
-[Enable LDAP and sync teams and users](https://docs.mirantis.com/mke/3.4/ops/authorize-rolebased-access/sync-ldap.html)
-[Define roles with authorized API operations](https://docs.mirantis.com/mke/3.4/ops/authorize-rolebased-access/define-roles.html)
-[Use collections and namespaces](https://docs.mirantis.com/mke/3.4/ops/authorize-rolebased-access/collections-and-namespaces.html)
-[Create grants](https://docs.mirantis.com/mke/3.4/ops/authorize-rolebased-access/create-grants.html)
-[Grant users permission to pull images](https://docs.mirantis.com/mke/3.4/ops/authorize-rolebased-access/pull-images.html)
+[Authorize role-based access](https://docs.mirantis.com/mke/3.4/ops/authorize-rolebased-access.html)  
+[RBAC tutorials](https://docs.mirantis.com/mke/3.4/ops/authorize-rolebased-access/rbac-tutorials.html)  
+[Define roles with authorized API operations](https://docs.mirantis.com/mke/3.4/ops/authorize-rolebased-access/define-roles.html#define-roles)  
+[Create organizations, teams, and users](https://docs.mirantis.com/mke/3.4/ops/authorize-rolebased-access/create-subjects.html)  
+[Enable LDAP and sync teams and users](https://docs.mirantis.com/mke/3.4/ops/authorize-rolebased-access/sync-ldap.html)  
+[Define roles with authorized API operations](https://docs.mirantis.com/mke/3.4/ops/authorize-rolebased-access/define-roles.html)  
+[Use collections and namespaces](https://docs.mirantis.com/mke/3.4/ops/authorize-rolebased-access/collections-and-namespaces.html)  
+[Create grants](https://docs.mirantis.com/mke/3.4/ops/authorize-rolebased-access/create-grants.html)  
+[Grant users permission to pull images](https://docs.mirantis.com/mke/3.4/ops/authorize-rolebased-access/pull-images.html)  
 
 
 
