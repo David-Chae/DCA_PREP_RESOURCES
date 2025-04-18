@@ -10,34 +10,35 @@
 
 The correct answer is:  
 
-**C. ucp, dtr, swarm**  
+**1. swarm, ucp, dtr**  
 
 ### Explanation:  
-When creating a **Docker Enterprise Edition (EE)** backup policy, the correct order is:  
+According to best practices for **Mirantis Kubernetes Engine (formerly Docker Enterprise)**, the **recommended recovery order** is:
 
-1. **UCP (Universal Control Plane)** – UCP manages users, access control, and orchestration. Since it contains critical cluster and security configurations, it should be backed up first.  
-2. **DTR (Docker Trusted Registry)** – DTR stores and manages container images. Since it depends on UCP for access control, it should be backed up after UCP.  
-3. **Swarm** – The Swarm state can be rebuilt from UCP, so it is backed up last.  
+1. **Swarm**
+2. **UCP (Universal Control Plane)**
+3. **DTR (Docker Trusted Registry)**
 
-### Backup Commands:  
-- **UCP Backup:**  
-  ```sh
-  docker container run --rm -i \
-  --name ucp-backup \
-  -v /var/run/docker.sock:/var/run/docker.sock \
-  -v $(pwd):/backup \
-  docker/ucp backup --file /backup/ucp_backup.tar
-  ```  
-- **DTR Backup:**  
-  ```sh
-  docker run --rm docker/dtr backup \
-  --ucp-username admin --ucp-password password \
-  --ucp-url https://ucp.example.com \
-  --output dtr_backup.tar
-  ```  
-- **Swarm Backup:**  
-  ```sh
-  docker swarm leave --force
-  docker swarm init
-  ```  
-This order ensures that the most critical configurations and dependencies are backed up properly.
+This order ensures that the foundational components (Swarm being the orchestrator, followed by UCP as the control plane, and then DTR as the registry) are restored in the correct dependency chain.
+
+### So, should backup be taken in the same order?
+
+**Yes, ideally the backup should be taken in the same order** — **Swarm → UCP → DTR** — to ensure consistency across the stack. Here's why:
+
+- **Swarm**: You want a consistent state of the swarm cluster, including node membership and certificates.
+- **UCP**: Depends on the swarm; backing it up after swarm ensures UCP is capturing the current swarm state.
+- **DTR**: Depends on UCP for authentication and orchestration context, so it should be backed up last.
+
+### Summary:
+
+| Action | Recommended Order |
+|--------|--------------------|
+| Backup | Swarm → UCP → DTR |
+| Restore | Swarm → UCP → DTR |
+
+If you’re automating backups, try to ensure that each backup is completed successfully before moving to the next component, and avoid long delays between steps to maintain state consistency.
+
+Want help writing a backup script for these?
+
+
+[OFFICIAL MIRANTIS DOCUMENTATION](https://docs.mirantis.com/containers/v2.1/dockeree-products/ucp/admin/disaster-recovery/disaster-recovery-ucp.html)
