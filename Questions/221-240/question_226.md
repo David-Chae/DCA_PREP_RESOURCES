@@ -6,6 +6,9 @@ D. docker inspect task <task_id>
 
 The answer can be a bit tricky, so let's go over it thoroughly to clarify:
 
+Answer: B  
+Explanation: The docker container inspect <container_id> command obtains detailed information about a specific container, including its configuration, environment variables, and more. You would typically obtain the <container_id> by running docker service ps <service> to get a list of tasks (containers) associated with the service and then inspect the relevant container.
+
 ### Question: **How to find out more details about the container running these service tasks?**
 
 ### **Analysis of each option:**
