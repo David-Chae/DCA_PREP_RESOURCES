@@ -1,4 +1,4 @@
-## 10. 0n AWS, you are creating a new Docker Swarm. You must check that neither the Security Group Rules nor the Network Access Control List blocks traffic between hosts. Which statement best characterizes all ports that must be allowed between Docker hosts?
+## 10. On AWS, you are creating a new Docker Swarm. You must check that neither the Security Group Rules nor the Network Access Control List blocks traffic between hosts. Which statement best characterizes all ports that must be allowed between Docker hosts?
 A. TCP/2377 and UDP/2377  
 B. TCP/7946 and UDP/2377  
 C. TCP/2377, TCP/7946, and UDP/7946  
