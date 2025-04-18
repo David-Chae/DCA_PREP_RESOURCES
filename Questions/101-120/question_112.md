@@ -5,13 +5,11 @@ C. Four
 D. TWo  
 
 
-The correct answer is:
-
-**B. Five**
+There are no correct answers.
 
 ### **Explanation:**
 
-Docker provides five **native network drivers**:
+Docker provides six **native network drivers**:
 
 1. **Bridge**: The default network driver. Containers connected to the bridge network can communicate with each other, but they are isolated from the external network unless specifically configured.
 
@@ -23,5 +21,7 @@ Docker provides five **native network drivers**:
 
 5. **None**: This driver disables all networking for the container. The container does not get an IP address and cannot communicate with other containers or external networks.
 
+6. **ipvlan**:	IPvlan networks provide full control over both IPv4 and IPv6 addressing.
+
 ### **Final Answer:**
-**B. Five**
+**Six native network drivers**
