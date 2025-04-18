@@ -2,6 +2,6 @@
 A. Yes  
 B. No  
 
-**A. Yes**  
+**Answer: B**
 
-Docker Trusted Registry (DTR) security scanning can detect licenses for known third-party binary components. It analyzes image contents, including dependencies, to identify security vulnerabilities and licensing information.
+Explanation: A DTR (Docker Trusted Registry) security scan typically identifies vulnerabilities and security issues in container images, including their dependencies and libraries. It may not directly pick up licenses for known third-party binary components, as its primary focus is security rather than license compliance.
