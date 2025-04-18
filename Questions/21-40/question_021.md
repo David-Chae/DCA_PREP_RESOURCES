@@ -14,7 +14,7 @@ or -d flag can be used instead of --driver
 To create a new **bridge** network in Docker, you must specify the **bridge driver** explicitly. The correct syntax is:  
 
 ```sh
-docker network create --driver bridge my-network
+docker network create -driver bridge my-network
 ```
 OR  
 ```sh
