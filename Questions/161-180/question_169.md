@@ -4,7 +4,7 @@ B. No
 
 The correct answer is:
 
-**A. Yes**
+**B. No**
 
 Explanation:
-A Docker Trusted Registry (DTR) security scan can detect private keys and other sensitive information copied into Docker images. It scans images for vulnerabilities and potential security issues, including the presence of sensitive data like private keys, passwords, or API tokens.
+Private keys transferred to the image are not detected by a DTR security scan. A DTR security scan is a capability that searches images for known vulnerabilities in software packages or dependencies installed in the image. A DTR security scan does not look for private keys or other sensitive data that may have been copied to the image by accident or on purpose. To avoid copying private keys to the image, you should manage your credentials using Docker secrets or other safe means.
