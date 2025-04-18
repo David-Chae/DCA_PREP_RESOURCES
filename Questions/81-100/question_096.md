@@ -5,9 +5,10 @@ B. In Docker's unit file, modify the dockerd call to include the --storage-drive
 C. Change your Docker version.
 D. Reformat the storage disk
 ```
-The correct answer is:
+The correct answer is: A & B
 
 **A. Set devicemapper as the storage-driver in /etc/docker/daemon.json.**
+**B. In Docker's unit file, modify the dockerd call to include the --storage-driver flag**
 
 ### Explanation:
 Docker allows configuring its storage driver through the `daemon.json` file, which is the recommended way to make persistent changes. To switch from `overlay2` to `devicemapper`, Bob should:
