@@ -6,12 +6,8 @@
 
 The correct answer is:  
 
-✅ **`docker network create --network-driver bridge my-network`**  
-
-OR  
-
 ✅ **`docker network create --driver bridge my-network`**  
-
+or -d flag can be used instead of --driver
 ---
 
 ### Explanation:  
