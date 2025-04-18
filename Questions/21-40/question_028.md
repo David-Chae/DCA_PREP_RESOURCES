@@ -45,6 +45,7 @@ After these steps, your Docker Swarm cluster is ready to use!
 ### **Final Thoughts:**  
 To start a new Swarm cluster, always use **`docker swarm init`** on a manager node. Then, add worker nodes using `docker swarm join`. This is the proper and recommended way to set up a Docker Swarm cluster. 🚀
 
+[docker swarm init](https://docs.docker.com/reference/cli/docker/swarm/init/)
 
 
 
