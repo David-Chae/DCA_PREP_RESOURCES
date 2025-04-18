@@ -18,9 +18,9 @@ docker network create --driver bridge my-network
 ```
 OR  
 ```sh
-docker network create --network-driver bridge my-network
+docker network create --d bridge my-network
 ```
-Both **`--driver`** and **`--network-driver`** are valid options.
+Both **`--driver`** and **`--d`** are valid options.
 
 ---
 
