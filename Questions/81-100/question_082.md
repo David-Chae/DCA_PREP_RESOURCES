@@ -4,43 +4,25 @@ B.--field-limit
 C.--pretty  
 D.--format  
 
-The correct answer is:  
+The correct answer is:
 
-✔ **A. `--filter`**
+**D. `--format`**
 
----
+### Explanation:
 
-### **Explanation:**
+The `--format` flag in `docker inspect` allows you to **return specific fields** using Go templating syntax.
 
-#### **1️⃣ Option A (`--filter`)**  
-- The **`--filter`** flag is used to return particular fields or filter out certain information when using `docker inspect`.  
-- This flag is typically used to filter results based on specific criteria (e.g., filtering containers by status, image, etc.).  
-- **Example usage:**  
-  ```bash
-  docker inspect --filter "status=running" container_name_or_id
-  ```
+#### Example:
+```bash
+docker inspect --format='{{.Name}}' my_container
+```
+This command will return only the container's name instead of the entire JSON output.
 
----
+### Other options explained:
+- **A. `--filter`** – Used with `docker ps`, `docker images`, etc., to filter results, but **not valid for `docker inspect`**.
+- **B. `--field-limit`** – ❌ Not a valid Docker CLI flag.
+- **C. `--pretty`** – While `docker inspect` outputs nicely formatted JSON by default, there's **no `--pretty`** flag.
 
-#### **2️⃣ Option D (`--format`)**  
-- The **`--format`** flag allows you to format the output using Go templating to display specific fields in a custom format.  
-- It is used to display selected fields rather than filtering, which is more flexible in extracting data from the inspection output.  
-- **Example usage:**  
-  ```bash
-  docker inspect --format '{{.Config.Image}}' container_name_or_id
-  ```
+✅ **Correct answer: `D. --format`**
 
----
-
-#### **Why the other options are incorrect?**
-
-- **❌ Option B (`--field-limit`)**  
-  - This is **not a valid flag** in `docker inspect`.
-
-- **❌ Option C (`--pretty`)**  
-  - **`--pretty`** is **not a valid flag** in `docker inspect`.
-
----
-
-### **Final Answer:**  
-✔ **A. `--filter`**
+Let me know if you want help crafting format templates!
