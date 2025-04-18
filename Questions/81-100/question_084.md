@@ -1,8 +1,10 @@
 ## 84. How do you ensure that an existing worker node in a UCP cluster only executes containers managed by Kubernetes and not Docker Swarm?
+```
 A. Set Kubernetes as the default orchestrator.  
 B. In the UCP UI, change the orchestrator type to Swarm.  
-C. In the UCP UI, change the orchestrator type to Mixed
+C. In the UCP UI, change the orchestrator type to Mixed.  
 D. In the UCP UI, change the orchestrator type to Kubernetes.  
+```
 
 The correct answer is:
 
