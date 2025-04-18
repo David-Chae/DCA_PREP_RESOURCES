@@ -8,8 +8,6 @@ D. In the UCP UI, change the orchestrator type to Kubernetes.
 
 The correct answer is:
 
-The correct answer is:
-
 **D. In the UCP UI, change the orchestrator type to Kubernetes.**
 
 ### Explanation:
