@@ -65,6 +65,7 @@ A **Volume** in Kubernetes refers to a storage resource that can be mounted by a
    metadata:
      name: fast-storage
    provisioner: kubernetes.io/aws-ebs
+   allowVolumeExpansion: true
    parameters:
      type: gp2
    ```
