@@ -8,32 +8,25 @@ D. In the UCP UI, change the orchestrator type to Kubernetes.
 
 The correct answer is:
 
-✔ **A. Set Kubernetes as the default orchestrator.**
+The correct answer is:
 
----
+**D. In the UCP UI, change the orchestrator type to Kubernetes.**
 
-### **Explanation:**
+### Explanation:
 
-In Docker Universal Control Plane (UCP), nodes can be configured to run containers either with Docker Swarm or Kubernetes as the orchestrator. To ensure that a worker node only executes containers managed by Kubernetes and not Docker Swarm, you must configure the node to use Kubernetes as its default orchestrator.
+In Docker Universal Control Plane (UCP), you can configure **which orchestrator** a node uses:
 
-#### **Steps to ensure the node uses Kubernetes**:
-1. **Set Kubernetes as the default orchestrator** for the node. This ensures that the node will only run containers managed by Kubernetes, not Docker Swarm.
-2. **Option A** refers to setting Kubernetes as the default orchestrator, which is what needs to be done to achieve the desired setup.
+- **Swarm**: The node will run only **Swarm services**.
+- **Kubernetes**: The node will run only **Kubernetes workloads**.
+- **Mixed**: The node can run **both Swarm and Kubernetes** workloads.
 
----
+### To ensure the node **only executes Kubernetes-managed containers**, you should:
 
-### **Why the other options are incorrect?**
+👉 **Change the orchestrator type to Kubernetes** in the UCP UI (or via CLI/API if needed).
 
-- **❌ Option B (`In the UCP UI, change the orchestrator type to Swarm`)**  
-  - This would configure the node to run Docker Swarm containers, not Kubernetes.
+This ensures that the node will **not participate in Swarm orchestration** and will be dedicated solely to Kubernetes workloads.
 
-- **❌ Option C (`In the UCP UI, change the orchestrator type to Mixed`)**  
-  - The "Mixed" orchestrator type allows the node to run containers managed by both Kubernetes and Docker Swarm, which is the opposite of what we want.
-
-- **❌ Option D (`In the UCP UI, change the orchestrator type to Kubernetes`)**  
-  - While this sounds similar, setting the orchestrator type to Kubernetes for the node is **insufficient** by itself. It is necessary to explicitly set Kubernetes as the default orchestrator for the node, as per Option A.
-
----
-
+✅ **Correct Answer: D**  
+Let me know if you'd like the steps to change this setting in the UCP UI!
 ### **Final Answer:**  
 ✔ **A. Set Kubernetes as the default orchestrator.**
