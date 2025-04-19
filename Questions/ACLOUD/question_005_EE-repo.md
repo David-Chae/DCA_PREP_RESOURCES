@@ -1,51 +1,25 @@
 ## Where can we find a repository URL for installing the Docker Enterprise Edition (EE)?
 
-Docker Hub. If we have a Docker EE license, then we can pinpoint and retrieve a repository URL on Docker Hub.
+Docker Hub. (https://docs.mirantis.com/mke/3.8/install/install-mke-image.html)
+ 
+To install MKE:
 
-BELOW IS FROM CHATGPT and I don't think this is right. I only got to download the UCP and DTR using Mirantis Launchpad.
+Log in to the target host using Secure Shell (SSH).
 
-To find the **repository URL for installing Docker Enterprise Edition (EE)**, you must go through **Docker’s official enterprise partner portal or subscription service**, as **Docker EE is a commercial product** and not openly available like Docker CE (Community Edition).
-
----
-
-### ✅ Here’s how to get the Docker EE repository URL:
-
-#### 1. **Visit Docker’s official enterprise portal:**
-- Go to: [https://www.mirantis.com/software/docker/docker-enterprise/](https://www.mirantis.com/software/docker/docker-enterprise/)
-  > Mirantis now maintains Docker EE after acquiring Docker Enterprise in 2019.
-
-#### 2. **Sign in or request a trial:**
-- You'll need a **Mirantis (Docker Enterprise) subscription** to access the repositories.
-- After logging in, you'll be given **custom repository URLs** for your operating system and version.
-
-#### 3. **The repository URL is usually in this form:**
+Pull the latest version of MKE:
 ```
-https://<customer_id>.docker.com/repo/ubuntu/ or /rhel/ or /centos/
+docker image pull mirantis/ucp:3.8.4
 ```
-Or:
+Install MKE:
 ```
-https://packages.mirantis.com/<os-version>/
+docker container run --rm -it --name ucp \
+-v /var/run/docker.sock:/var/run/docker.sock \
+mirantis/ucp:3.8.4 install \
+--host-address <node-ip-address> \
+--interactive
 ```
 
-You’ll also receive credentials (username and password or token) to access private repositories.
-
----
-
-### 🛑 Important Notes:
-- Docker EE is not available via public package managers like `apt` or `yum` without this subscription.
-- The repositories contain packages like `docker-ee`, `docker-ee-cli`, and `docker-ee-engine`.
-
----
-
-### 🐳 If You Just Need Docker CE (Community Edition):
-Use the official public repo:
-```bash
-https://download.docker.com/linux/ubuntu
-```
-Or:
-```bash
-https://download.docker.com/linux/centos
-```
+The ucp install command runs in interactive mode, prompting you for the necessary configuration values. For more information about the ucp install command, including how to install MKE on a system with SELinux enabled, refer to the MKE Operations Guide: mirantis/ucp install.
 
 ---
 
@@ -59,7 +33,7 @@ https://download.docker.com/linux/centos
 
 The correct answer is:
 
-> ✅ **4. Docker Enterprise Hub**
+> ✅ **3. DockerHub**
 
 ---
 
@@ -76,19 +50,10 @@ Let’s break down each option:
   Docker Marketplace is for **browsing and acquiring containerized apps**, not the Docker EE installation packages or repository URLs.
 
 #### 3. **Docker Hub**
-- ❌ Incorrect.  
-  Docker Hub is the **default public registry** for Docker images (mostly open source/CE). It does **not host Docker EE packages**.
+- ✅ **Correct.**  
+  Docker Hub has mirantis/ucp repository with tag 3.8.4 which can be pulled.
 
 #### 4. **Docker Enterprise Hub**
-- ✅ **Correct.**  
-  The **Docker Enterprise Hub** is the portal where **Docker EE customers** can:
-  - Log in with their credentials
-  - Access installation instructions
-  - Retrieve **repository URLs** for their OS (RHEL, CentOS, Ubuntu, etc.)
-  - Manage subscriptions and support
-
-After Docker Enterprise was acquired by Mirantis, this may also be part of the **Mirantis Launchpad / Customer Portal**, but the **Docker Enterprise Hub** remains the correct terminology for this context.
-
----
-
-If you're planning to install Docker EE, I can walk you through the process step by step based on your OS.
+❌ Incorrect.  
+  There is no such as thing as Docker Enterprise Hub.
+ 
